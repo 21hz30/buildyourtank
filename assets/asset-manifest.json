@@ -1,0 +1,61 @@
+{
+  "project": "BuildYourTank",
+  "purpose": "website visual asset pass",
+  "style": "clean_hd",
+  "status": "specifications_ready_image_generation_pending",
+  "assets": [
+    {
+      "id": "zebra-angelfish-idle-2x2",
+      "kind": "creature",
+      "reference": "references/zebra-angelfish-reference.png",
+      "source_spec": "prompts/buildyourtank-first-pass.md",
+      "status": "static_reference_cutout_ready",
+      "output": "processed/zebra-angelfish-single/clean.png",
+      "icon_output": "processed/zebra-angelfish-icon/aquarium-icon.png",
+      "sheet": { "rows": 2, "cols": 2, "frames": 4 },
+      "processing": { "component_mode": "largest", "align": "center", "shared_scale": true }
+    },
+    {
+      "id": "betta-idle-2x2",
+      "kind": "creature",
+      "source_spec": "prompts/buildyourtank-first-pass.md",
+      "sheet": { "rows": 2, "cols": 2, "frames": 4 },
+      "processing": { "component_mode": "largest", "align": "center", "shared_scale": true }
+    },
+    {
+      "id": "neon-tetra-idle-2x2",
+      "kind": "creature",
+      "source_spec": "prompts/buildyourtank-first-pass.md",
+      "sheet": { "rows": 2, "cols": 2, "frames": 4 },
+      "processing": { "component_mode": "largest", "align": "center", "shared_scale": true }
+    },
+    {
+      "id": "java-fern-single",
+      "kind": "prop",
+      "source_spec": "prompts/buildyourtank-first-pass.md",
+      "sheet": { "rows": 1, "cols": 1, "frames": 1 },
+      "processing": { "component_mode": "largest", "align": "bottom", "shared_scale": false }
+    },
+    {
+      "id": "driftwood-single",
+      "kind": "prop",
+      "source_spec": "prompts/buildyourtank-first-pass.md",
+      "sheet": { "rows": 1, "cols": 1, "frames": 1 },
+      "processing": { "component_mode": "largest", "align": "bottom", "shared_scale": false }
+    },
+    {
+      "id": "bubble-loop-1x4",
+      "kind": "fx",
+      "source_spec": "prompts/buildyourtank-first-pass.md",
+      "sheet": { "rows": 1, "cols": 4, "frames": 4 },
+      "processing": { "component_mode": "all", "align": "center", "shared_scale": true }
+    },
+    {
+      "id": "freshwater-tank-scene",
+      "kind": "map_background",
+      "source_spec": "prompts/buildyourtank-first-pass.md",
+      "canvas": { "width": 1536, "height": 1024 },
+      "processing": { "foundation_only": true, "runtime_props": "separate_layers" }
+    }
+  ]
+}
