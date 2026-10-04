@@ -1,7 +1,10 @@
-import { useEffect, useId, useRef } from 'react'
+import { createContext, useContext, useEffect, useId, useRef } from 'react'
 import Icon from './Icon'
 
+export const DialogNoticeContext = createContext('')
+
 export default function Dialog({ title, onClose, children, className = '' }) {
+  const notice = useContext(DialogNoticeContext)
   const ref = useRef(null)
   const titleId = useId()
   useEffect(() => {
@@ -11,6 +14,7 @@ export default function Dialog({ title, onClose, children, className = '' }) {
   }, [])
   return <dialog ref={ref} aria-labelledby={titleId} className={`dialog ${className}`} onCancel={onClose} onClick={event => { if (event.target === ref.current) { const bounds = ref.current.getBoundingClientRect(); if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) onClose() } }}>
     <div className="dialog-heading"><h2 id={titleId}>{title}</h2><button className="icon-button" type="button" onClick={onClose} aria-label="Close dialog"><Icon name="close" /></button></div>
+    {notice && <div className="dialog-feedback" role="status"><Icon name="info" size={16} /><span>{notice}</span></div>}
     {children}
   </dialog>
 }

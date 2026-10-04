@@ -1,31 +1,17 @@
 # Build Your Tank
 
-A student passion project with a working aquarium builder. Built with React + Vite and local artwork.
+A student passion project with a public introduction and an interactive aquarium workspace. React 19 + Vite, with original editable illustrations.
 
-## Repository
-
-GitHub: [21hz30/buildyourtank](https://github.com/21hz30/buildyourtank).
-
-The main branch is `main`. After making and checking changes in this directory:
-
-```sh
-git add .
-git commit -m "feat(tank): describe the change"
-git push
-```
-
-Dependencies, build output, local environment files, and administrative contracts are excluded from version control.
-
-## Run
+## Run locally
 
 Node.js 22 or later is recommended.
 
 ```sh
 npm ci
-npm run dev -- --port 5184
+npm run dev
 ```
 
-Open http://127.0.0.1:5184. The server runs while its terminal session is alive. The default configured port is 5173; the preview uses 5184 to avoid another local app.
+Open http://127.0.0.1:5173. Keep the server terminal session running. To use another port, append `-- --port 5184`.
 
 ```sh
 npm test
@@ -33,26 +19,32 @@ npm run build
 npm run preview -- --host 127.0.0.1 --port 5184
 ```
 
-## What works
+## Pages and flows
 
-- Six fish species, three plants, three tank sizes, substrates, and filters.
-- Coin purchases and refunds, with budget checks.
-- One feeding and one water-change reward per browser-local day.
-- Automatic browser saving, editable names, and restoration after reload.
-- Read-only snapshot URLs; visitors can copy a shared tank into their own browser.
-- A calculated 30-day educational preview and three starter ideas.
-- Responsive layout, keyboard-accessible store tabs, native accessible dialogs, and reduced-motion support.
+- Home introduces the project before demo entry; nickname or guest entry opens My tanks.
+- My tanks creates and switches multiple independent tanks. A room with fixed-scale furniture shows 60P, 120P and 150P sizes, all anchored to the same tabletop. Observe tank opens a close-up with 75–250% zoom, reset, and scroll/swipe navigation. Species, pH, temperature, hardness and nutrients appear alongside it.
+- Tank idea explores example community setups and a local gallery of your selected tanks. Opening a tank is read-only; purchasing a copy creates a new tank.
+- Fish store offers six PRD fish, three plants, substrate, filters, glass finishes, tank upgrades and care supplies. Fish/plants go into the selected tank; food/water/fertilizer go into the shared bag.
+- Learn is a searchable encyclopedia with 23 fish, plant, substrate, tank, filter, glass and care-supply entries. Entries include species facts, habitat, compatibility, care and usage details; direct entry links survive refresh.
+- Daily check-in grants 20 demo coins once per local date. Feeding consumes one food portion and grants 5 coins; water care consumes one refill and grants 8. Fertilizer consumes one dose and increments the educational nutrient index.
+- Automatic browser saving preserves tanks, budget, supplies and care dates. Snapshot links remain read-only and can be copied into a new tank.
+
+Hash routes: `#/home`, `#/login`, `#/my-tanks`, `#/ideas`, `#/store`, `#/learn`, `#/learn?entry=fish-betta`, and `#tank=…` snapshots. Refreshing each route works with a static Vercel deployment.
 
 ## Prototype boundaries
 
-Browser saving uses `buildyourtank:v1`. It does not identify users across devices. Snapshot URLs contain the configuration in the URL fragment, not a database record, and do not update after editing. A localhost snapshot is only reachable on the computer running the server; after deployment the same sharing flow uses the hosted site URL.
+This demo uses versioned localStorage at `buildyourtank:workspace:v2`. It migrates the existing `buildyourtank:v1` aquarium and leaves the old storage record intact. It does not identify a person across browsers/devices.
 
-Prices, bioload, pH, and growth are a simplified toy model. They need validated product rules and species data before being used as real fishkeeping guidance. This design pass does not include uploads, accounts, a backend, or the full PRD inventory/equipment system.
+The login page is a labeled demo entry, not account authentication. The gallery contains sample tanks and this browser's own selected tanks, not live users. Local display switches do not publish online. Snapshot links capture one configuration, not future edits. Localhost links only work on a computer running the server; a deployment uses the hosted URL.
 
-Built-in image generation was unavailable. Fish and plants use original SVG prototype artwork plus the supplied angelfish cutout; the source assets were preserved. [Design direction](docs/design.md).
+Prices, species properties, pH/substrate effects, temperature and nutrient warnings, capacity and 30-day growth are provisional educational models. Species-specific chemistry and real market prices are not validated. Hardness is an editable saved setting, not a modeled chemical process. The original illustrations are prototype artwork. Encyclopedia care ranges are editorial starting points, pending species and manufacturer-source review; they are separate from the simulator’s simplified values.
 
-## Deploy to Vercel
+No backend, Supabase connection or online deployment was performed in this design revision. Cloud accounts, server-owned balances/inventory and real public tanks require a subsequent backend implementation.
 
-Import this directory as the project root, choose **Vite**, run `npm run build`, and publish **dist**. No environment variables are needed for this local-storage prototype. Vercel is not connected or deployed by this design task.
+## Deployment
 
-For cloud ownership and live sharing, the next step is Supabase Anonymous Auth, per-owner database policies, and a tank persistence service. This frontend currently uses browser storage only.
+Vercel configuration: project root is this directory; framework Vite; build `npm run build`; output `dist`. No environment variables are required for this browser-storage demo.
+
+GitHub: https://github.com/21hz30/buildyourtank. The branch is `main`.
+
+[Design brief and validation notes](docs/design.md).

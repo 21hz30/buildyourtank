@@ -1,0 +1,331 @@
+.aquarium {
+  position:relative;
+  width:100%;
+  aspect-ratio:1.98;
+  isolation:isolate;
+  border-radius:5px 5px 10px 10px;
+  overflow:hidden;
+  background:radial-gradient(ellipse at 60% 8%,#edf5ea99,transparent 72%),linear-gradient(180deg,#cae3dc,#aecdc3 65%,#89b3a5);
+  box-shadow:inset 0 0 0 1px #fff6,inset 0 -50px 80px #4568580b
+}
+
+.water-surface {
+  height:8px;
+  position:absolute;
+  inset:0 0 auto;
+  background:linear-gradient(180deg,#ffffff80,#effaf63b);
+  z-index:8;
+  box-shadow:0 2px 0 #eaf6f136
+}
+
+.light-ray {
+  position:absolute;
+  top:-60%;
+  height:210%;
+  width:16%;
+  background:linear-gradient(90deg,transparent,#ffffff16,transparent);
+  transform:rotate(-28deg);
+  pointer-events:none
+}
+
+.ray-one {
+  left:22%
+}
+
+.ray-two {
+  left:65%;
+  width:22%;
+  opacity:.7
+}
+
+.distant-rock {
+  position:absolute;
+  bottom:10%;
+  background:#7b9b8d;
+  opacity:.15;
+  border-radius:57% 45% 26% 18%;
+  filter:blur(2px);
+  width:42%;
+  height:35%;
+  z-index:1
+}
+
+.rock-one {
+  left:-17%;
+  transform:rotate(-16deg)
+}
+
+.rock-two {
+  right:-22%;
+  height:47%;
+  opacity:.1
+}
+
+.substrate {
+  position:absolute;
+  bottom:0;
+  left:-1%;
+  right:-1%;
+  height:15%;
+  background:linear-gradient(180deg,#ddceb0,#cfbd9b);
+  z-index:1;
+  border-radius:55% 26% 0 0/12% 9% 0 0
+}
+
+.substrate-top {
+  position:absolute;
+  inset:0;
+  background-image:radial-gradient(#a3957533 .65px,transparent .8px),radial-gradient(#f9f3e755 .8px,transparent 1px);
+  background-size:8px 7px,13px 8px;
+  background-position:2px 3px,6px 2px
+}
+
+.aquarium-gravel .substrate {
+  background:linear-gradient(180deg,#b9baac,#a1a898)
+}
+
+.aquarium-soil .substrate {
+  background:linear-gradient(180deg,#a19a81,#837e68)
+}
+
+.small-stones i {
+  position:absolute;
+  bottom:55%;
+  border-radius:52% 48% 35% 45%;
+  background:#a5ac96;
+  width:4%;
+  height:15%;
+  box-shadow:inset 0 3px #bec4af60
+}
+
+.small-stones i:nth-child(1) {
+  left:9%;
+  transform:rotate(9deg)
+}
+
+.small-stones i:nth-child(2) {
+  left:44%;
+  bottom:28%;
+  width:3%;
+  background:#c1b69b
+}
+
+.small-stones i:nth-child(3) {
+  left:72%;
+  width:5%
+}
+
+.small-stones i:nth-child(4) {
+  left:82%;
+  bottom:30%;
+  width:2.5%
+}
+
+.small-stones i:nth-child(5) {
+  left:57%;
+  bottom:40%;
+  width:1.5%;
+  height:8%;
+  background:#d5c6a5
+}
+
+.small-stones i:nth-child(6) {
+  left:35%;
+  bottom:35%;
+  width:1.5%;
+  height:10%
+}
+
+.driftwood {
+  position:absolute;
+  left:14%;
+  bottom:8%;
+  width:42%;
+  z-index:3;
+  opacity:.9
+}
+
+.scene-plant {
+  position:absolute;
+  transform:translateX(-50%);
+  transform-origin:bottom center;
+  animation:sway 9s ease-in-out infinite;
+  animation-delay:var(--sway-delay);
+  pointer-events:none
+}
+
+.scene-plant img {
+  display:block;
+  width:100%;
+  height:auto
+}
+
+.scene-plant-fern {
+  width:27%!important
+}
+
+.scene-plant-grass {
+  width:26%!important
+}
+
+.scene-fish {
+  position:absolute;
+  animation:swim var(--swim-duration) ease-in-out infinite;
+  animation-delay:var(--swim-delay);
+  pointer-events:none
+}
+
+.scene-fish img {
+  display:block;
+  width:100%;
+  height:auto;
+  filter:drop-shadow(2px 5px 5px #3e675e1c)
+}
+
+.scene-fish-angelfish {
+  margin-top:-4%;
+  margin-left:-7%
+}
+
+.scene-fish:not(.scene-fish-angelfish) {
+  margin-left:-5%;
+  margin-top:-2%
+}
+
+.air-bubble {
+  position:absolute;
+  bottom:12%;
+  border:1px solid #effcf9a6;
+  width:var(--bubble-size);
+  height:var(--bubble-size);
+  border-radius:50%;
+  z-index:9;
+  animation:bubble 7s linear infinite;
+  animation-delay:var(--bubble-delay)
+}
+
+.tank-edge {
+  position:absolute;
+  inset:0;
+  border:1px solid #effbf582;
+  border-bottom:3px solid #d1e0d5;
+  border-left:3px solid #e7f5ec65;
+  border-right:3px solid #e7f5ec65;
+  border-radius:5px 5px 10px 10px;
+  z-index:10;
+  pointer-events:none
+}
+
+.food-particle {
+  position:absolute;
+  top:4%;
+  width:3px;
+  height:3px;
+  background:#ba8b57;
+  border-radius:50%;
+  z-index:8;
+  animation:feed 3s ease-in both
+}
+
+.is-refreshing:after {
+  content:'';
+  position:absolute;
+  inset:0;
+  background:#e2fbff33;
+  z-index:9;
+  animation:refresh 3s ease-out both;
+  pointer-events:none
+}
+
+.scene-empty {
+  position:absolute;
+  inset:25% 10%;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  color:#4f7869;
+  text-align:center;
+  font-family:var(--serif);
+  font-size:25px;
+  z-index:7
+}
+
+.scene-empty span {
+  font-family:inherit;
+  font-size:15px;
+  margin-top:8px
+}
+
+
+@keyframes swim {
+  0%,100% {
+    transform:translateX(-12px) translateY(0) rotate(-2deg)
+  }
+  50% {
+    transform:translateX(18px) translateY(-5px) rotate(1deg)
+  }
+}
+
+@keyframes sway {
+  0%,100% {
+    transform:translateX(-50%) rotate(-1.5deg)
+  }
+  50% {
+    transform:translateX(-50%) rotate(1.3deg)
+  }
+}
+
+@keyframes bubble {
+  0% {
+    transform:translateY(0);
+    opacity:0
+  }
+  10% {
+    opacity:.7
+  }
+  90% {
+    opacity:.6
+  }
+  100% {
+    transform:translateY(-220px);
+    opacity:0
+  }
+}
+
+@keyframes feed {
+  0% {
+    transform:translateY(0);
+    opacity:1
+  }
+  100% {
+    transform:translateY(160px);
+    opacity:0
+  }
+}
+
+@keyframes refresh {
+  0% {
+    opacity:0
+  }
+  25% {
+    opacity:1
+  }
+  100% {
+    opacity:0
+  }
+}
+
+@keyframes toast-in {
+  from {
+    opacity:0;
+    transform:translate(-50%,7px)
+  }
+  to {
+    opacity:1;
+    transform:translate(-50%,0)
+  }
+}
+
+
+@media (prefers-reduced-motion: reduce) { .scene-fish,.scene-plant,.air-bubble,.food-particle,.is-refreshing:after { animation:none!important; } }
