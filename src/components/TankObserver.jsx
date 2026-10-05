@@ -7,7 +7,7 @@ import { SIZES } from '../lib/tank'
 export default function TankObserver({ tank, feeding, changedWater, onClose }) {
   const [zoom, setZoom] = useState(100)
   const size = SIZES.find(item => item.id === tank.size)
-  const ratio = { '60p': 60 / 36, '120p': 120 / 50, '150p': 150 / 50 }[tank.size]
+  const ratio = size.lengthCm / size.heightCm
   const changeZoom = delta => setZoom(current => Math.max(75, Math.min(250, current + delta)))
 
   return <Dialog title={tank.name} className="observer-dialog" onClose={onClose}>

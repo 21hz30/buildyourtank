@@ -1,7 +1,16 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
 import { STORAGE_KEY, createTank, remainingCoins, today } from './tank.js'
-import { WORKSPACE_KEY, activeTank, addTank, buySupply, careForWorkspace, checkIn, createWorkspace, fertilize, loadWorkspace, normalizeWorkspace, purchaseItem, purchaseSetup, replaceTank } from './workspace.js'
+import { STARTING_COINS, WORKSPACE_KEY, activeTank, addTank, buySupply, careForWorkspace, checkIn, createWorkspace, fertilize, loadWorkspace, normalizeWorkspace, purchaseItem, purchaseSetup, replaceTank } from './workspace.js'
+
+test('new workspaces start with 300 spendable coins without changing saved balances', () => {
+  const fresh = createWorkspace()
+  assert.equal(STARTING_COINS, 300)
+  assert.equal(fresh.coins, 300)
+  assert.equal(loadWorkspace({ getItem() { return null } }).coins, 300)
+  const saved = { ...fresh, coins: 24 }
+  assert.equal(loadWorkspace({ getItem(key) { return key === WORKSPACE_KEY ? JSON.stringify(saved) : null } }).coins, 24)
+})
 
 test('migrating a v1 tank preserves its setup, earned balance, care and name', () => {
   const legacy = { ...createTank(), name: 'My original aquarium', earned: 13, care: { feed: '2026-10-03' }, savedAt: '2026-10-03T12:00:00Z' }
@@ -63,7 +72,8 @@ test('new tanks never replace existing tanks; insufficient funds and collection 
   assert.deepEqual(created.tanks[0], initial.tanks[0])
   assert.notEqual(created.activeId, initial.activeId)
   assert.equal(created.coins, initial.coins - 30)
-  assert.ok(addTank(created, empty).error)
+  assert.equal(addTank(created, empty).workspace.tanks.length, 3)
+  assert.ok(addTank({ ...created, coins: 0 }, empty).error)
   assert.ok(addTank({ ...initial, coins: 999, tanks: Array.from({ length: 8 }, (_, i) => ({ ...initial.tanks[0], id: String(i) })) }, empty).error)
 })
 

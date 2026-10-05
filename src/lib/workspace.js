@@ -1,6 +1,7 @@
-import { CATALOG, FILTERS, GLASS, SANDS, SIZES, createTank, getHealth, loadTank, normalizeTank, remainingCoins, tankCost, today } from './tank.js'
+import { CATALOG, FILTERS, GLASS, SANDS, SIZES, STORAGE_KEY, createTank, getHealth, normalizeTank, remainingCoins, tankCost, today } from './tank.js'
 
 export const WORKSPACE_KEY = 'buildyourtank:workspace:v2'
+export const STARTING_COINS = 300
 export const CHECK_IN_REWARD = 20
 export const SUPPLIES = [
   { id: 'food', name: 'Everyday fish food', description: 'Five small portions for five feeding days.', amount: 5, price: 8, icon: 'food', unit: 'portions' },
@@ -8,9 +9,9 @@ export const SUPPLIES = [
   { id: 'fertilizer', name: 'Seachem Flourish Potassium', description: 'Three plant-care doses for a greener little world.', amount: 3, price: 6, icon: 'leaf', unit: 'doses' },
 ]
 export function newId() { return globalThis.crypto?.randomUUID?.() || `tank-${Date.now()}-${Math.random().toString(36).slice(2, 8)}` }
-export function createWorkspace(tank = createTank()) {
+export function createWorkspace(tank = createTank(), coins = STARTING_COINS) {
   const first = { ...tank, id: newId() }
-  return { version: 2, tanks: [first], activeId: first.id, coins: remainingCoins(tank), resources: { food: 5, water: 3, fertilizer: 2 }, checkIn: { date: null, streak: 0 }, completedLessons: [] }
+  return { version: 2, tanks: [first], activeId: first.id, coins, resources: { food: 5, water: 3, fertilizer: 2 }, checkIn: { date: null, streak: 0 }, completedLessons: [] }
 }
 export function normalizeWorkspace(value) {
   if (value?.version !== 2 || !Array.isArray(value.tanks) || !value.tanks.length || value.tanks.length > 8) return null
@@ -30,13 +31,18 @@ export function normalizeWorkspace(value) {
   const date = /^\d{4}-\d{2}-\d{2}$/.test(value.checkIn?.date) ? value.checkIn.date : null
   return { version: 2, tanks, activeId: tanks.some(t => t.id === value.activeId) ? value.activeId : tanks[0].id, coins: value.coins, resources, checkIn: { date, streak: Number.isInteger(value.checkIn?.streak) ? Math.max(0, Math.min(100000, value.checkIn.streak)) : 0 }, completedLessons: Array.isArray(value.completedLessons) ? [...new Set(value.completedLessons.filter(id => typeof id === 'string' && id.length < 60))].slice(0, 100) : [] }
 }
+function legacyOrFreshWorkspace(storage) {
+  try {
+    const legacy = normalizeTank(JSON.parse(storage.getItem(STORAGE_KEY)))
+    if (legacy) return createWorkspace(legacy, remainingCoins(legacy))
+  } catch { /* No usable legacy tank. */ }
+  return createWorkspace()
+}
 export function loadWorkspace(storage) {
   try {
-    const restored = normalizeWorkspace(JSON.parse(storage.getItem(WORKSPACE_KEY)))
-    if (restored) return restored
-    return createWorkspace(loadTank(storage))
+    return normalizeWorkspace(JSON.parse(storage.getItem(WORKSPACE_KEY))) || legacyOrFreshWorkspace(storage)
   } catch {
-    try { return createWorkspace(loadTank(storage)) } catch { return createWorkspace() }
+    return legacyOrFreshWorkspace(storage)
   }
 }
 export function activeTank(workspace) { return workspace.tanks.find(tank => tank.id === workspace.activeId) || workspace.tanks[0] }

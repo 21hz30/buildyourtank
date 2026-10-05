@@ -1,5 +1,6 @@
 import { CATALOG, FILTERS, GLASS, SANDS, SIZES } from './tank.js'
 import { SUPPLIES } from './workspace.js'
+import { tetraProfiles } from './tetraCatalog.js'
 
 export const ENCYCLOPEDIA_CATEGORIES = [
   { id: 'all', name: 'All entries', icon: 'book' },
@@ -11,15 +12,11 @@ export const ENCYCLOPEDIA_CATEGORIES = [
 ]
 
 const fishProfiles = {
+  ...tetraProfiles,
   tetra: {
     chinese: '刚果灯鱼',
     headline: 'A shimmering African schooler that needs company and generous swimming room.',
-    art: '/art/congo-tetra.jpg',
-    artType: 'photo',
-    artCredit: 'André Karwath',
-    artSource: 'https://commons.wikimedia.org/wiki/File:Phenacogrammus_interruptus_(aka).jpg',
-    artLicense: 'CC BY-SA 2.5',
-    artLicenseUrl: 'https://creativecommons.org/licenses/by-sa/2.5/',
+    sourceUrl: 'https://greenaqua.hu/en/hal-lazac-kongolazac-phenacogrammus-interruptus.html',
     facts: [
       ['Native habitat', 'Congo River basin, Central Africa'],
       ['Typical adult length', '6–9 cm'],
@@ -42,53 +39,128 @@ const fishProfiles = {
     ],
   },
   angelfish: {
-    chinese: '神仙鱼', headline: 'A tall silhouette that needs room to grow.',
-    facts: [['Native habitat', 'Amazon basin, South America'], ['Typical adult size', 'About 15 cm long; up to 25–30 cm tall'], ['Temperature', '24–28 °C'], ['pH', '6.0–7.5'], ['Social life', 'Cichlid; pairs can become territorial'], ['Diet', 'Omnivore']],
+    chinese: '神仙鱼',
+    headline: 'A graceful, tall-bodied cichlid for a spacious and carefully maintained aquarium.',
+    sourceUrl: 'https://greenaqua.hu/en/fish-pterophyllum-scalare-angelfish.html',
+    facts: [
+      ['Native habitat', 'Slow, planted waters of the Amazon region'],
+      ['Typical adult length', '10–15 cm'],
+      ['Expected lifespan', '8–10 years'],
+      ['Minimum aquarium', '150 litres; 150–200 L recommended'],
+      ['Recommended group', '4–6 fish'],
+      ['Temperature', '24–30 °C'],
+      ['pH', '6.0–7.5'],
+      ['Water hardness', '3–13 dGH'],
+      ['Diet', 'Omnivore'],
+      ['Behavior', 'Peaceful; territorial when spawning'],
+    ],
     sections: [
-      ['Meet the fish', 'A laterally compressed body and long dorsal and anal fins create its distinctive shape. Juveniles may look small, but the adult needs considerable water depth and swimming room.'],
-      ['Build its habitat', 'Provide tall plants, open swimming areas and a suitably tall aquarium. Consider the usable water depth above the substrate. A 60P is too shallow for a full-grown angelfish; a 120P or 150P gives a better starting point for planning.'],
-      ['Choose its neighbors', 'Very small fish and shrimp may be eaten. Avoid fin nippers. Breeding pairs can defend an area, so compatibility needs more thought than matching colors or checking a capacity score.'],
-      ['Feeding & care', 'Use a varied, suitably sized diet. Observe body condition, appetite and fin condition. Stable warm water and a mature filter matter more than rapid changes to chase a pH number.'],
+      ['Meet the angelfish', 'Pterophyllum scalare has a distinctive triangular silhouette, a laterally compressed body and long dorsal, anal and pelvic fins. Its height and elegant movement make it a natural centerpiece, but the small fish sold in shops need considerably more vertical and horizontal room as they mature.'],
+      ['Build its habitat', 'Use a tall aquarium of at least 150 litres, with dense planting and roots around the edges plus open areas for swimming. Angelfish come from slow-flowing South American waters, so provide steady rather than turbulent circulation and enough depth for their extended fins.'],
+      ['Keep a social group', 'Angelfish are social and are commonly kept in a small group of 4–6 while young. Adults may form pairs and defend a territory during spawning. The layout should offer visual breaks and enough space for fish to move away from conflict.'],
+      ['Choose its neighbors', 'Avoid aggressive fin nippers and remember that very small fish may eventually be treated as prey. Choose calm companions that tolerate the same warm, soft-to-moderately-hard water, and do not rely on a fish’s current juvenile size when planning the community.'],
+      ['Feeding & water care', 'Offer a varied omnivorous diet of quality prepared, frozen and suitable live foods. Angelfish are sensitive to sudden parameter changes and nitrate accumulation, so use efficient filtration, regular partial water changes and consistent maintenance.'],
+      ['Breeding', 'A compatible pair may clean a broad leaf or smooth surface before laying eggs. Both parents can guard the clutch and fry, and their territorial behavior often becomes much stronger during this period.'],
     ],
   },
   betta: {
-    chinese: '暹罗斗鱼', headline: 'One colorful personality, with a calm home.',
-    facts: [['Native habitat', 'Shallow, planted waters of Southeast Asia'], ['Typical adult length', '6–7 cm'], ['Temperature', '24–28 °C'], ['pH', '6.0–7.5'], ['Social life', 'Keep males separately'], ['Diet', 'Carnivore; insect-based foods']],
+    chinese: '暹罗斗鱼',
+    headline: 'A spectacular surface-breathing fish that needs warm water, gentle flow and a calm home.',
+    sourceUrl: 'https://greenaqua.hu/en/hal-sziami-harcoshal-betta-splendens-szuperdelta.html',
+    facts: [
+      ['Native habitat', 'Still and slow waters of Thailand and Cambodia'],
+      ['Typical adult length', '6–7 cm'],
+      ['Expected lifespan', 'About 2 years'],
+      ['Minimum aquarium', 'At least 40 litres for one fish'],
+      ['Social life', 'Males are territorial; keep separately'],
+      ['Temperature', '25–28 °C'],
+      ['pH', '6.8–7.5'],
+      ['Water hardness', '5–20 dGH'],
+      ['Diet', 'Carnivore; protein-rich foods'],
+      ['Breeding', 'Bubble-nest builder'],
+    ],
     sections: [
-      ['Meet the fish', 'Domestic bettas come in many colors and fin shapes. A labyrinth organ lets them breathe air at the surface, but it does not remove their need for clean, warm water.'],
-      ['Build its habitat', 'Offer gentle filtration, a heater where needed, plant cover and resting places near the surface. Keep easy access to the air and use a secure lid with an air gap. Avoid sharp decorations that can tear long fins.'],
-      ['Choose its neighbors', 'Two males should not share a tank. Community housing is dependent on the individual and the companions; fin nippers, similar-looking rivals and small shrimp can cause problems. A carefully planned solo setup is the simplest place to start.'],
-      ['Feeding & care', 'Choose quality, small betta foods with animal protein, and offer suitable variety. Feed modest portions and check the fish is actually eating. Persistent clamped fins or loss of appetite deserve attention.'],
+      ['Meet the betta', 'This entry follows the Super Delta form of Betta splendens, whose broad caudal fin opens to roughly 120–160 degrees. Domestic bettas occur in many colors and fin shapes, but all share the labyrinth organ that lets them take atmospheric air from the surface.'],
+      ['Build its habitat', 'Provide at least 40 litres for one fish, warm stable water, gentle filtration and dense planting with roots and shaded hiding places. Keep part of the surface open for breathing, use a secure lid because bettas can jump, and avoid sharp decor that could damage long fins.'],
+      ['Understand its territory', 'Male bettas are strongly territorial and should not be housed together. Community keeping depends on the individual fish, tank size and companions; avoid fin nippers, overly lively fish and other animals that may be attacked or mistaken for rivals.'],
+      ['Feeding & daily care', 'Use high-quality betta food rich in animal protein, supplemented with suitable frozen or live foods. Feed modest portions, watch the fish eat and maintain clean water. The labyrinth organ does not make an unfiltered or very small container appropriate.'],
+      ['Surface access', 'A betta regularly rises to breathe, so floating plants should not seal the entire surface. Keep a warm layer of air beneath the lid and avoid strong currents that force a long-finned fish to struggle continuously.'],
+      ['Breeding', 'The male builds and guards a bubble nest, tending the eggs after spawning. Breeding requires a separate plan for introducing and removing adults safely and for raising very small fry.'],
     ],
   },
   danio: {
-    chinese: '银河斑马鱼', headline: 'Tiny pearls among the greenery.',
-    facts: [['Native habitat', 'Planted pools in Myanmar'], ['Typical adult length', '2–2.5 cm'], ['Temperature', '20–24 °C'], ['pH', '6.5–7.5'], ['Social life', 'A group of 8 or more'], ['Diet', 'Small omnivorous foods']],
+    chinese: '银河斑马鱼',
+    headline: 'A tiny spotted schooler that glows among dense planting.',
+    sourceUrl: 'https://greenaqua.hu/en/galaxy-danio.html',
+    facts: [
+      ['Native habitat', 'Small waters near Hopong, Myanmar'],
+      ['Typical adult length', '2–3 cm'],
+      ['Expected lifespan', 'About 3 years'],
+      ['Minimum aquarium', '30 litres'],
+      ['Recommended group', 'At least 6; 10–12 offers a fuller school'],
+      ['Temperature', '24–26 °C'],
+      ['pH', '5.7–7.5'],
+      ['Water hardness', '2–10 dGH'],
+      ['Diet', 'Omnivore; very small foods'],
+      ['Breeding', 'Relatively easy'],
+    ],
     sections: [
-      ['Meet the fish', 'Pearl-like spots cover a dark body, with red and black accents in the fins. This small, sometimes shy fish becomes easier to observe in a settled group with plenty of cover.'],
-      ['Build its habitat', 'Use dense planting with small open pockets and gentle flow. It prefers cooler conditions than many warm-water tropical fish, so a shared tank must have overlapping temperature requirements.'],
-      ['Choose its neighbors', 'Choose small, peaceful species that do not outcompete it for food. Large fish, including adult angelfish, can treat it as prey. Plant cover helps reduce pressure between displaying males.'],
-      ['Feeding & care', 'Its mouth is tiny. Use finely sized foods and small frozen or live foods where suitable. Check that food reaches timid individuals rather than only the boldest fish.'],
+      ['Meet the celestial pearl danio', 'Danio margaritatus was described from Myanmar after entering the aquarium hobby in 2006. Pearl-like spots cover the dark body, while red-and-black fins give mature fish a striking pattern despite their tiny 2–3 cm size.'],
+      ['Keep a proper group', 'This is a peaceful social fish. Keep at least six, with 10–12 creating a more natural-looking group when space and filtration allow. Dense cover helps shy individuals feel secure and gives displaying males room to avoid one another.'],
+      ['Build its habitat', 'A planted aquarium of at least 30 litres should combine dense vegetation and small open areas. Use gentle filtration and stable water, and ensure that every tankmate fits the danio’s small size and preferred temperature range.'],
+      ['Choose its neighbors', 'Choose similarly small, peaceful fish that will not dominate feeding time. Large or aggressive species can intimidate or eat these danios. A species-focused planted setup is often the easiest way to observe their color and behavior.'],
+      ['Feeding & daily care', 'Their mouths are tiny, so offer finely sized flakes or slowly sinking nano granules plus suitable small frozen or live foods. Watch that timid fish receive food and remove uneaten portions before they affect water quality.'],
+      ['Breeding', 'Celestial pearl danios scatter eggs and can breed readily in suitable conditions, although adults may eat eggs or fry. Dense fine-leaved plants or a separate breeding setup improve the young fish’s chances.'],
     ],
   },
   rasbora: {
-    chinese: '三角灯鱼', headline: 'Copper color and a familiar black triangle.',
-    facts: [['Native habitat', 'Streams and swamp waters of Southeast Asia'], ['Typical adult length', '4–5 cm'], ['Temperature', '22–27 °C'], ['pH', '5.5–7.5'], ['Social life', 'A school of 8 or more'], ['Diet', 'Omnivore']],
+    chinese: '三角灯鱼',
+    headline: 'A peaceful copper schooler marked by a bold black wedge.',
+    sourceUrl: 'https://greenaqua.hu/en/hal-razbora-ekfoltos-razbora-trigonostigma-heteromorpha.html',
+    facts: [
+      ['Native habitat', 'Shaded shallow waters in Thailand, Malaysia and Sumatra'],
+      ['Typical adult length', 'About 4 cm'],
+      ['Expected lifespan', '5–6 years'],
+      ['Minimum aquarium', '65 litres'],
+      ['Recommended group', 'At least 8; 10–12 in about 85 L'],
+      ['Temperature', '22–25 °C'],
+      ['pH', '6.0–6.5'],
+      ['Water hardness', '5–12 dGH'],
+      ['Diet', 'Omnivore'],
+      ['Breeding', 'Quite difficult'],
+    ],
     sections: [
-      ['Meet the fish', 'The dark wedge on the rear half of its copper-colored body makes this rasbora easy to recognize. A group moves through the midwater together and feels more secure than a lone fish.'],
-      ['Build its habitat', 'Combine planted edges, shaded areas and open swimming space. Soft to moderately hard water is a useful starting point; avoid abrupt shifts in temperature or chemistry.'],
-      ['Choose its neighbors', 'Peaceful fish of compatible size and water needs are good candidates. Avoid aggressive species and predators. Plan for the whole school rather than purchasing one individual as decoration.'],
-      ['Feeding & care', 'Offer small flakes or pellets and appropriate frozen or live foods. Keep portions small enough to be consumed, and observe whether every fish joins the school and eats.'],
+      ['Meet the harlequin rasbora', 'Trigonostigma heteromorpha is recognized by the bluish-black triangular wedge on each side of its copper body. Mature males tend to have a sharper wedge, while females are usually fuller-bodied.'],
+      ['Keep a proper school', 'Harlequin rasboras are very peaceful and show their natural movement in a group. Keep at least eight; an 85-litre aquarium can support a school of about 10–12 when the rest of the stocking and filtration are appropriate.'],
+      ['Build its habitat', 'Use at least 65 litres with roots, dense vegetation and an open midwater swimming area. Shaded sections and stable, slightly acidic water suit their natural character, while plant cover gives the school somewhere to retreat.'],
+      ['Choose its neighbors', 'Pair them with peaceful fish that will not threaten or outcompete them. Suitable communities can include small danios, other gentle rasboras, calm gouramis, loaches and similarly compatible species with overlapping water needs.'],
+      ['Feeding & daily care', 'Offer small flakes or granules and suitable frozen or live foods for variety. Keep portions controlled and watch the whole school at feeding time. Consistent partial water changes help maintain stable conditions.'],
+      ['Breeding', 'Breeding is considered fairly difficult compared with routine community care. The fish place eggs around plant leaves, so a dedicated breeding setup and careful protection of eggs and fry are usually needed.'],
     ],
   },
   cichlid: {
-    chinese: '尼日利亚红肚鱼', headline: 'A cave dweller with a territory of its own.',
-    facts: [['Native habitat', 'West African rivers and streams'], ['Typical adult length', 'About 6–9 cm, depending on sex'], ['Temperature', '24–27 °C'], ['pH', 'Around 6.0–7.5; population dependent'], ['Social life', 'Territorial, especially when breeding'], ['Diet', 'Varied omnivorous foods']],
+    chinese: '尼日利亚红肚鱼',
+    headline: 'A colorful West African pair-forming cichlid with a strong attachment to caves and territory.',
+    sourceUrl: 'https://greenaqua.hu/en/fish-pelvicachromis-taeniatus-sp-nigerian-red.html',
+    facts: [
+      ['Origin', 'West Africa; Nigerian color form'],
+      ['Typical adult length', '7–9 cm'],
+      ['Minimum aquarium', '100 litres for an established pair'],
+      ['Recommended group', 'A compatible pair'],
+      ['Temperature', '22–25 °C'],
+      ['pH', '5.5–7.0'],
+      ['Water hardness', '5–12 dGH'],
+      ['Behavior', 'Generally peaceful; territorial when breeding'],
+      ['Diet', 'Varied omnivorous foods'],
+      ['Breeding style', 'Cave spawner with parental care'],
+    ],
     sections: [
-      ['Meet the fish', 'Pelvicachromis cichlids often show their strongest colors during courtship. “Nigerian red cichlid” is a trade name, so confirm the scientific identity and origin: similarly named fish can have different requirements.'],
-      ['Build its habitat', 'Provide caves, plant cover and visual barriers, with enough floor area for a territory. Keep a clear escape route for fish that are chased. Water preferences vary by population and breeding goals.'],
-      ['Choose its neighbors', 'A breeding pair can defend a much larger area than expected. Other bottom-dwelling fish may be pressured. More hiding places do not automatically make a small tank safe for multiple territories.'],
-      ['Feeding & care', 'Use a varied diet with appropriately sized foods. Watch for chasing, hiding and individuals missing meals. A spare separation plan is useful when territorial behavior changes.'],
+      ['Meet Nigerian red', 'Pelvicachromis taeniatus “Nigerian red” is a small West African cichlid selected for its vivid belly color and finely patterned fins. A compatible pair shows the most interesting courtship and parental behavior, especially in a structured aquarium.'],
+      ['Build its habitat', 'Provide at least 100 litres for a pair, with fine substrate, roots, caves and several hiding places. Use plants and hardscape to break sight lines, while leaving clear routes so a chased fish is never trapped in a corner.'],
+      ['Understand its territory', 'The species is generally peaceful outside breeding, but a spawning pair may defend a much larger area. Bottom-dwelling tankmates are especially likely to enter that territory, so plan floor space and companions carefully.'],
+      ['Choose its neighbors', 'Select calm community fish that use the upper and middle water layers and tolerate the same conditions. Avoid housing multiple territorial pairs in limited space, and keep a separation plan available if aggression changes.'],
+      ['Feeding & daily care', 'Offer a varied omnivorous diet with quality prepared foods and suitable frozen or live options. Watch both members of the pair at feeding time and maintain stable water with effective filtration and regular partial changes.'],
+      ['Breeding', 'This is a cave-spawning cichlid. The pair guards eggs and fry, becoming much more territorial during parental care. Provide more than one suitable cave and avoid disturbing an active breeding site.'],
     ],
   },
 }
@@ -118,7 +190,18 @@ const supplyProfiles = {
 }
 
 function entriesFor(items, category, prefix, profiles, icon) {
-  return items.map(item => ({ ...item, id: `${prefix}-${item.id}`, category, icon: item.icon || icon, ...profiles[item.id] }))
+  return items.map(item => {
+    const entry = { ...item, id: `${prefix}-${item.id}`, category, icon: item.icon || icon, ...profiles[item.id] }
+    return item.photo ? {
+      ...entry,
+      art: item.photo,
+      artType: 'photo',
+      artCredit: item.photoCredit,
+      artSource: item.photoSource,
+      artLicense: item.photoLicense,
+      artLicenseUrl: item.photoLicenseUrl,
+    } : entry
+  })
 }
 
 export const ENCYCLOPEDIA = [

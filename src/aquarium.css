@@ -1,7 +1,7 @@
 .aquarium {
   position:relative;
   width:100%;
-  aspect-ratio:1.98;
+  aspect-ratio:var(--tank-ratio,1.98);
   isolation:isolate;
   border-radius:5px 5px 10px 10px;
   overflow:hidden;
@@ -170,6 +170,7 @@
 
 .scene-fish {
   position:absolute;
+  translate:-50% -50%;
   animation:swim var(--swim-duration) ease-in-out infinite;
   animation-delay:var(--swim-delay);
   pointer-events:none
@@ -180,16 +181,6 @@
   width:100%;
   height:auto;
   filter:drop-shadow(2px 5px 5px #3e675e1c)
-}
-
-.scene-fish-angelfish {
-  margin-top:-4%;
-  margin-left:-7%
-}
-
-.scene-fish:not(.scene-fish-angelfish) {
-  margin-left:-5%;
-  margin-top:-2%
 }
 
 .air-bubble {

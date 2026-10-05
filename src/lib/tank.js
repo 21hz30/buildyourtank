@@ -1,12 +1,46 @@
+import { tetraDetails, tetraListings } from './tetraCatalog.js'
+
 export const STORAGE_KEY = 'buildyourtank:v1'
+// Tank illustrations show full-grown fish at the upper end of each listed adult length.
 export const CATALOG = {
   fish: [
-    { id: 'tetra', name: 'Congo tetra', scientific: 'Phenacogrammus interruptus', description: 'An iridescent schooler that enjoys company and swimming space.', price: 4, load: 1, art: '/art/congo-tetra.svg', tag: 'Schooling', color: '#8ed0db' },
-    { id: 'angelfish', name: 'Angelfish', scientific: 'Pterophyllum scalare', description: 'A graceful swimmer that needs room to grow.', price: 12, load: 4, art: '/art/angelfish.png', tag: 'Room to grow', color: '#e6c08b' },
-    { id: 'betta', name: 'Betta', scientific: 'Betta splendens', description: 'Flowing fins, a big personality. Best kept solo.', price: 10, load: 2, art: '/art/betta.svg', tag: 'Solo swimmer', color: '#df9996' },
-    { id: 'danio', name: 'Celestial pearl danio', scientific: 'Danio margaritatus', description: 'A small spotted explorer. Keep a suitable group with gentle neighbors.', price: 5, load: 1, art: '/art/pearl-danio.svg', tag: 'Easygoing', color: '#c1bced' },
-    { id: 'rasbora', name: 'Harlequin rasbora', scientific: 'Trigonostigma heteromorpha', description: 'A peaceful schooler with a copper glow.', price: 6, load: 1, art: '/art/rasbora.svg', tag: 'Peaceful', color: '#e8bd91' },
-    { id: 'cichlid', name: 'Nigerian red cichlid', scientific: 'Pelvicachromis taeniatus', description: 'A colorful cave dweller with a territorial streak.', price: 11, load: 3, art: '/art/cichlid.svg', tag: 'Territorial', color: '#deb1cc' },
+    {
+      id: 'tetra', name: 'Congo tetra', scientific: 'Phenacogrammus interruptus',
+      description: 'An iridescent African schooler. Keep 7–8 together with generous open swimming space in a 200 L or larger aquarium.',
+      price: 4, load: 1, adultLengthCm: 9, art: '/art/congo-tetra.svg', photo: '/art/congo-tetra.jpg', tag: 'Schooling', color: '#8ed0db',
+      photoCredit: 'André Karwath', photoSource: 'https://commons.wikimedia.org/wiki/File:Phenacogrammus_interruptus_(aka).jpg', photoLicense: 'CC BY-SA 2.5', photoLicenseUrl: 'https://creativecommons.org/licenses/by-sa/2.5/',
+    },
+    ...tetraListings,
+    {
+      id: 'angelfish', name: 'Angelfish', scientific: 'Pterophyllum scalare',
+      description: 'A tall, graceful South American cichlid that needs a spacious, planted aquarium and stable, clean water.',
+      price: 12, load: 4, adultLengthCm: 15, art: '/art/angelfish.svg', photo: '/art/angelfish-photo.jpg', tag: 'Room to grow', color: '#e6c08b',
+      photoCredit: 'Karelj', photoSource: 'https://commons.wikimedia.org/wiki/File:Pterophyllum_scalare_1.jpg', photoLicense: 'Public domain', photoLicenseUrl: 'https://commons.wikimedia.org/wiki/File:Pterophyllum_scalare_1.jpg#Licensing',
+    },
+    {
+      id: 'betta', name: 'Betta', scientific: 'Betta splendens',
+      description: 'A warm-water labyrinth fish with flowing fins. One male needs a calm, planted home with gentle flow and surface access.',
+      price: 10, load: 2, adultLengthCm: 7, art: '/art/betta.svg', photo: '/art/betta-photo.jpg', tag: 'Solo swimmer', color: '#df9996',
+      photoCredit: 'Pharaoh Hound', photoSource: 'https://commons.wikimedia.org/wiki/File:Betta_splendens_male_doubletail.jpg', photoLicense: 'CC BY-SA 3.0', photoLicenseUrl: 'https://creativecommons.org/licenses/by-sa/3.0/',
+    },
+    {
+      id: 'danio', name: 'Celestial pearl danio', scientific: 'Danio margaritatus',
+      description: 'A tiny spotted schooler from Myanmar. Keep at least six in a densely planted aquarium with peaceful companions.',
+      price: 5, load: 1, adultLengthCm: 3, art: '/art/pearl-danio.svg', photo: '/art/celestial-pearl-danio-photo.jpg', tag: 'Easygoing', color: '#c1bced',
+      photoCredit: 'Pseudogastromyzon', photoSource: 'https://commons.wikimedia.org/wiki/File:Celestial_pearl_danio_(male).jpg', photoLicense: 'Public domain', photoLicenseUrl: 'https://commons.wikimedia.org/wiki/File:Celestial_pearl_danio_(male).jpg#Licensing',
+    },
+    {
+      id: 'rasbora', name: 'Harlequin rasbora', scientific: 'Trigonostigma heteromorpha',
+      description: 'A peaceful copper-colored schooler with a distinctive dark wedge. Keep at least eight with plants and swimming room.',
+      price: 6, load: 1, adultLengthCm: 4, art: '/art/rasbora.svg', photo: '/art/harlequin-rasbora-photo.jpg', tag: 'Peaceful school', color: '#e8bd91',
+      photoCredit: 'Billyhill', photoSource: 'https://commons.wikimedia.org/wiki/File:Trigonostigma_heteromorpha.JPG', photoLicense: 'CC BY-SA 3.0', photoLicenseUrl: 'https://creativecommons.org/licenses/by-sa/3.0/',
+    },
+    {
+      id: 'cichlid', name: 'Nigerian red cichlid', scientific: 'Pelvicachromis taeniatus “Nigerian red”',
+      description: 'A colorful West African dwarf cichlid best kept as a compatible pair with caves, fine substrate and clear territories.',
+      price: 11, load: 3, adultLengthCm: 9, art: '/art/cichlid.svg', photo: '/art/nigerian-red-photo.jpg', tag: 'Pair · cave spawner', color: '#deb1cc',
+      photoCredit: 'Neale Monks', photoSource: 'https://commons.wikimedia.org/wiki/File:Pelvicachromis_taeniatus.JPG', photoLicense: 'CC BY-SA 3.0', photoLicenseUrl: 'https://creativecommons.org/licenses/by-sa/3.0/',
+    },
   ],
   plants: [
     { id: 'anubias', name: 'Anubias Kirin', description: 'Broad leaves. Low light. A lovely first plant.', price: 5, art: '/art/anubias.svg', tag: 'Low light', color: '#aac8a4' },
@@ -15,9 +49,9 @@ export const CATALOG = {
   ],
 }
 export const SIZES = [
-  { id: '60p', name: '60P', dimensions: '60 × 30 × 36 cm', litres: 65, price: 18, capacity: 13 },
-  { id: '120p', name: '120P', dimensions: '120 × 50 × 50 cm', litres: 300, price: 36, capacity: 28 },
-  { id: '150p', name: '150P', dimensions: '150 × 60 × 50 cm', litres: 450, price: 48, capacity: 40 },
+  { id: '60p', name: '60P', dimensions: '60 × 30 × 36 cm', lengthCm: 60, heightCm: 36, litres: 65, price: 18, capacity: 13 },
+  { id: '120p', name: '120P', dimensions: '120 × 50 × 50 cm', lengthCm: 120, heightCm: 50, litres: 300, price: 36, capacity: 28 },
+  { id: '150p', name: '150P', dimensions: '150 × 60 × 50 cm', lengthCm: 150, heightCm: 50, litres: 450, price: 48, capacity: 40 },
 ]
 export const SANDS = [
   { id: 'sand', name: 'ADA Power Sand Advance', price: 4, ph: 7.0, color: '#dbcaab' },
@@ -26,12 +60,13 @@ export const SANDS = [
 ]
 export const GLASS = [{ id: 'regular', name: 'Regular glass', price: 0 }, { id: 'clear', name: 'Super white glass', price: 5 }]
 export const FISH_DETAILS = {
-  tetra: { temperament: 'Peaceful · schooling', diet: 'Omnivore', space: 'Swimming room for a group', waste: 'Low' },
-  angelfish: { temperament: 'Watch smaller tankmates', diet: 'Omnivore · higher food needs', space: 'A larger, taller aquarium', waste: 'Medium' },
-  betta: { temperament: 'Territorial · solo setup', diet: 'Carnivore', space: 'A calm, planted solo home', waste: 'High' },
-  danio: { temperament: 'Gentle · suitable groups', diet: 'Omnivore', space: 'A smaller planted habitat', waste: 'Low' },
-  rasbora: { temperament: 'Peaceful · schooling', diet: 'Omnivore', space: 'Open swimming space and cover', waste: 'Low' },
-  cichlid: { temperament: 'Territorial · needs hiding places', diet: 'Omnivore · higher food needs', space: 'A larger aquarium with caves', waste: 'High' },
+  tetra: { temperament: 'Peaceful · school of 7–8', diet: 'Omnivore · varied small foods', space: '200 L+ · long swimming area', waste: 'Low' },
+  ...tetraDetails,
+  angelfish: { temperament: 'Social · territorial when spawning', diet: 'Omnivore · varied foods', space: 'Tall 150 L+ aquarium · group of 4–6', waste: 'Medium' },
+  betta: { temperament: 'Territorial · one male per setup', diet: 'Carnivore · protein-rich foods', space: 'Calm 40 L+ aquarium · secure lid', waste: 'High' },
+  danio: { temperament: 'Peaceful · group of 6 or more', diet: 'Omnivore · fine foods', space: 'Densely planted 30 L+ aquarium', waste: 'Low' },
+  rasbora: { temperament: 'Very peaceful · school of 8 or more', diet: 'Omnivore · small foods', space: '65 L+ · plants and open water', waste: 'Low' },
+  cichlid: { temperament: 'Pair-forming · territorial when spawning', diet: 'Varied omnivorous foods', space: '100 L+ · caves and visual barriers', waste: 'High' },
 }
 export const FILTERS = [
   { id: 'sponge', name: 'Sponge filter', price: 8, capacity: 13 },
