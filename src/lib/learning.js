@@ -1,6 +1,7 @@
 import { CATALOG, FILTERS, GLASS, SANDS, SIZES } from './tank.js'
 import { SUPPLIES } from './workspace.js'
 import { tetraProfiles } from './tetraCatalog.js'
+import { additionalFishProfiles } from './fishCatalog.js'
 
 export const ENCYCLOPEDIA_CATEGORIES = [
   { id: 'all', name: 'All entries', icon: 'book' },
@@ -13,6 +14,7 @@ export const ENCYCLOPEDIA_CATEGORIES = [
 
 const fishProfiles = {
   ...tetraProfiles,
+  ...additionalFishProfiles,
   tetra: {
     chinese: '刚果灯鱼',
     headline: 'A shimmering African schooler that needs company and generous swimming room.',
@@ -195,6 +197,7 @@ function entriesFor(items, category, prefix, profiles, icon) {
     return item.photo ? {
       ...entry,
       art: item.photo,
+      illustration: item.art,
       artType: 'photo',
       artCredit: item.photoCredit,
       artSource: item.photoSource,

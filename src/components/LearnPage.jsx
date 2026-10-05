@@ -7,8 +7,8 @@ const entryLink = id => `#/learn?entry=${encodeURIComponent(id)}`
 function readEntry() { return new URLSearchParams(window.location.hash.split('?')[1] || '').get('entry') }
 
 function EntryArt({ entry, className = '', showCredit = false }) {
-  return <div className={`library-art library-art-${entry.category} ${entry.artType === 'photo' ? 'library-art-photo' : ''} ${className}`} style={{ '--item-color': entry.color || '#c3d8e2' }}>
-    {entry.art ? <img src={entry.art} alt={entry.name} /> : <Icon name={entry.icon} size={70} />}
+  return <div className={`library-art library-art-${entry.category} ${entry.artType === 'photo' ? 'library-art-photo' : ''} ${entry.photoFit === 'contain' ? 'library-art-contain' : ''} ${className}`} style={{ '--item-color': entry.color || '#c3d8e2' }}>
+    {entry.art ? <img src={entry.art} alt={entry.name} loading="lazy" onError={event => { event.currentTarget.onerror = null; if (entry.illustration) event.currentTarget.src = entry.illustration }} /> : <Icon name={entry.icon} size={70} />}
     {showCredit && entry.artCredit && <span className="entry-photo-credit">Photo: <a href={entry.artSource} target="_blank" rel="noreferrer">{entry.artCredit}</a>{entry.artLicense && <> · <a href={entry.artLicenseUrl} target="_blank" rel="noreferrer">{entry.artLicense}</a></>}</span>}
   </div>
 }
@@ -39,6 +39,7 @@ export default function LearnPage() {
       <div className="library-breadcrumb"><a href="#/learn"><Icon name="arrow" size={15} />Back to the library</a><span>{categoryName(entry.category)}</span></div>
       <article className="encyclopedia-entry">
         <div className="entry-overview"><EntryArt entry={entry} className="entry-hero-art" showCredit /><div className="entry-profile"><span className="library-category">{categoryName(entry.category)} · Field guide</span><h1>{entry.name}</h1>{entry.scientific && <p className="entry-scientific">{entry.scientific}</p>}{entry.chinese && <p className="entry-chinese">{entry.chinese}</p>}<p className="entry-headline">{entry.headline}</p><dl className="entry-facts">{entry.facts.map(([label, value]) => <div key={label}><dt>{label}</dt><dd>{value}</dd></div>)}</dl>{entry.sourceUrl && <a className="entry-source-link" href={entry.sourceUrl} target="_blank" rel="noreferrer">Care reference: Green Aqua <Icon name="arrow" size={13} /></a>}</div></div>
+        {entry.galleryPhotos?.length > 0 && <div className="entry-photo-gallery">{entry.galleryPhotos.map(photo => <figure key={photo.src}><img src={photo.src} alt={photo.alt} loading="lazy" /><figcaption>{photo.alt} · Photo: <a href={photo.source} target="_blank" rel="noreferrer">{photo.credit}</a> · <a href={photo.licenseUrl} target="_blank" rel="noreferrer">{photo.license}</a> (display crop)</figcaption></figure>)}</div>}
         <div className="entry-sections">{entry.sections.map(([title, content], i) => <section key={title}><span className="entry-section-number">0{i + 1}</span><div><h2>{title}</h2><p>{content}</p></div></section>)}</div>
       </article>
       <div className="entry-store-link"><Icon name={entry.icon} size={23} /><div><h2>Bring what you learn into your tank.</h2><p>Explore the fish, plants and supplies in Fish store.</p></div><a className="secondary-button" href="#/store">Visit Fish store <Icon name="arrow" size={15} /></a></div>

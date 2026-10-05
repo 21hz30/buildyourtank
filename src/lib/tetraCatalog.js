@@ -47,6 +47,8 @@ export const tetraListings = data.map(fish => {
     description: `${look} Keep ${group} together in an aquarium of at least ${litres} L.`,
     adultLengthCm: length, load: 1, tag: 'Schooling', color: body,
     art: tetraArt(body, accent, marking),
+    artLengthRatio: 236 / 260,
+    artAspectRatio: 260 / 150,
     photo: `/art/${fish.id}-photo.jpg`,
     photoCredit: photoCredit || credit,
     photoSource: photoSource || commons(photoFile),

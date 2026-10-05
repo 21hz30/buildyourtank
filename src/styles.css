@@ -1566,6 +1566,43 @@ main {
   gap: 18px;
 }
 
+.fish-type-filter {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 4px 0 24px;
+  color: #547689;
+  font-size: 12px;
+}
+
+.fish-type-filter select {
+  border: 1px solid #dfe7eb;
+  border-radius: 8px;
+  background: white;
+  color: var(--ink);
+  padding: 10px 32px 10px 12px;
+  font: inherit;
+}
+
+.fish-type-filter span { margin-left: auto; }
+.fish-type-section { margin: 0 0 44px; }
+.fish-type-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  margin: 0 0 16px;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 10px;
+}
+.fish-type-heading h2 { margin: 0; font-size: 21px; }
+.fish-type-heading span { color: #6e8792; font-size: 12px; }
+
+@media (max-width: 640px) {
+  .fish-type-filter { flex-wrap: wrap; }
+  .fish-type-filter span { width: 100%; margin-left: 0; }
+}
+
 .search-field {
   display: flex;
   align-items: center;
@@ -2667,6 +2704,8 @@ dd {
   height: 100%;
   object-fit: cover;
 }
+
+.species-hero.species-hero-contain img { object-fit: contain; }
 
 .species-photo-credit {
   position: absolute;

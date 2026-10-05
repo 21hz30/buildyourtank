@@ -1,4 +1,5 @@
 import { tetraDetails, tetraListings } from './tetraCatalog.js'
+import { additionalFish, additionalFishDetails } from './fishCatalog.js'
 
 export const STORAGE_KEY = 'buildyourtank:v1'
 // Tank illustrations show full-grown fish at the upper end of each listed adult length.
@@ -7,40 +8,41 @@ export const CATALOG = {
     {
       id: 'tetra', name: 'Congo tetra', scientific: 'Phenacogrammus interruptus',
       description: 'An iridescent African schooler. Keep 7–8 together with generous open swimming space in a 200 L or larger aquarium.',
-      price: 4, load: 1, adultLengthCm: 9, art: '/art/congo-tetra.svg', photo: '/art/congo-tetra.jpg', tag: 'Schooling', color: '#8ed0db',
+      price: 4, load: 1, adultLengthCm: 9, art: '/art/congo-tetra.svg', artLengthRatio: 232 / 260, artAspectRatio: 260 / 150, photo: '/art/congo-tetra.jpg', tag: 'Schooling', color: '#8ed0db',
       photoCredit: 'André Karwath', photoSource: 'https://commons.wikimedia.org/wiki/File:Phenacogrammus_interruptus_(aka).jpg', photoLicense: 'CC BY-SA 2.5', photoLicenseUrl: 'https://creativecommons.org/licenses/by-sa/2.5/',
     },
     ...tetraListings,
     {
       id: 'angelfish', name: 'Angelfish', scientific: 'Pterophyllum scalare',
       description: 'A tall, graceful South American cichlid that needs a spacious, planted aquarium and stable, clean water.',
-      price: 12, load: 4, adultLengthCm: 15, art: '/art/angelfish.svg', photo: '/art/angelfish-photo.jpg', tag: 'Room to grow', color: '#e6c08b',
+      price: 12, load: 4, adultLengthCm: 15, art: '/art/angelfish.svg', artLengthRatio: 217 / 230, artAspectRatio: 230 / 240, photo: '/art/angelfish-photo.jpg', tag: 'Room to grow', color: '#e6c08b',
       photoCredit: 'Karelj', photoSource: 'https://commons.wikimedia.org/wiki/File:Pterophyllum_scalare_1.jpg', photoLicense: 'Public domain', photoLicenseUrl: 'https://commons.wikimedia.org/wiki/File:Pterophyllum_scalare_1.jpg#Licensing',
     },
     {
       id: 'betta', name: 'Betta', scientific: 'Betta splendens',
       description: 'A warm-water labyrinth fish with flowing fins. One male needs a calm, planted home with gentle flow and surface access.',
-      price: 10, load: 2, adultLengthCm: 7, art: '/art/betta.svg', photo: '/art/betta-photo.jpg', tag: 'Solo swimmer', color: '#df9996',
+      price: 10, load: 2, adultLengthCm: 7, art: '/art/betta.svg', artLengthRatio: 255 / 260, artAspectRatio: 260 / 190, photo: '/art/betta-photo.jpg', tag: 'Solo swimmer', color: '#df9996',
       photoCredit: 'Pharaoh Hound', photoSource: 'https://commons.wikimedia.org/wiki/File:Betta_splendens_male_doubletail.jpg', photoLicense: 'CC BY-SA 3.0', photoLicenseUrl: 'https://creativecommons.org/licenses/by-sa/3.0/',
     },
     {
       id: 'danio', name: 'Celestial pearl danio', scientific: 'Danio margaritatus',
       description: 'A tiny spotted schooler from Myanmar. Keep at least six in a densely planted aquarium with peaceful companions.',
-      price: 5, load: 1, adultLengthCm: 3, art: '/art/pearl-danio.svg', photo: '/art/celestial-pearl-danio-photo.jpg', tag: 'Easygoing', color: '#c1bced',
+      price: 5, load: 1, adultLengthCm: 3, art: '/art/pearl-danio.svg', artLengthRatio: 246 / 260, artAspectRatio: 260 / 130, photo: '/art/celestial-pearl-danio-photo.jpg', tag: 'Easygoing', color: '#c1bced',
       photoCredit: 'Pseudogastromyzon', photoSource: 'https://commons.wikimedia.org/wiki/File:Celestial_pearl_danio_(male).jpg', photoLicense: 'Public domain', photoLicenseUrl: 'https://commons.wikimedia.org/wiki/File:Celestial_pearl_danio_(male).jpg#Licensing',
     },
     {
       id: 'rasbora', name: 'Harlequin rasbora', scientific: 'Trigonostigma heteromorpha',
       description: 'A peaceful copper-colored schooler with a distinctive dark wedge. Keep at least eight with plants and swimming room.',
-      price: 6, load: 1, adultLengthCm: 4, art: '/art/rasbora.svg', photo: '/art/harlequin-rasbora-photo.jpg', tag: 'Peaceful school', color: '#e8bd91',
+      price: 6, load: 1, adultLengthCm: 4, art: '/art/rasbora.svg', artLengthRatio: 248 / 260, artAspectRatio: 260 / 140, photo: '/art/harlequin-rasbora-photo.jpg', tag: 'Peaceful school', color: '#e8bd91',
       photoCredit: 'Billyhill', photoSource: 'https://commons.wikimedia.org/wiki/File:Trigonostigma_heteromorpha.JPG', photoLicense: 'CC BY-SA 3.0', photoLicenseUrl: 'https://creativecommons.org/licenses/by-sa/3.0/',
     },
     {
       id: 'cichlid', name: 'Nigerian red cichlid', scientific: 'Pelvicachromis taeniatus “Nigerian red”',
       description: 'A colorful West African dwarf cichlid best kept as a compatible pair with caves, fine substrate and clear territories.',
-      price: 11, load: 3, adultLengthCm: 9, art: '/art/cichlid.svg', photo: '/art/nigerian-red-photo.jpg', tag: 'Pair · cave spawner', color: '#deb1cc',
+      price: 11, load: 3, adultLengthCm: 9, art: '/art/cichlid.svg', artLengthRatio: 249 / 260, artAspectRatio: 260 / 150, photo: '/art/nigerian-red-photo.jpg', tag: 'Pair · cave spawner', color: '#deb1cc',
       photoCredit: 'Neale Monks', photoSource: 'https://commons.wikimedia.org/wiki/File:Pelvicachromis_taeniatus.JPG', photoLicense: 'CC BY-SA 3.0', photoLicenseUrl: 'https://creativecommons.org/licenses/by-sa/3.0/',
     },
+    ...additionalFish,
   ],
   plants: [
     { id: 'anubias', name: 'Anubias Kirin', description: 'Broad leaves. Low light. A lovely first plant.', price: 5, art: '/art/anubias.svg', tag: 'Low light', color: '#aac8a4' },
@@ -67,6 +69,7 @@ export const FISH_DETAILS = {
   danio: { temperament: 'Peaceful · group of 6 or more', diet: 'Omnivore · fine foods', space: 'Densely planted 30 L+ aquarium', waste: 'Low' },
   rasbora: { temperament: 'Very peaceful · school of 8 or more', diet: 'Omnivore · small foods', space: '65 L+ · plants and open water', waste: 'Low' },
   cichlid: { temperament: 'Pair-forming · territorial when spawning', diet: 'Varied omnivorous foods', space: '100 L+ · caves and visual barriers', waste: 'High' },
+  ...additionalFishDetails,
 }
 export const FILTERS = [
   { id: 'sponge', name: 'Sponge filter', price: 8, capacity: 13 },

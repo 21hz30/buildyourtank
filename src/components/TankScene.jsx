@@ -1,4 +1,5 @@
 import { CATALOG, SIZES } from '../lib/tank'
+import { fishPlacement } from '../lib/fishScale'
 
 const fishSlots = [
   [53, 39], [28, 40], [35, 49], [43, 32], [63, 47], [72, 28], [21, 26], [49, 56], [75, 58], [31, 59], [64, 25], [17, 53],
@@ -16,7 +17,7 @@ export default function TankScene({ tank, feeding, changedWater, mini = false })
     <div className="substrate"><div className="substrate-top" /><div className="small-stones"><i /><i /><i /><i /><i /><i /></div></div>
     <img className="driftwood" src="/art/driftwood.svg" alt="" />
     {plants.map((plant, i) => { const slot = plantSlots[i % plantSlots.length]; return <div key={plant.key} className={`scene-plant scene-plant-${plant.id}`} style={{ left: `${slot[0]}%`, bottom: `${9 + slot[1]}%`, width: `${plant.id === 'grass' ? 25 : 22}%`, zIndex: i % 2 ? 6 : 2, '--sway-delay': `${i * -1.4}s` }}><img src={plant.art} alt="" /></div> })}
-    {fish.map((item, i) => { const slot = fishSlots[i % fishSlots.length]; return <div key={item.key} className={`scene-fish scene-fish-${item.id}`} style={{ left: `${slot[0]}%`, top: `${slot[1]}%`, width: `${item.adultLengthCm / size.lengthCm * 100}%`, '--swim-delay': `${-i * 1.1}s`, '--swim-duration': `${7 + i % 4}s`, zIndex: i % 3 === 0 ? 7 : 4 }}><img style={{ transform: i % 3 === 0 ? 'scaleX(-1)' : undefined }} src={item.art} alt="" /></div> })}
+    {fish.map((item, i) => { const slot = fishSlots[i % fishSlots.length]; return <div key={item.key} className={`scene-fish scene-fish-${item.id}`} style={{ ...fishPlacement(item, size, slot), '--swim-delay': `${-i * 1.1}s`, '--swim-duration': `${7 + i % 4}s`, zIndex: i % 3 === 0 ? 7 : 4 }}><img style={{ transform: i % 3 === 0 ? 'scaleX(-1)' : undefined }} src={item.art} alt="" /></div> })}
     {[0, 1, 2, 3, 4].map(i => <span key={i} className="air-bubble" style={{ left: `${82 + i % 2 * 2}%`, '--bubble-delay': `${i * -1.5}s`, '--bubble-size': `${4 + i % 3 * 2}px` }} />)}
     {feeding && Array.from({ length: 8 }, (_, i) => <span key={i} className="food-particle" style={{ left: `${35 + i * 4}%`, animationDelay: `${i * .15}s` }} />)}
     <div className="tank-edge" />
