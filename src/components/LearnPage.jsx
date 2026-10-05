@@ -6,9 +6,10 @@ const categoryName = id => ENCYCLOPEDIA_CATEGORIES.find(category => category.id 
 const entryLink = id => `#/learn?entry=${encodeURIComponent(id)}`
 function readEntry() { return new URLSearchParams(window.location.hash.split('?')[1] || '').get('entry') }
 
-function EntryArt({ entry, className = '' }) {
-  return <div className={`library-art library-art-${entry.category} ${className}`} style={{ '--item-color': entry.color || '#c3d8e2' }}>
+function EntryArt({ entry, className = '', showCredit = false }) {
+  return <div className={`library-art library-art-${entry.category} ${entry.artType === 'photo' ? 'library-art-photo' : ''} ${className}`} style={{ '--item-color': entry.color || '#c3d8e2' }}>
     {entry.art ? <img src={entry.art} alt={entry.name} /> : <Icon name={entry.icon} size={70} />}
+    {showCredit && entry.artCredit && <span className="entry-photo-credit">Photo: <a href={entry.artSource} target="_blank" rel="noreferrer">{entry.artCredit}</a> · <a href={entry.artLicenseUrl} target="_blank" rel="noreferrer">{entry.artLicense}</a></span>}
   </div>
 }
 
@@ -37,7 +38,7 @@ export default function LearnPage() {
     return <main className="browse-main encyclopedia-main">
       <div className="library-breadcrumb"><a href="#/learn"><Icon name="arrow" size={15} />Back to the library</a><span>{categoryName(entry.category)}</span></div>
       <article className="encyclopedia-entry">
-        <div className="entry-overview"><EntryArt entry={entry} className="entry-hero-art" /><div className="entry-profile"><span className="library-category">{categoryName(entry.category)} · Field guide</span><h1>{entry.name}</h1>{entry.scientific && <p className="entry-scientific">{entry.scientific}</p>}{entry.chinese && <p className="entry-chinese">{entry.chinese}</p>}<p className="entry-headline">{entry.headline}</p><dl className="entry-facts">{entry.facts.map(([label, value]) => <div key={label}><dt>{label}</dt><dd>{value}</dd></div>)}</dl></div></div>
+        <div className="entry-overview"><EntryArt entry={entry} className="entry-hero-art" showCredit /><div className="entry-profile"><span className="library-category">{categoryName(entry.category)} · Field guide</span><h1>{entry.name}</h1>{entry.scientific && <p className="entry-scientific">{entry.scientific}</p>}{entry.chinese && <p className="entry-chinese">{entry.chinese}</p>}<p className="entry-headline">{entry.headline}</p><dl className="entry-facts">{entry.facts.map(([label, value]) => <div key={label}><dt>{label}</dt><dd>{value}</dd></div>)}</dl></div></div>
         <div className="entry-sections">{entry.sections.map(([title, content], i) => <section key={title}><span className="entry-section-number">0{i + 1}</span><div><h2>{title}</h2><p>{content}</p></div></section>)}</div>
       </article>
       <div className="entry-store-link"><Icon name={entry.icon} size={23} /><div><h2>Bring what you learn into your tank.</h2><p>Explore the fish, plants and supplies in Fish store.</p></div><a className="secondary-button" href="#/store">Visit Fish store <Icon name="arrow" size={15} /></a></div>
