@@ -3,7 +3,7 @@ import Icon from './Icon'
 
 export default function Catalog({ tank, tab, onTab, onItem, onSetup, readOnly }) {
   return <aside id="tank-store" className="catalog" aria-label="Aquarium store">
-    <div className="catalog-heading"><div><h2>A little of this.</h2><p>A little of that. Make it yours.</p></div><span className="store-symbol"><Icon name="leaf" size={22} /></span></div>
+    <div className="catalog-heading"><div><h2>A little of this</h2><p>A little of that Make it yours</p></div><span className="store-symbol"><Icon name="leaf" size={22} /></span></div>
     <div className="catalog-tabs" role="tablist" aria-label="Store categories">
       {[['fish', 'fish', 'Fish'], ['plants', 'leaf', 'Plants'], ['setup', 'sliders', 'Setup']].map(([id, icon, label], i, options) => <button key={id} id={`tab-${id}`} type="button" role="tab" tabIndex={tab === id ? 0 : -1} aria-selected={tab === id} aria-controls={`panel-${id}`} className={tab === id ? 'active' : ''} onClick={() => onTab(id)} onKeyDown={event => { if (['ArrowRight', 'ArrowLeft', 'Home', 'End'].includes(event.key)) { event.preventDefault(); const index = event.key === 'Home' ? 0 : event.key === 'End' ? 2 : (i + (event.key === 'ArrowRight' ? 1 : 2)) % 3; onTab(options[index][0]); document.getElementById(`tab-${options[index][0]}`).focus() } }}><Icon name={icon} size={16} />{label}</button>)}
     </div>
@@ -20,9 +20,9 @@ export default function Catalog({ tank, tab, onTab, onItem, onSetup, readOnly })
         <div className="sand-options">{SANDS.map(sand => <button key={sand.id} disabled={readOnly} aria-pressed={tank.sand === sand.id} onClick={() => onSetup('sand', sand.id)}><i style={{ background: sand.color }} />{sand.name}<small>{sand.price} coins</small></button>)}</div>
         <label htmlFor="tank-filter">Keep the water moving</label>
         <select id="tank-filter" value={tank.filter} onChange={event => onSetup('filter', event.target.value)} disabled={readOnly}>{FILTERS.map(filter => <option key={filter.id} value={filter.id}>{filter.name} · {filter.price} coins</option>)}</select>
-        <p className="setup-dimensions">A stronger filter supports more swimmers.</p>
+        <p className="setup-dimensions">A stronger filter supports more swimmers</p>
       </div>}
     </div>
-    <div className="catalog-note"><Icon name="info" size={15} /><span>{readOnly ? 'A snapshot of someone’s little world.' : 'Remove an item to get its coins back.'}</span></div>
+    <div className="catalog-note"><Icon name="info" size={15} /><span>{readOnly ? 'A snapshot of someone’s little world' : 'Remove an item to get its coins back'}</span></div>
   </aside>
 }

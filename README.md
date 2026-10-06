@@ -24,8 +24,8 @@ npm run preview -- --host 127.0.0.1 --port 5184
 - Home introduces the project before demo entry; nickname or guest entry opens My tanks.
 - My tanks creates and switches multiple independent tanks. A room with fixed-scale furniture shows 60P, 120P and 150P sizes, all anchored to the same tabletop. Observe tank opens a close-up with 75–250% zoom, reset, and scroll/swipe navigation. Species, pH, temperature, hardness and nutrients appear alongside it.
 - Tank idea explores example community setups and a local gallery of your selected tanks. Opening a tank is read-only; purchasing a copy creates a new tank.
-- Fish store offers six PRD fish, three plants, substrate, filters, glass finishes, tank upgrades and care supplies. Fish/plants go into the selected tank; food/water/fertilizer go into the shared bag.
-- Learn is a searchable encyclopedia with 23 fish, plant, substrate, tank, filter, glass and care-supply entries. Entries include species facts, habitat, compatibility, care and usage details; direct entry links survive refresh.
+- Fish store offers aquarium fish, 269 plants with real species/cultivar photographs, substrate, filters, glass finishes, tank upgrades and care supplies. Fish/plants go into the selected tank; food/water/fertilizer go into the shared bag.
+- Learn is a searchable encyclopedia with 121 fish entries organized into 18 aquarium groups, alongside plants, substrates, equipment and care supplies. Each fish group introduces characteristics, distribution, morphology and habits with reading sources, then lists all its fish and color varieties. Group and entry links survive refresh; fish details link back to their group and suggest related fish from the same group.
 - Daily check-in grants 20 demo coins once per local date. Feeding consumes one food portion and grants 5 coins; water care consumes one refill and grants 8. Fertilizer consumes one dose and increments the educational nutrient index.
 - Automatic browser saving preserves tanks, budget, supplies and care dates. Snapshot links remain read-only and can be copied into a new tank.
 
@@ -48,3 +48,13 @@ Vercel configuration: project root is this directory; framework Vite; build `npm
 GitHub: https://github.com/21hz30/buildyourtank. The branch is `main`.
 
 [Design brief and validation notes](docs/design.md).
+
+## First tank guide and demo recording
+
+First-time nickname or guest entry offers a 12-step guide after login. Use **Guide** in the header to resume, replay, or edit it. Steps open real features, allow free navigation, and save reading progress separately from your tanks. Next step marks a step as reviewed; purchases and care remain manual.
+
+**Edit guide & script** changes step order, descriptions, instructions, feature destinations, narration and recording notes. Export/import JSON preserves edits across browsers; export Markdown produces a recording script with cumulative timecodes. The default English narration and Chinese filming notes plan a 3:55 application demo.
+
+- [Guide usage, project overview and editing instructions](docs/onboarding-guide.md)
+- [Editable demo recording script](docs/demo-script.md)
+- Default shared content: `src/content/guide.json`; regenerate the script with `npm run guide:script`.

@@ -2,7 +2,7 @@ import assert from 'node:assert/strict'
 import { test } from 'node:test'
 import { CATALOG, SIZES } from './tank.js'
 import { uniqueStoreFish } from './fishCatalog.js'
-import { fishLooks } from './fishModels.js'
+import { fishLooks, fishMorphology } from './fishModels.js'
 import { fishPlacement, fishWidthPercent } from './fishScale.js'
 import { greenAquaSpecies } from './greenAquaSpecies.js'
 
@@ -37,4 +37,19 @@ test('rendered fish lengths match adult lengths in every tank size', () => {
       assert.ok(topValue + height / 2 <= 85.01, `${fish.id} overlaps substrate`)
     }
   }
+})
+
+test('species anatomy changes silhouettes, tails, mouths and identifying details', () => {
+  const model = id => decodeURIComponent(CATALOG.fish.find(fish => fish.id === id).art)
+  const morphology = id => fishMorphology({ id })
+  assert.equal(morphology('beaufortia-kweichowensis').shape, 'hillstream')
+  assert.equal(morphology('poecilia-reticulata').tail, 'fan')
+  assert.equal(morphology('dermogenys-pusilla').mouth, 'halfbeak')
+  assert.equal(morphology('ancistrus-cirrhosus').mouth, 'sucker')
+  assert.match(model('iriatherina-werneri'), /data-tail="lyre"/)
+  assert.match(model('iriatherina-werneri'), /M112 70Q90 11 87 0/)
+  assert.match(model('beaufortia-kweichowensis'), /M178 109Q146 159 74 165/)
+  assert.match(model('kryptopterus-vitreolus'), /fill-opacity="\.51"/)
+  assert.match(model('ancistrus-cirrhosus'), /M276 77l8-16/)
+  assert.notEqual(morphology('corydoras-pygmaeus').depth, morphology('corydoras-aeneus').depth)
 })

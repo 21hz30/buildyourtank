@@ -1,0 +1,13 @@
+# Green Aqua aquarium plant catalog
+
+Source: <https://greenaqua.hu/en/noveny.html>, collected 2026-10-06. The category showed 518 product listings across 22 pages. The raw product names, listing categories, product URLs, photo URLs, and listed prices are saved in `src/lib/greenAquaPlantProducts.json`.
+
+The aquarium catalog excludes 20 products explicitly labelled for terrariums, one art card, two non-submersible plants (`Acorus pusillus` and `Ophiopogon kyoto`), and two mixed-species planted decorations. That leaves 493 aquatic-product listings. Packaging and brand duplicates are merged at species/cultivar level in `src/lib/plantCatalog.js`; the current result is 269 distinct entries. Three existing tank IDs (`anubias`, `fern`, `grass`) are preserved for saved tanks.
+
+Learn, Fish store, and plant detail dialogs display real reference photographs for all 269 entries. Photographs are matched to the species/cultivar or a verified trade-name or botanical synonym. Photos may show nursery or submerged growth. They are bundled as WebP files in `public/art/plants/` so supplier hotlink restrictions do not break the catalog. `src/lib/plantPhotos.json` records each matched name, original image URL, source product page, and credit. Sources include Tropica, Dennerle Plants, Green Aqua, Aqua Art, Aquafleur, and specialist nurseries. Attribution does not assert a blanket redistribution license.
+
+Rotala sp. Indonesia was captured from the exact Green Aqua photograph as displayed in the browser because its image endpoint blocked downloads and hotlinks; its manifest entry records this acquisition method. `scripts/cache-plant-photos.py` verifies every bundled image with Pillow and can restore missing images where their source permits downloading. The UI displays a photograph-unavailable message if a file fails to load, with the source link retained.
+
+Each plant has a separate deterministic SVG model for the aquarium scene. Models vary by growth form and cultivar: leaf outlines, widths, stem spacing, branch arrangements, rosette blades, fern divisions, moss fronds, and carpet leaf clusters. All 269 models have distinct geometry even when labels and colors are removed. These models are illustrations rather than scanned botanical specimens.
+
+Plant heights are illustrated estimates by growth form and cultivar name, not measurements transcribed from each supplier page. The tank renderer converts these centimetre estimates against the physical tank dimensions, and Learn labels them as estimates. For a real aquarium, consult the linked product page for final size, planting method, light, CO₂ and water requirements.

@@ -111,6 +111,7 @@ const low = 'M59 95C95 61 191 55 258 72C282 79 295 87 300 95C279 106 249 121 202
 const profiles = {
   slender: [narrow, 180, 'M83 77Q110 48 158 61L148 76Z', 'M85 101Q118 125 157 111L142 105Z'],
   tetra: [rounded, 180, 'M94 59Q124 27 168 39L155 58Z', 'M96 119Q125 143 161 131L153 117Z'],
+  deep: [deep, 180, 'M96 55Q116 12 158 24L166 52Z', 'M91 122Q128 164 169 144L161 119Z'],
   rasbora: [rounded, 180, 'M96 58Q128 27 169 40L157 57Z', 'M89 114Q112 137 151 127L143 116Z'],
   barb: [rounded, 180, 'M104 52Q138 24 169 42L159 58Z', 'M90 115Q117 137 157 126L148 117Z'],
   danio: [narrow, 180, 'M93 74Q128 50 165 62L151 76Z', 'M99 106Q124 123 161 112L151 105Z'],
@@ -148,6 +149,11 @@ function marks(kind, colour) {
     case 'stripe': return `<path d="M62 89Q156 80 297 90" fill="none" stroke="${colour}" stroke-width="8" opacity=".83"/>`
     case 'stripes': return `<path d="M61 76Q165 68 297 82M61 87Q166 80 299 91M62 99Q172 93 290 101" fill="none" stroke="${colour}" stroke-width="5" opacity=".78"/>`
     case 'neon': return `<path d="M64 78Q172 62 296 83" fill="none" stroke="#79d7df" stroke-width="8" opacity=".95"/><path d="M94 96Q192 99 278 94" fill="none" stroke="${colour}" stroke-width="11" opacity=".88"/>`
+    case 'nose': return `<path d="M230 62Q272 66 299 90Q279 109 230 117Q247 88 230 62Z" fill="${colour}" opacity=".92"/><path d="M63 87Q161 82 238 91" fill="none" stroke="#e9ece3" stroke-width="5" opacity=".8"/>`
+    case 'black': return `<path d="M66 76Q167 65 294 79" fill="none" stroke="#f3edda" stroke-width="8"/><path d="M65 86Q160 76 294 90" fill="none" stroke="#35464b" stroke-width="12"/>`
+    case 'phantom': return `<ellipse cx="149" cy="74" rx="20" ry="14" fill="#414752" opacity=".83"/><path d="M103 63Q139 48 176 64" fill="none" stroke="${colour}" stroke-width="8" opacity=".62"/>`
+    case 'flame': return `<path d="M143 47Q251 44 300 90Q277 127 190 145L157 121Q196 93 143 47Z" fill="${colour}" opacity=".78"/>`
+    case 'emperor': return `<path d="M64 86Q160 75 293 86" fill="none" stroke="#344a61" stroke-width="11" opacity=".9"/><path d="M66 77Q167 64 292 80" fill="none" stroke="${colour}" stroke-width="5" opacity=".9"/>`
     case 'redline': return `<path d="M61 79Q166 70 297 83" fill="none" stroke="${colour}" stroke-width="8"/><path d="M63 94Q169 88 293 96" fill="none" stroke="#536668" stroke-width="5" opacity=".75"/>`
     case 'wedge': return `<path d="M104 82L223 68L214 127Z" fill="${colour}" opacity=".88"/>`
     case 'penguin': return `<path d="M63 84Q135 75 219 86L299 146Q240 118 219 100Q123 101 63 90Z" fill="${colour}" opacity=".9"/>`
@@ -175,46 +181,154 @@ function marks(kind, colour) {
   }
 }
 
-export function fishModel(fish) {
-  const look = fishLooks[fish.id]
+const hash = value => [...value].reduce((number, letter) => (Math.imul(number, 33) + letter.charCodeAt(0)) >>> 0, 17)
+const unit = (seed, shift) => ((seed >>> shift) & 255) / 255
+const xml = value => String(value).replace(/[&<>"']/g, letter => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&apos;' })[letter])
+const bottomDwellers = new Set(['cory', 'pleco', 'whiptail', 'loach', 'hillstream', 'goby', 'algae'])
+
+const specialMorphology = {
+  'ancistrus-cirrhosus': { mouth: 'sucker', detail: 'bristles', tail: 'rounded', depth: 1.12 },
+  'macrotocinclus-affinis': { mouth: 'sucker', depth: .78, tail: 'fork' },
+  'beaufortia-kweichowensis': { detail: 'hillstream', tail: 'short', depth: .76 },
+  'yaoshania-pachychilus': { detail: 'hillstream', tail: 'short', depth: .83 },
+  'kryptopterus-vitreolus': { detail: 'glass', tail: 'fork', depth: .82 },
+  'iriatherina-werneri': { detail: 'threadfin', tail: 'lyre', depth: .74 },
+  'poecilia-reticulata': { detail: 'fan', tail: 'fan', depth: .88 },
+  'poecilia-wingei': { detail: 'fan', tail: 'fan', depth: .78 },
+  'carassius-auratus': { detail: 'double-tail', tail: 'fan', depth: 1.19 },
+  'dermogenys-pusilla': { mouth: 'halfbeak', tail: 'short', depth: .7 },
+  'loricaria-simillima': { detail: 'whip', mouth: 'sucker', tail: 'pointed', depth: .68 },
+  'rineloricaria-lanceolata': { detail: 'whip', mouth: 'sucker', tail: 'pointed', depth: .72 },
+  'pangio-kuhlii': { detail: 'eel', tail: 'short', depth: .64 },
+  'symphysodon-aequifasciatus': { detail: 'discus', tail: 'rounded', depth: 1.08 },
+  'epiplatys-annulatus': { detail: 'killifish', tail: 'lyre', depth: .75 },
+  'betta-imbellis': { detail: 'short-betta', tail: 'rounded', depth: .86 },
+  'carinotetraodon-travancoricus': { detail: 'puffer', tail: 'short', depth: 1.1 },
+  'dichotomyctere-ocellatus': { detail: 'puffer', tail: 'short', depth: 1.08 },
+  'nannostomus-marginatus': { detail: 'pencil', tail: 'fork', depth: .68 },
+  'thayeria-boehlkei': { detail: 'penguin', tail: 'fork', depth: .9 },
+  'sahyadria-denisonii': { detail: 'torpedo', tail: 'fork', depth: .8 },
+  'melanotaenia-boesemani': { detail: 'rainbow', tail: 'fork', depth: 1.17 },
+  'glossolepis-incisus': { detail: 'rainbow', tail: 'fork', depth: 1.18 },
+  'corydoras-pygmaeus': { detail: 'small-cory', depth: .76 },
+  'corydoras-hastatus': { detail: 'small-cory', depth: .71 },
+  'cardinal-tetra': { detail: 'neon', tail: 'fork', depth: .82 },
+  'green-neon-tetra': { detail: 'neon', tail: 'fork', depth: .7 },
+  'rummy-nose-tetra': { detail: 'rummy', tail: 'fork', depth: .79 },
+  'ember-tetra': { detail: 'ember', tail: 'short', depth: .83 },
+  'red-phantom-tetra': { detail: 'phantom', tail: 'fork', depth: 1.04 },
+  'rosy-tetra': { detail: 'rosy', tail: 'fork', depth: 1.02 },
+  'diamond-head-neon-tetra': { detail: 'diamond', tail: 'fork', depth: .8 },
+  'neon-tetra': { detail: 'neon', tail: 'fork', depth: .77 },
+  'black-neon-tetra': { detail: 'black-neon', tail: 'fork', depth: .85 },
+  'blue-emperor-tetra': { detail: 'emperor', tail: 'fork', depth: .84 },
+  'gold-neon-tetra': { detail: 'gold-neon', tail: 'fork', depth: .79 },
+  'flame-tetra': { detail: 'flame', tail: 'fork', depth: 1.01 },
+  'golden-tetra': { detail: 'golden', tail: 'fork', depth: .91 },
+  'emperor-tetra': { detail: 'emperor', tail: 'lyre', depth: .92 },
+  'serpae-tetra': { detail: 'serpae', tail: 'fork', depth: 1.09 },
+}
+
+function lookFor(fish) {
+  const look = fishLooks[fish.id] || fish.visual
   if (!look) throw new Error(`Missing fish model for ${fish.id}`)
-  const [shape, body, accent, marking] = look
-  const [outline, height, dorsal, anal] = profiles[shape]
-  const cy = height / 2
-  const offset = cy - 90
-  const broadTail = ['guppy', 'betta', 'goldfish'].includes(shape)
-  const tail = broadTail
-    ? 'M69 90C42 60 23 32 0 20Q12 62 18 90Q9 120 0 160C27 151 48 119 69 90Z'
-    : 'M68 90C44 71 22 59 0 48Q16 75 16 90Q16 107 0 132C24 123 47 110 68 90Z'
-  const whiskers = ['cory', 'pleco', 'whiptail', 'loach', 'algae', 'glasscat'].includes(shape)
-  const eyeX = shape === 'discus' ? 239 : 264
+  if (!profiles[look[0]]) throw new Error(`Unknown fish silhouette ${look[0]} for ${fish.id}`)
+  return look
+}
+
+export function fishMorphology(fish) {
+  const [shape] = lookFor(fish)
+  const seed = hash(fish.id)
+  const defaultTail = ['guppy', 'betta', 'goldfish'].includes(shape) ? 'fan'
+    : shape === 'whiptail' ? 'pointed' : shape === 'puffer' || shape === 'goby' ? 'short' : 'fork'
+  const suggestedDepth = .85 + unit(seed, 0) * .31
+  const special = specialMorphology[fish.id] || {}
+  return {
+    shape, seed,
+    depth: special.depth || suggestedDepth,
+    finReach: .83 + unit(seed, 8) * .33,
+    forkDepth: 36 + Math.round(unit(seed, 16) * 31),
+    tail: special.tail || defaultTail,
+    mouth: special.mouth || (bottomDwellers.has(shape) ? 'downturned' : 'terminal'),
+    detail: special.detail || shape,
+    eyeRadius: shape === 'puffer' ? 8.5 : 5.3 + unit(seed, 24) * 2.3,
+  }
+}
+
+function tailPath(morph) {
+  const { tail, forkDepth } = morph
+  if (tail === 'fan') return `M69 90C46 61 24 29 0 12Q17 56 20 90Q12 124 0 168C25 151 48 118 69 90Z`
+  if (tail === 'lyre') return 'M69 90C43 58 20 19 0 5Q19 67 22 91Q19 114 0 174C24 153 46 122 69 90Z'
+  if (tail === 'pointed') return 'M72 90Q32 83 0 90Q34 99 72 90Z'
+  if (tail === 'short') return 'M74 90Q44 72 0 66Q23 88 0 114Q44 107 74 90Z'
+  return `M69 90C45 69 21 ${forkDepth} 0 ${forkDepth - 7}Q18 72 20 90Q17 110 0 ${187 - forkDepth}C27 ${164 - forkDepth / 3} 49 112 69 90Z`
+}
+
+function familyFeatures(fish, morph, accent, marking) {
+  const { shape, detail, mouth } = morph
+  let features = ''
+  if (shape === 'tetra' || shape === 'slender' || shape === 'rasbora') features += `<path d="M190 51l9-8 10 10Z" fill="${accent}" opacity=".55"/>`
+  if (shape === 'rainbow') features += `<path d="M166 46Q191 15 218 40L219 59Z" fill="${accent}" opacity=".52" stroke="${accent}" stroke-width="1.5"/>`
+  if (shape === 'cichlid' || detail === 'discus') features += `<path d="M95 54l6-17 8 17 8-20 8 17 9-20 9 22" fill="none" stroke="${accent}" stroke-width="2.3" opacity=".55"/>`
+  if (detail === 'threadfin') features += `<path d="M112 70Q90 11 87 0M153 72Q158 12 173 2M116 111Q107 169 98 178M157 109Q160 166 169 178" fill="none" stroke="${accent}" stroke-width="3" stroke-linecap="round"/>`
+  if (detail === 'hillstream') features += `<path d="M178 109Q146 159 74 165Q92 121 138 104Z" fill="${accent}" opacity=".49" stroke="${accent}" stroke-width="2"/><path d="M194 111Q215 153 253 144L230 103Z" fill="${accent}" opacity=".48"/>`
+  if (shape === 'pleco' || shape === 'whiptail') features += `<path d="M82 80l27-20 20 13 25-16 21 14 27-10 22 18" fill="none" stroke="${accent}" opacity=".34" stroke-width="2"/><path d="M100 105l18 12 24-9 27 12 24-8 19 10" fill="none" stroke="${accent}" opacity=".3" stroke-width="2"/>`
+  if (detail === 'bristles') features += `<path d="M276 77l8-16M283 76l9-10M285 86l13-4M277 104l13 12" fill="none" stroke="${accent}" stroke-width="2.5" stroke-linecap="round"/>`
+  if (detail === 'glass') features += `<path d="M75 91Q180 83 276 91" fill="none" stroke="#526a70" stroke-width="3" opacity=".54"/>${[112, 136, 161, 186, 211, 236].map(x => `<path d="M${x} 86q-7 13-5 25" fill="none" stroke="#6b8990" stroke-width="1.8" opacity=".45"/>`).join('')}`
+  if (detail === 'puffer') features += `${[96, 116, 141, 168, 196, 223].map((x, index) => `<path d="M${x} ${52 - index % 2 * 4}l${index % 2 ? 3 : -3}-7" stroke="${accent}" stroke-width="2" opacity=".52"/>`).join('')}`
+  if (detail === 'double-tail') features += `<path d="M67 95Q30 124 0 169Q13 120 18 88Z" fill="${accent}" opacity=".39"/>`
+  if (detail === 'fan') features += `<path d="M13 32Q30 83 9 149M25 42Q38 88 23 139M40 57Q45 91 39 121" fill="none" stroke="#fff3" stroke-width="2"/>`
+  if (detail === 'whip') features += `<path d="M65 88Q31 83 0 88" fill="none" stroke="${accent}" stroke-width="3"/>`
+  if (detail === 'pencil') features += `<path d="M72 103Q157 111 260 104" fill="none" stroke="#f0e5b6" stroke-width="2" opacity=".65"/>`
+  if (detail === 'penguin') features += `<path d="M70 101Q167 103 239 115L296 152" fill="none" stroke="${accent}" stroke-width="4" opacity=".7"/>`
+  if (detail === 'torpedo') features += `<path d="M70 61Q167 35 257 69" fill="none" stroke="#fff" stroke-width="3" opacity=".4"/>`
+  if (detail === 'diamond') features += `<path d="M262 57l5-10 5 10 10 3-10 4-5 10-5-10-10-4Z" fill="#fbf5e2" opacity=".85"/>`
+  if (detail === 'emperor') features += `<path d="M70 90Q34 89 0 90" fill="none" stroke="#323a54" stroke-width="3.5" opacity=".85"/>`
+  if (detail === 'phantom' || detail === 'serpae') features += `<path d="M112 51Q135 10 158 24L163 54Z" fill="${accent}" opacity=".45" stroke="${accent}" stroke-width="2"/>`
+  if (detail === 'rosy') features += `<path d="M106 53Q130 19 163 30L169 55Z" fill="#e9ded6" opacity=".52" stroke="${accent}" stroke-width="2"/>`
+  if (shape === 'gourami') features += `<path d="M162 119Q157 160 149 177M176 119Q171 165 164 179" fill="none" stroke="${accent}" stroke-width="2.5" stroke-linecap="round"/>`
+  if (shape === 'swordtail') features += `<path d="M64 104Q33 141 0 176Q14 134 37 100Z" fill="${accent}" opacity=".84"/>`
+  if (shape === 'goby') features += `<path d="M150 117Q121 149 91 138L113 108Z" fill="${accent}" opacity=".48"/>`
+  if (shape === 'cory') features += `<path d="M104 101l29 13 30-11 27 15" fill="none" stroke="#f5e5c0" stroke-width="2.4" opacity=".7"/>`
+  if (mouth === 'sucker') features += '<ellipse cx="292" cy="105" rx="7" ry="4" fill="none" stroke="#4f5752" stroke-width="1.8"/>'
+  else if (mouth === 'halfbeak') features += '<path d="M279 91L300 84L287 98Z" fill="#91877a" stroke="#596160" stroke-width="1.3"/>'
+  else if (mouth === 'downturned') features += '<path d="M286 99q9 6 14 4" fill="none" stroke="#514e4b" stroke-width="1.7" stroke-linecap="round"/>'
+  else features += '<path d="M284 94q9 4 16 1" fill="none" stroke="#514e4b" stroke-width="1.5" stroke-linecap="round"/>'
+  if (['cory', 'pleco', 'whiptail', 'loach', 'algae', 'glasscat'].includes(shape)) features += '<path d="M286 104q8 11 14 12M282 104q8 18 13 25" fill="none" stroke="#776e60" stroke-width="1.4" stroke-linecap="round"/>'
+  if (marking === 'nose') features += `<path d="M19 61l18 16-17 14 16 16-18 16M5 52l18 16-14 15 17 14-16 19" fill="none" stroke="#485058" stroke-width="8" opacity=".85"/>`
+  return features
+}
+
+export function fishModel(fish) {
+  const [shape, body, accent, marking] = lookFor(fish)
+  const morph = fishMorphology(fish)
+  const [outline, baseHeight, dorsal, anal] = profiles[shape]
+  const height = Math.max(baseHeight, morph.detail === 'threadfin' ? 215 : baseHeight)
+  const offset = height / 2 - 90
+  const bodyTransform = `translate(0 90) scale(1 ${morph.depth.toFixed(3)}) translate(0 -90)`
+  const finTransform = `translate(0 90) scale(1 ${morph.finReach.toFixed(3)}) translate(0 -90)`
+  const eyeX = shape === 'discus' ? 239 : bottomDwellers.has(shape) ? 268 : 263
   const eyeY = shape === 'discus' ? 102 : 79
-  const eyeRing = marking === 'lampeye' ? '#8ad9e7' : marking === 'redEye' ? '#d86c6b' : '#e9d7ae'
-  const details = `
-    <path d="M${eyeX - 31} ${eyeY - 20}q-11 18-3 41" fill="none" stroke="#445456" stroke-opacity=".37" stroke-width="2"/>
-    <circle cx="${eyeX}" cy="${eyeY}" r="7" fill="${eyeRing}"/><circle cx="${eyeX + 1}" cy="${eyeY}" r="4.5" fill="#263a3e"/><circle cx="${eyeX + 2}" cy="${eyeY - 2}" r="1.5" fill="#fff"/>
-    <path d="M285 97l13 2" stroke="#514e4b" stroke-width="1.7" stroke-linecap="round"/>
-    ${whiskers ? '<path d="M285 100q12 14 15 18M282 101q9 21 12 31" fill="none" stroke="#776e60" stroke-width="1.4" stroke-linecap="round"/>' : ''}
-    ${shape === 'gourami' ? '<path d="M162 118Q156 163 147 185M176 118Q169 164 163 185" fill="none" stroke="'+accent+'" stroke-width="2.5" stroke-linecap="round"/>' : ''}
-    ${shape === 'swordtail' ? '<path d="M65 104Q26 151 0 178Q16 133 34 101Z" fill="'+accent+'" opacity=".84"/>' : ''}
-    ${shape === 'halfbeak' ? '<path d="M291 88L300 84M291 94l9-2" stroke="#565e5d" stroke-width="2.5"/>' : ''}`
-  const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 ${height}" role="img" aria-label="${fish.name} model">
-    <defs><linearGradient id="body" x1="70" y1="40" x2="215" y2="150" gradientUnits="userSpaceOnUse"><stop stop-color="#f7f0dc" stop-opacity=".78"/><stop offset=".43" stop-color="${body}"/><stop offset="1" stop-color="${accent}" stop-opacity=".9"/></linearGradient><clipPath id="body-clip"><path d="${outline}"/></clipPath></defs>
+  const eyeRing = marking === 'lampeye' ? '#80d9ea' : marking === 'redEye' ? '#d86c6b' : '#eee0bd'
+  const bodyOpacity = morph.detail === 'glass' ? '.51' : '1'
+  const tail = tailPath(morph)
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 ${height}" role="img" aria-label="${xml(fish.name)} model" data-shape="${shape}" data-tail="${morph.tail}" data-depth="${morph.depth.toFixed(3)}">
+    <defs><linearGradient id="body" x1="70" y1="35" x2="226" y2="145" gradientUnits="userSpaceOnUse"><stop stop-color="#faf4e3" stop-opacity=".8"/><stop offset=".42" stop-color="${body}"/><stop offset="1" stop-color="${accent}" stop-opacity=".86"/></linearGradient><clipPath id="body-clip"><path d="${outline}" transform="${bodyTransform}"/></clipPath></defs>
     <g transform="translate(0 ${offset})">
-      <path d="${tail}" fill="${accent}" fill-opacity=".66" stroke="${accent}" stroke-opacity=".5" stroke-width="2"/>
-      <path d="${dorsal}" fill="${accent}" fill-opacity=".66" stroke="${accent}" stroke-opacity=".55" stroke-width="1.8"/>
-      <path d="${anal}" fill="${accent}" fill-opacity=".52" stroke="${accent}" stroke-opacity=".5" stroke-width="1.8"/>
-      <path d="${outline}" fill="url(#body)" stroke="${accent}" stroke-opacity=".67" stroke-width="2"/>
-      <g clip-path="url(#body-clip)">${marks(marking, accent)}<path d="M87 66Q150 39 243 65" fill="none" stroke="#fff" stroke-opacity=".25" stroke-width="4"/></g>
-      <path d="M153 103Q125 113 112 130Q144 125 171 107Z" fill="${accent}" fill-opacity=".36" stroke="${accent}" stroke-opacity=".4"/>
-      ${details}
+      <path d="${tail}" fill="${accent}" fill-opacity=".64" stroke="${accent}" stroke-opacity=".56" stroke-width="2"/>
+      <g transform="${finTransform}"><path d="${dorsal}" fill="${accent}" fill-opacity=".66" stroke="${accent}" stroke-opacity=".62" stroke-width="1.8"/><path d="${anal}" fill="${accent}" fill-opacity=".53" stroke="${accent}" stroke-opacity=".55" stroke-width="1.8"/></g>
+      <path d="${outline}" transform="${bodyTransform}" fill="url(#body)" fill-opacity="${bodyOpacity}" stroke="${accent}" stroke-opacity=".73" stroke-width="2"/>
+      <g clip-path="url(#body-clip)"><g transform="${bodyTransform}">${marks(marking, accent)}<path d="M79 64Q159 40 241 64" fill="none" stroke="#fff" stroke-opacity=".23" stroke-width="3"/>${morph.detail === 'glass' ? '<path d="M71 90Q169 84 272 93" fill="none" stroke="#67848b" stroke-width="3" opacity=".5"/>' : ''}</g></g>
+      <path d="M151 105Q126 116 107 128Q145 127 170 109Z" fill="${accent}" fill-opacity=".36" stroke="${accent}" stroke-opacity=".45"/>
+      <path d="M${eyeX - 32} ${eyeY - 18}q-11 17-3 39" fill="none" stroke="#445456" stroke-opacity=".39" stroke-width="2"/>
+      <circle cx="${eyeX}" cy="${eyeY}" r="${morph.eyeRadius.toFixed(1)}" fill="${eyeRing}"/><circle cx="${eyeX + 1}" cy="${eyeY}" r="${(morph.eyeRadius * .64).toFixed(1)}" fill="#263a3e"/><circle cx="${eyeX + 2}" cy="${eyeY - 2}" r="1.5" fill="#fff"/>
+      ${familyFeatures(fish, morph, accent, marking)}
     </g>
   </svg>`
   return `data:image/svg+xml,${encodeURIComponent(svg)}`
 }
 
 export function fishModelAspectRatio(fish) {
-  const look = fishLooks[fish.id]
-  if (!look) throw new Error(`Missing fish model for ${fish.id}`)
-  return 300 / profiles[look[0]][1]
+  const [shape] = lookFor(fish)
+  return 300 / Math.max(profiles[shape][1], fishMorphology(fish).detail === 'threadfin' ? 215 : 0)
 }

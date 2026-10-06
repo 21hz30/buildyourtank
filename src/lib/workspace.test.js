@@ -109,5 +109,5 @@ test('manual water settings survive snapshots and trigger educational status war
   assert.ok(getHealth(tank).warnings.some(warning => warning.includes('pH')))
   assert.ok(simulate(tank).quality < initialQuality)
   const link = snapshotLink(tank, 'https://example.com/')
-  assert.deepEqual(readSnapshot(link.slice(link.indexOf('#'))).tank.water, tank.water)
+  assert.deepEqual(readSnapshot(link.slice(link.indexOf('#'))).tank.water, { ...tank.water, co2: 0 })
 })

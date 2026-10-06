@@ -128,6 +128,27 @@
 .related-library { margin-top: 43px; }
 .related-library>h2 { font: 400 29px var(--serif); margin-bottom: 22px; }
 .encyclopedia-dialog-link { justify-content: center; width: 100%; margin-top: 20px; font-size: 12px; }
+.library-section-title { font: 400 29px/1.25 var(--serif); margin-bottom: 20px; }
+.library-other-title { margin-top: 38px; }
+.fish-group-section-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 15px; }
+.fish-group-section-heading>span { color: var(--muted); font-size: 11px; }
+.fish-group-art { display: flex; height: 150px; gap: 2px; background: #e6eff4; }
+.fish-group-art .library-art { flex: 1; min-width: 0; height: 100%; }
+.fish-group-art .library-art img { width: 100%; height: 100%; object-fit: contain; }
+.fish-group-chinese { font-size: 11px; color: var(--surface-muted, #52647a); line-height: 1.6; }
+.fish-group-picker { display: flex; align-items: center; gap: 12px; margin-top: 20px; color: var(--ink); font-size: 12px; }
+.fish-group-picker select { font: inherit; color: var(--surface-ink, #405e71); border: 1px solid #dbe7ee; border-radius: 7px; padding: 10px 32px 10px 12px; background: var(--surface, white); max-width: 100%; }
+.fish-group-profile { --ink: var(--surface-ink, #182f4d); --muted: var(--surface-muted, #52647a); --blue: var(--surface-link, #315e91); --line: var(--surface-line, #d9e1e8); color: var(--ink); margin-top: 26px; padding: 30px; background: var(--surface, #f0f5f7); border: 1px solid #dbe7ee; border-radius: 12px; }
+.fish-group-profile-heading h2 { font: 400 30px/1.25 var(--serif); margin-top: 10px; }
+.fish-group-profile-heading>p { font-size: 13px; color: var(--muted); line-height: 1.8; margin-top: 8px; }
+.fish-group-facts { display: grid; grid-template-columns: 1fr 1fr; gap: 26px 35px; margin-top: 25px; }
+.fish-group-facts section { display: flex; align-items: flex-start; gap: 14px; padding-top: 20px; border-top: 1px solid #dbe7ee; min-width: 0; }
+.fish-group-facts h3 { font: 400 24px/1.25 var(--serif); }
+.fish-group-facts p { font-size: 13px; line-height: 1.85; color: var(--muted); margin-top: 10px; }
+.fish-group-sources { display: flex; flex-wrap: wrap; gap: 12px 18px; margin-top: 25px; color: var(--muted); font-size: 11px; }
+.fish-group-sources a { display: inline-flex; align-items: center; gap: 5px; color: var(--blue); text-decoration: underline; text-underline-offset: 3px; }
+.fish-group-card:focus-visible { outline: 2px solid #507f97; outline-offset: 4px; }
+.fish-group-picker select:focus-visible { outline: 2px solid #507f97; outline-offset: 2px; }
 @media (max-width: 900px) {
   .library-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
   .library-tools { display: block; }
@@ -137,6 +158,13 @@
   .entry-sections { gap: 25px; }
 }
 @media (max-width: 600px) {
+  .fish-group-section-heading { display: block; margin-bottom: 18px; }
+  .fish-group-section-heading h2 { margin-bottom: 8px; }
+  .fish-group-picker { align-items: flex-start; flex-direction: column; gap: 8px; }
+  .fish-group-picker select { width: 100%; }
+  .fish-group-profile { padding: 22px; }
+  .fish-group-facts { grid-template-columns: 1fr; gap: 22px; }
+  .fish-group-profile-heading h2 { font-size: 27px; }
   .encyclopedia-main>.section-heading { flex-direction: column; align-items: flex-start; gap: 14px; }
   .library-count { font-size: 10px; }
   .library-intro { grid-template-columns: 1fr; padding: 25px; gap: 0; }
@@ -157,3 +185,10 @@
   .entry-store-link a { margin-left: 35px; }
   .library-breadcrumb { font-size: 11px; }
 }
+.plant-photo-unavailable { display: grid; place-items: center; width: 100%; height: 100%; min-height: 120px; color: var(--text-muted, #617477); font-size: 13px; background: #edf2ee; }
+.product-art.product-art-photo > .plant-photo-unavailable { position: static; inset: auto; border-radius: 0; padding: 0; background: #edf2ee; color: #617477; font-size: 13px; }
+.product-art.product-art-plants { background: #fff; }
+.product-art.product-art-photo.product-art-plants img { object-fit: contain; }
+.product-body .plant-photo-source { display: block; }
+.library-art-plants.library-art-photo { background: #fff; }
+.library-art-plants.library-art-photo img { object-fit: contain; }

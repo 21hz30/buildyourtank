@@ -1,0 +1,259 @@
+/* Blue page canvas, warm reading surfaces and gold actions.
+   Aquarium water, substrate and room artwork keep their original palettes. */
+:root {
+  --surface: #fffcf6;
+  --surface-soft: #edf3fa;
+  --surface-ink: #182f4d;
+  --surface-muted: #52647a;
+  --surface-link: #315e91;
+  --surface-line: #d9e1e8;
+  --gold: #f3cc86;
+  --gold-hover: #ffdda0;
+  --navy: #1d3655;
+  --ink: var(--surface-ink);
+  --muted: var(--surface-muted);
+  --blue: var(--surface-link);
+  --sage: #377563;
+  --coral: #a86937;
+  --line: var(--surface-line);
+  color: var(--ink);
+}
+
+main {
+  --ink: #fff;
+  --muted: #fff;
+  --blue: #ffe0a6;
+  --line: #ffffff45;
+  color: var(--ink);
+}
+
+/* Reset inherited page colors wherever content sits on a light surface. */
+:is(.topbar, .dialog, .home-closing, .library-intro, .learn-intro,
+    .library-card, .community-card, .product-card, .supply-card,
+    .equipment-card, .equipment-options button, .collection-tank,
+    .care-panel, .login-form, .encyclopedia-entry, .entry-store-link,
+    .search-field, .store-target select, .fish-type-filter select,
+    .size-selection > div, .quiet-label, .entry-photo-gallery figure) {
+  --ink: var(--surface-ink);
+  --muted: var(--surface-muted);
+  --blue: var(--surface-link);
+  --line: var(--surface-line);
+  color: var(--ink);
+}
+
+:is(.topbar, .dialog, .home-closing, .library-intro, .learn-intro,
+    .library-card, .community-card, .product-card, .supply-card,
+    .equipment-card, .equipment-options button, .collection-tank,
+    .care-panel, .login-form, .encyclopedia-entry, .entry-store-link) {
+  background: var(--surface);
+  border-color: var(--surface-line);
+}
+
+.topbar {
+  box-shadow: 0 3px 18px #182f4d0d;
+}
+
+.brand, .footer-brand { color: var(--ink); }
+.brand-mark { color: var(--surface-link); }
+.brand-dot { color: #a86937; }
+.topnav :is(a, button) { color: var(--surface-muted); }
+.topnav :is(a, button):hover, .topnav .active { color: var(--surface-ink); }
+.topnav .active:after { background: #a86937; }
+.profile-button { color: var(--surface-muted); }
+.avatar { background: #e5edf7; color: var(--surface-link); }
+
+.resourcebar, .footer {
+  --ink: #fff;
+  --muted: #d8e6f6;
+  --line: #ffffff26;
+  background: var(--navy);
+  color: var(--muted);
+  border-color: var(--line);
+}
+
+.resourcebar-message, .resource-items > button { color: #e0ebf9; }
+.resource-items strong { color: #fff; }
+.resource-items .resource-coins span:last-child { color: var(--gold); }
+.resource-items .daily-checkin {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--surface-ink);
+}
+.daily-checkin > span { background: #182f4d12; color: var(--surface-ink); }
+.resource-items .daily-checkin:hover { background: var(--gold-hover); }
+.resource-items .collected { background: #ffffff12; border-color: #ffffff45; color: #fff; }
+.resource-items .collected:hover { background: #ffffff26; }
+.footer-heart { color: var(--gold); }
+
+.primary-button {
+  background: var(--gold);
+  color: var(--surface-ink);
+  box-shadow: 0 4px 12px #182f4d1f;
+  font-weight: 600;
+}
+.primary-button:hover { background: var(--gold-hover); box-shadow: 0 6px 18px #182f4d2e; }
+.secondary-button {
+  background: var(--surface);
+  color: var(--surface-link);
+  border-color: var(--surface-line);
+}
+.secondary-button:hover { background: var(--surface-soft); border-color: #9db5d1; }
+.text-link { color: var(--muted); }
+.text-link:hover { color: var(--ink); text-decoration: underline; text-underline-offset: 4px; }
+.icon-button { color: var(--muted); }
+.icon-button:hover { color: var(--surface-ink); background: var(--surface-soft); }
+button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible {
+  outline-color: var(--gold);
+  box-shadow: 0 0 0 2px var(--navy);
+}
+.search-field:focus-within { outline: 2px solid var(--gold); outline-offset: 3px; }
+
+.hero-copy h1, .section-heading h1 { color: #fff; }
+.hero-copy h1 em, .section-heading h1 em, .login-art h2 em { color: #ffe0a6; }
+.hero-copy p, .hero-note, .step p, .steps-heading p,
+.home-inspiration > div > p, .inspiration-previews p,
+.page-footnote, .collection-add, .local-save,
+.size-selection > span, .size-selection > small,
+.store-target label, .fish-type-filter, .fish-type-heading span,
+.library-count, .library-count strong, .library-results,
+.library-results button, .library-breadcrumb, .library-breadcrumb a,
+.empty-state p { color: #fff; }
+.step > span { color: #ffe0a6; font-size: 24px; }
+.hero-room { box-shadow: 0 14px 36px #182f4d24; }
+.hero-room-label { background: var(--surface); color: var(--surface-muted); }
+.hero-room-label > span:last-child { color: var(--surface-muted); }
+.home-closing { box-shadow: 0 12px 32px #182f4d1a; }
+.home-closing p { color: var(--surface-muted); }
+
+.browse-tabs button { color: #fff; border: 1px solid transparent; }
+.browse-tabs button:hover { color: #fff; background: #1d36552e; border-color: #ffffff45; }
+.browse-tabs button[aria-pressed=true] {
+  background: var(--gold);
+  color: var(--surface-ink);
+  border-color: var(--gold);
+  box-shadow: 0 3px 10px #182f4d14;
+}
+.quiet-label { background: var(--surface-soft); }
+.search-field, .store-target select, .fish-type-filter select, .form-input {
+  background: var(--surface);
+  color: var(--surface-ink);
+  border-color: var(--surface-line);
+}
+.search-field input { color: var(--surface-ink); }
+.search-field input::placeholder, .form-input::placeholder { color: var(--surface-muted); }
+
+:is(.library-card, .community-card, .product-card, .supply-card, .equipment-card) {
+  box-shadow: 0 6px 20px #182f4d14;
+  transition: border-color .18s, box-shadow .18s;
+}
+:is(.library-card, .community-card, .product-card, .supply-card, .equipment-card):hover {
+  border-color: var(--gold);
+  box-shadow: 0 10px 28px #182f4d26;
+}
+.collection-tank.selected, .equipment-card.selected, .equipment-options button[aria-pressed=true] {
+  background: var(--surface-soft);
+  border-color: var(--gold);
+  box-shadow: 0 0 0 1px var(--gold);
+}
+.collection-add { border-color: #ffffff80; }
+.collection-add:hover { background: #ffffff14; }
+.collection-tank small, .community-owner, .community-owner small,
+.community-body > p, .community-stats, .community-foot > span:last-child,
+.product-body > p, .price, .price small, .product-quantity,
+.supply-pack, .owned-supply, .equipment-body > p,
+.equipment-options button, .equipment-options small,
+.library-category, .library-scientific, .library-card-copy p,
+.library-read, .library-intro p, .library-intro-art,
+.entry-scientific, .entry-chinese, .entry-headline, .entry-facts dt,
+.entry-facts dd, .entry-source-link, .entry-sections p,
+.entry-photo-gallery figcaption, .entry-store-link p { color: var(--surface-muted); }
+.library-category, .library-read, .community-foot > span:last-child,
+.entry-headline, .entry-source-link, .entry-store-link h2 { color: var(--surface-link); }
+.community-foot { color: #377563; }
+.add-product { background: var(--surface-link); color: #fff; }
+.add-product:hover { background: var(--navy); }
+
+/* Side panels stay light; the central room remains on the blue canvas. */
+.my-tanks-layout > .species-panel {
+  --ink: var(--surface-ink);
+  --muted: var(--surface-muted);
+  --blue: var(--surface-link);
+  --line: var(--surface-line);
+  background: var(--surface);
+  color: var(--ink);
+  padding: 22px 16px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+.panel-subtitle, .species-row small, .water-setting label,
+.water-specs > p, .care-tasks button, .care-tasks button small,
+.care-reminder p, .preview-link { color: var(--surface-muted); }
+.water-setting strong { color: var(--surface-ink); }
+.water-setting input { accent-color: var(--surface-link); }
+.panel-title svg, .care-reminder svg { color: #377563; }
+.care-panel > svg { color: #a86937; }
+.peach { background: #faecd4; color: #936128; }
+.blue { background: #e5edf7; color: var(--surface-link); }
+.green, .task-done .care-icon { background: #e5eee5; color: #377563; }
+.visibility-button { background: var(--surface-soft); color: var(--surface-link); }
+.visibility-button.is-public { background: #e5eee5; color: #377563; }
+.size-selection > div { background: var(--surface-soft); }
+.size-selection button { color: var(--surface-muted); }
+.size-selection button[aria-pressed=true] { background: var(--surface); color: var(--surface-link); }
+.tank-name input { color: #fff; }
+.tank-name svg { color: #fff; }
+.health-strip > div > span, .health-strip small,
+.health-status > span:not(.health-dot) { color: var(--muted); }
+.health-dot { background: #bce0c7; }
+.health-dot.warning { background: var(--gold); }
+.tank-tip { color: var(--surface-ink); background: #faecd4; padding: 10px 12px; border-radius: 8px; }
+
+.login-form { padding: 32px; border-radius: 16px; box-shadow: 0 12px 32px #182f4d1a; }
+.login-form > p, .form-label, .form-label small, .guest-link,
+.entry-note, .entry-note p { color: var(--surface-muted); }
+.guest-link:hover { color: var(--surface-link); }
+.encyclopedia-entry { padding: 32px; border-radius: 16px; box-shadow: 0 6px 20px #182f4d14; }
+.entry-section-number { color: #936128; }
+.entry-facts div, .entry-sections section { border-color: var(--surface-line); }
+
+.dialog { box-shadow: 0 24px 90px #182f4d66; }
+.dialog::backdrop { background: #13283f80; }
+.dialog-intro, .inline-help, .scientific-name, .observer-hint,
+.dialog dt, .dialog dd, .bag-list small, .bag-equipped h3,
+.bag-equipped p, .bag-equipped > small,
+.preview-results strong, .preview-results small, .preview-explanation { color: var(--surface-muted); }
+.dialog-feedback { background: var(--surface-soft); border-color: var(--surface-line); color: var(--surface-link); }
+.dialog-cta.primary-button { color: var(--surface-ink); }
+.toast { background: var(--navy); color: #fff; border-color: #ffffff45; }
+
+.dialog :is(p, small, dt, dd, legend), .dialog-note,
+.create-cost > span, .streak-row, .size-fieldset button,
+.help-steps li > span, .help-steps h3 { color: var(--surface-muted); }
+.size-fieldset button { background: var(--surface); border-color: var(--surface-line); }
+.size-fieldset strong { color: var(--surface-link); }
+.size-fieldset button[aria-pressed=true] {
+  background: var(--surface-soft);
+  border-color: var(--surface-link);
+}
+.create-cost strong, .guide-welcome-path span { color: #936128; }
+.guide-panel { background: var(--surface); border-color: var(--surface-line); }
+.guide-panel-top { background: var(--surface-soft); }
+.guide-panel-bottom, .guide-editor-footer { background: var(--surface); }
+.guide-eyebrow { color: var(--surface-link); }
+.guide-recording, .guide-opening { background: var(--surface-soft); }
+.guide-position progress { accent-color: var(--surface-link); }
+.guide-position progress::-webkit-progress-value { background: var(--surface-link); }
+[data-guide].guide-highlight { outline-color: var(--gold); }
+
+/* Keep scene colors independent of the surrounding page and card tokens. */
+.room-scene, .aquarium {
+  --ink: #19374b;
+  --muted: #738794;
+  --blue: #4387a8;
+  --line: #e1e9ed;
+  color: #19374b;
+}
+
+@media (max-width: 600px) {
+  .login-form, .encyclopedia-entry { padding: 24px 20px; }
+}

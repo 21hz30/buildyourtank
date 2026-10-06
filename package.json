@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "test": "node --test src/lib/*.test.js"
+    "test": "node --test src/lib/*.test.js",
+    "guide:script": "node scripts/export-guide-script.mjs"
   },
   "dependencies": {
     "react": "19.2.8",

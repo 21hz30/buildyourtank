@@ -136,14 +136,32 @@
   height:10%
 }
 
-.driftwood {
+.scene-hardscape {
+  position:absolute;
+  left:0;
+  bottom:8%;
+  width:100%;
+  height:78%;
+  z-index:3;
+  opacity:.94;
+  pointer-events:none
+}
+
+.scene-hardscape-classic {
   position:absolute;
   left:14%;
   bottom:8%;
   width:42%;
+  height:auto;
   z-index:3;
   opacity:.9
 }
+
+.co2-system { position:absolute;inset:0;z-index:8;pointer-events:none }
+.co2-tubing { position:absolute;left:2%;top:0;bottom:17%;width:6%;border-left:2px solid #8aaca4aa;border-bottom:2px solid #8aaca4aa;border-bottom-left-radius:8px;box-shadow:-1px 0 0 #f5fffa44 }
+.co2-diffuser { position:absolute;left:6.5%;bottom:14.3%;width:4.5%;height:5.5%;min-height:6px;z-index:2;border:1px solid #a0c5b8;border-top:2px solid #edf7ee;border-radius:3px 3px 8px 8px;background:linear-gradient(180deg,#e7fff7bb,#91baa6aa);box-shadow:0 2px 4px #3f69583d }
+.co2-diffuser i { position:absolute;left:16%;right:16%;top:-3px;height:2px;border-radius:50%;background:#f3ffef;box-shadow:0 0 3px #fff }
+.co2-microbubble { position:absolute;bottom:var(--co2-rest);width:var(--co2-size);height:var(--co2-size);border-radius:50%;background:#f2ffffd9;box-shadow:0 0 3px #e3fffd;opacity:.72;animation:co2-rise var(--co2-duration) linear infinite;animation-delay:var(--co2-delay) }
 
 .scene-plant {
   position:absolute;
@@ -158,14 +176,6 @@
   display:block;
   width:100%;
   height:auto
-}
-
-.scene-plant-fern {
-  width:27%!important
-}
-
-.scene-plant-grass {
-  width:26%!important
 }
 
 .scene-fish {
@@ -284,6 +294,13 @@
   }
 }
 
+@keyframes co2-rise {
+  0% { bottom:19%;opacity:0;transform:translateX(0) scale(.7) }
+  12% { opacity:.85 }
+  80% { opacity:.65 }
+  100% { bottom:91%;opacity:0;transform:translateX(var(--co2-drift)) scale(1.2) }
+}
+
 @keyframes feed {
   0% {
     transform:translateY(0);
@@ -319,4 +336,4 @@
 }
 
 
-@media (prefers-reduced-motion: reduce) { .scene-fish,.scene-plant,.air-bubble,.food-particle,.is-refreshing:after { animation:none!important; } }
+@media (prefers-reduced-motion: reduce) { .scene-fish,.scene-plant,.air-bubble,.co2-microbubble,.food-particle,.is-refreshing:after { animation:none!important; } }
