@@ -65,6 +65,30 @@
 .guide-editor-footer { position: sticky; bottom: -32px; padding: 18px 0; border-top: 1px solid var(--line); background: var(--surface, white); margin-top: 22px; display: flex; align-items: center; justify-content: space-between; gap: 14px; }
 .guide-editor-footer > div { display: flex; gap: 10px; }
 [data-guide].guide-highlight { outline: 3px solid #6bacc6; outline-offset: 5px; border-radius: 8px; scroll-margin-block: 28px; }
+
+/* The contextual guide is a real, modal walkthrough. The backdrop owns all
+   pointer events so the highlighted page control can be seen without being
+   accidentally activated while the user reads the step. */
+.contextual-guide { position: fixed; inset: 0; z-index: 500; pointer-events: none; isolation: isolate; }
+.contextual-guide-backdrop { position: absolute; inset: 0; background: rgba(13, 29, 49, .72); pointer-events: auto; }
+.contextual-guide-spotlight { position: fixed; z-index: 1; border: 2px solid var(--gold, #f3cc86); border-radius: 12px; box-shadow: 0 0 0 9999px rgba(13, 29, 49, .72), 0 0 0 5px rgba(243, 204, 134, .22); pointer-events: none; transition: top .18s ease, left .18s ease, width .18s ease, height .18s ease; }
+.contextual-guide-panel { position: absolute; z-index: 2; left: 50%; bottom: 24px; width: min(540px, calc(100vw - 32px)); padding: 22px 24px 20px; transform: translateX(-50%); color: var(--surface-ink, #182f4d); background: var(--surface, #fffcf6); border: 1px solid var(--surface-line, #d9e1e8); border-radius: 16px; box-shadow: 0 18px 60px rgba(8, 20, 35, .36); pointer-events: auto; outline: none; }
+.contextual-guide-panel.no-target { bottom: 50%; transform: translate(-50%, 50%); }
+.contextual-guide-kicker, .contextual-guide-actions, .contextual-guide-pagination { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.contextual-guide-kicker { color: var(--surface-muted, #52647a); font-size: 11px; letter-spacing: .05em; text-transform: uppercase; }
+.contextual-guide-kicker span:first-child { display: inline-flex; align-items: center; gap: 7px; color: var(--surface-link, #315e91); font-weight: 650; }
+.contextual-guide-progress { height: 4px; margin: 13px 0 18px; overflow: hidden; background: var(--surface-soft, #edf3fa); border-radius: 99px; }
+.contextual-guide-progress span { display: block; height: 100%; background: var(--gold, #f3cc86); border-radius: inherit; transition: width .22s ease; }
+.contextual-guide-page { margin: 0 0 7px; color: var(--surface-link, #315e91); font-size: 11px; font-weight: 650; letter-spacing: .04em; text-transform: uppercase; }
+.contextual-guide-panel h2 { margin: 0; color: var(--surface-ink, #182f4d); font-family: var(--serif); font-size: 25px; font-weight: 400; line-height: 1.2; }
+.contextual-guide-text { margin: 10px 0 8px; color: var(--surface-muted, #52647a); font-size: 14px; line-height: 1.62; }
+.contextual-guide-next { margin: 0 0 13px; padding: 10px 12px; color: var(--surface-ink, #182f4d); background: var(--surface-soft, #edf3fa); border-radius: 8px; font-size: 12px; line-height: 1.5; }
+.contextual-guide-next strong { color: var(--surface-link, #315e91); }
+.contextual-guide-wait { margin: 0 0 13px; color: var(--surface-muted, #52647a); font-size: 12px; }
+.contextual-guide-actions { margin-top: 6px; }
+.contextual-guide-actions > .text-link { padding: 8px 0; font-size: 12px; }
+.contextual-guide-pagination .secondary-button, .contextual-guide-pagination .primary-button { min-width: 88px; justify-content: center; }
+
 .guide-return { position: fixed; bottom: 22px; right: 24px; z-index: 110; display: flex; align-items: center; gap: 10px; padding: 14px 18px; border: 1px solid #b2cddd; border-radius: 10px; background: var(--surface, white); color: var(--ink); box-shadow: 0 5px 25px #19374b25; font-size: 13px; }
 .guide-editor textarea:focus-visible { outline: 3px solid var(--gold, #75b7d4); outline-offset: 3px; }
 .guide-export-preview { padding: 15px; margin-bottom: 18px; border: 1px solid var(--line); background: var(--surface-soft, #f5f9fb); border-radius: 8px; }
@@ -98,4 +122,9 @@
   .guide-editor-footer { flex-wrap: wrap; bottom: -20px; }
   .guide-editor-footer > div { width: 100%; }
   .guide-editor-footer .primary-button { flex: 1; }
+  .contextual-guide-panel { left: 12px; right: 12px; bottom: 12px; width: auto; padding: 18px 17px 16px; transform: none; }
+  .contextual-guide-panel.no-target { top: 50%; bottom: auto; transform: translateY(-50%); }
+  .contextual-guide-panel h2 { font-size: 22px; }
+  .contextual-guide-text { font-size: 13px; }
+  .contextual-guide-actions { align-items: flex-end; }
 }

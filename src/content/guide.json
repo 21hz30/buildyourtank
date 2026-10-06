@@ -1,7 +1,7 @@
 {
   "version": 1,
   "title": "Your first little world",
-  "introduction": "Build Your Tank makes aquarium planning approachable. In this demo, I will build a habitat, learn about its inhabitants, and connect everyday care with the health of a small ecosystem.",
+  "introduction": "A new guest starts from the public homepage and enters a local workspace without an account. Build Your Tank makes aquarium planning approachable; in this demo, I will build a habitat, learn about its inhabitants, and connect everyday care with the health of a small ecosystem.",
   "closing": "The goal is to connect creative choices with informed care, so a beginner can understand the world they are building. This working prototype saves locally and shares snapshots. Cloud accounts and a live community are future steps; the water and growth models are simplified educational estimates.",
   "introSeconds": 15,
   "outroSeconds": 20,

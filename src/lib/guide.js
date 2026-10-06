@@ -5,16 +5,16 @@ export const GUIDE_PROGRESS_KEY = 'buildyourtank:guide:progress:v1'
 export const GUIDE_DESTINATIONS = {
   workspace: { label: 'My tanks', route: 'my-tanks', target: 'collection' },
   ideas: { label: 'Explore Tank idea', route: 'ideas', target: 'ideas' },
-  create: { label: 'Open New tank', route: 'my-tanks', dialog: 'create' },
-  setup: { label: 'Open Edit setup', route: 'my-tanks', dialog: 'setup' },
-  learn: { label: 'Explore Learn', route: 'learn', target: 'learn' },
+  create: { label: 'Open New tank', route: 'my-tanks', target: 'new-tank', dialog: 'create' },
+  setup: { label: 'Open Edit setup', route: 'my-tanks', target: 'setup', dialog: 'setup' },
+  learn: { label: 'Explore Learn', route: 'learn', target: 'learn-search' },
   store: { label: 'Visit Fish store', route: 'store', target: 'store' },
-  observe: { label: 'Observe tank', route: 'my-tanks', dialog: 'observe' },
+  observe: { label: 'Observe tank', route: 'my-tanks', target: 'observe', dialog: 'observe' },
   water: { label: 'Find water settings', route: 'my-tanks', target: 'water' },
-  bag: { label: 'Open My bag', route: 'my-tanks', dialog: 'resources' },
+  bag: { label: 'Open My bag', route: 'my-tanks', target: 'resources', dialog: 'resources' },
   care: { label: 'Find daily care', route: 'my-tanks', target: 'care' },
-  preview: { label: 'Open 30-day preview', route: 'my-tanks', dialog: 'preview' },
-  share: { label: 'Open Share tank', route: 'my-tanks', dialog: 'share' },
+  preview: { label: 'Open 30-day preview', route: 'my-tanks', target: 'preview', dialog: 'preview' },
+  share: { label: 'Open Share tank', route: 'my-tanks', target: 'share', dialog: 'share' },
 }
 
 const validText = (value, max = 3000) => typeof value === 'string' && value.trim().length > 0 && value.length <= max
@@ -80,7 +80,9 @@ export function guideScript(guide) {
   const scenes = guide.steps.map((step, index) => {
     const start = elapsed
     elapsed += step.seconds
-    return `## ${index + 1}. ${step.title} (${timecode(start)}–${timecode(elapsed)})\n\n页面 / 操作：${GUIDE_DESTINATIONS[step.destination].label}\n\n新手指引：${step.summary}\n\n${step.instructions.map(line => `- ${line}`).join('\n')}\n\n英文旁白：\n\n${step.narration}\n\n录制说明：\n\n${step.recording}`
+    const destination = GUIDE_DESTINATIONS[step.destination]
+    const spotlight = destination.target ? `\n\n引导定位：\`${destination.route}\` · [data-guide="${destination.target}"]` : ''
+    return `## ${index + 1}. ${step.title} (${timecode(start)}–${timecode(elapsed)})\n\n页面 / 操作：${destination.label}${spotlight}\n\n新手指引：${step.summary}\n\n${step.instructions.map(line => `- ${line}`).join('\n')}\n\n英文旁白：\n\n${step.narration}\n\n录制说明：\n\n${step.recording}`
   })
   return `# Build Your Tank — demo script\n\n${guide.title} · 预计 ${timecode(guideDuration(guide))} · 英文旁白 / 中文录制说明\n\n时间为镜头规划，可根据实际语速调整。点击 Next step 仅记录已阅读，不验证任务是否实际完成；购买和照料需要手动操作。\n\n## 开场 (0:00–${timecode(guide.introSeconds)})\n\n${guide.introduction}\n\n${scenes.join('\n\n')}\n\n## 结尾 (${timecode(elapsed)}–${timecode(guideDuration(guide))})\n\n${guide.closing}\n`
 }

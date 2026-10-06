@@ -1,6 +1,6 @@
 # Build Your Tank
 
-A student passion project with a public introduction and an interactive aquarium workspace. React 19 + Vite, with original editable illustrations.
+An interactive aquarium workspace with a public introduction. React 19 + Vite, with original editable illustrations.
 
 ## Run locally
 
@@ -50,12 +50,14 @@ GitHub: https://github.com/21hz30/buildyourtank. The branch is `main`.
 
 [Design brief and validation notes](docs/design.md).
 
-## First tank guide and demo recording
+## Role-based contextual guide
 
-First-time nickname or guest entry offers a 12-step guide after login. Use **Guide** in the header to resume, replay, or edit it. Steps open real features, allow free navigation, and save reading progress separately from your tanks. Next step marks a step as reviewed; purchases and care remain manual.
+After a guest enters the workspace, the first entry starts the contextual walkthrough. Each step is attached to a real route and `data-guide` target, so the overlay navigates through the complete demo path: My tanks, Tank idea, New tank, Edit setup, Learn, Fish store, Observe tank, water settings, resources, daily care, the 30-day preview, and Share tank.
 
-**Edit guide & script** changes step order, descriptions, instructions, feature destinations, narration and recording notes. Export/import JSON preserves edits across browsers; export Markdown produces a recording script with cumulative timecodes. The default English narration and Chinese filming notes plan a 3:55 application demo.
+The overlay supports **Next**, **Back**, **Skip guide**, and **Finish**. The backdrop captures pointer events and locks the page while the guide is open. **How it works** in the workspace header starts only the current page’s steps, so it is useful as contextual help after the first walkthrough. The guest name and first-guide state are browser-local demo state, just like the tanks.
 
-- [Guide usage, project overview and editing instructions](docs/onboarding-guide.md)
-- [Editable demo recording script](docs/demo-script.md)
-- Default shared content: `src/content/guide.json`; regenerate the script with `npm run guide:script`.
+- [Role-based guide behavior and QA notes](docs/onboarding-guide.md)
+- [Editable demo script](docs/demo-script.md)
+- Script source: `src/content/guide.json` (`npm run guide:script`)
+- Guide content: `src/lib/contextualGuide.js`
+- Overlay UI: `src/components/ContextualGuide.jsx` and `src/guide.css`

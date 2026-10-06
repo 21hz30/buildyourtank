@@ -23,7 +23,7 @@ export default function RoomScene({ tank, resources, feeding = false, changedWat
       <FilterRig tank={tank} />
       <FoodCans resources={resources} />
     </div>
-    {observe && <button className="observe-button" onClick={() => setObserving(true)}><Icon name="search" size={15} />Observe tank</button>}
+    {observe && <button className="observe-button" data-guide="observe" onClick={() => setObserving(true)}><Icon name="search" size={15} />Observe tank</button>}
     {!compact && <div className="room-caption"><span className="small-dot" />Same room A different little world</div>}
   </div>{observing && <TankObserver key={`${tank.id || tank.name}-${tank.size}`} tank={tank} feeding={feeding} changedWater={changedWater} onClose={() => setObserving(false)} />}</>
 }

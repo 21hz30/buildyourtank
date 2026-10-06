@@ -6,11 +6,13 @@ Your first little world · 预计 3:55 · 英文旁白 / 中文录制说明
 
 ## 开场 (0:00–0:15)
 
-Build Your Tank makes aquarium planning approachable. In this demo, I will build a habitat, learn about its inhabitants, and connect everyday care with the health of a small ecosystem.
+A new guest starts from the public homepage and enters a local workspace without an account. Build Your Tank makes aquarium planning approachable; in this demo, I will build a habitat, learn about its inhabitants, and connect everyday care with the health of a small ecosystem.
 
 ## 1. Meet your workspace (0:15–0:27)
 
 页面 / 操作：My tanks
+
+引导定位：`my-tanks` · [data-guide="collection"]
 
 新手指引：One place for your tanks, supplies and daily care.
 
@@ -29,6 +31,8 @@ A starter tank makes the workspace immediately explorable. My tanks, inspiration
 
 页面 / 操作：Explore Tank idea
 
+引导定位：`ideas` · [data-guide="ideas"]
+
 新手指引：Explore an example before making your own choices.
 
 - Filter Tank idea by style and open an example to inspect its fish, plants and water status.
@@ -45,6 +49,8 @@ Tank idea gives beginners a starting point. I can inspect the inhabitants and eq
 ## 3. Create a tank of your own (0:43–1:03)
 
 页面 / 操作：Open New tank
+
+引导定位：`my-tanks` · [data-guide="new-tank"]
 
 新手指引：Give your new world a name and a place in the room.
 
@@ -64,6 +70,8 @@ I will create Quiet Garden. Comparing three sizes against the same furniture mak
 
 页面 / 操作：Open Edit setup
 
+引导定位：`my-tanks` · [data-guide="setup"]
+
 新手指引：Choose the space, substrate, glass and filtration.
 
 - Open Edit setup to adjust tank size, glass finish, substrate and filtration.
@@ -80,6 +88,8 @@ Before adding inhabitants, I choose their habitat: the tank, glass, substrate, a
 ## 5. Learn before you choose (1:21–1:39)
 
 页面 / 操作：Explore Learn
+
+引导定位：`learn` · [data-guide="learn-search"]
 
 新手指引：Understand an inhabitant before bringing it home.
 
@@ -99,6 +109,8 @@ Learn connects a visual preference with an informed choice. Searching for a bett
 
 页面 / 操作：Visit Fish store
 
+引导定位：`store` · [data-guide="store"]
+
 新手指引：Shop for the selected tank, one addition at a time.
 
 - Check Shopping for before buying. Search or filter fish, open species details, and add a suitable inhabitant.
@@ -115,6 +127,8 @@ In Fish store, I check which tank I am shopping for. Species details connect to 
 ## 7. Take a closer look (2:01–2:13)
 
 页面 / 操作：Observe tank
+
+引导定位：`my-tanks` · [data-guide="observe"]
 
 新手指引：Move from a room view to the details of your aquarium.
 
@@ -133,6 +147,8 @@ Observe tank moves from the room to a close-up. I can zoom and look around, then
 
 页面 / 操作：Find water settings
 
+引导定位：`my-tanks` · [data-guide="water"]
+
 新手指引：Explore how a habitat is more than what you can see.
 
 - Read the inhabitants, pH and space status, then find Water & nutrients beside the tank.
@@ -149,6 +165,8 @@ Water settings make less visible conditions readable. Changing temperature can t
 ## 9. Prepare for daily care (2:29–2:41)
 
 页面 / 操作：Open My bag
+
+引导定位：`my-tanks` · [data-guide="resources"]
 
 新手指引：Know where your coins and supplies go.
 
@@ -167,6 +185,8 @@ My bag keeps supplies together across tanks. Daily check-in earns demo coins, an
 
 页面 / 操作：Find daily care
 
+引导定位：`my-tanks` · [data-guide="care"]
+
 新手指引：Feed, refresh the water and care for your plants.
 
 - Feed fish uses one food portion and earns 5 coins. Change water uses one refill and earns 8 coins.
@@ -184,6 +204,8 @@ Feeding and water care consume supplies and reward attention with demo coins. Fe
 
 页面 / 操作：Open 30-day preview
 
+引导定位：`my-tanks` · [data-guide="preview"]
+
 新手指引：Use the 30-day estimate to review your choices.
 
 - Open 30 days later to review the estimated water balance, greenery and available space.
@@ -200,6 +222,8 @@ The thirty-day preview brings these choices together in an outlook for water bal
 ## 12. Keep it and pass it on (3:15–3:35)
 
 页面 / 操作：Open Share tank
+
+引导定位：`my-tanks` · [data-guide="share"]
 
 新手指引：Save your work, share a snapshot and keep exploring.
 

@@ -83,8 +83,6 @@ main {
 .resource-items .daily-checkin:hover { background: var(--gold-hover); }
 .resource-items .collected { background: #ffffff12; border-color: #ffffff45; color: #fff; }
 .resource-items .collected:hover { background: #ffffff26; }
-.footer-heart { color: var(--gold); }
-
 .primary-button {
   background: var(--gold);
   color: var(--surface-ink);
