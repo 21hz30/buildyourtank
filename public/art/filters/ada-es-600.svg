@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 240" fill="none">
+  <defs><linearGradient id="steel"><stop stop-color="#677875"/><stop offset=".15" stop-color="#e7ece8"/><stop offset=".4" stop-color="#aebbb8"/><stop offset=".68" stop-color="#f8f9ef"/><stop offset="1" stop-color="#7a8985"/></linearGradient><linearGradient id="pump" x2="0" y2="1"><stop stop-color="#35454a"/><stop offset="1" stop-color="#172b32"/></linearGradient></defs>
+  <ellipse cx="50" cy="230" rx="39" ry="7" fill="#536463" opacity=".22"/>
+  <rect x="12" y="65" width="76" height="162" rx="16" fill="url(#steel)" stroke="#71827e" stroke-width="2"/>
+  <ellipse cx="50" cy="66" rx="37" ry="8" fill="#dce6df" stroke="#73827f" stroke-width="2"/>
+  <path d="M18 75v144m61-144v144" stroke="#fff" stroke-opacity=".5" stroke-width="3"/>
+  <path d="M18 98h64M18 187h64" stroke="#798d89" stroke-opacity=".38"/>
+  <rect x="9" y="82" width="8" height="18" rx="2" fill="#637671"/><rect x="83" y="82" width="8" height="18" rx="2" fill="#637671"/>
+  <rect x="9" y="169" width="8" height="18" rx="2" fill="#637671"/><rect x="83" y="169" width="8" height="18" rx="2" fill="#637671"/>
+  <path d="M20 65V53h60v12" fill="#81928e" stroke="#5b6b69" stroke-width="2"/>
+  <rect x="21" y="27" width="58" height="30" rx="7" fill="url(#pump)" stroke="#506066" stroke-width="2"/>
+  <rect x="27" y="23" width="46" height="8" rx="3" fill="#52656b"/>
+  <path d="M32 22V9h11v14M59 22V9h11v14" stroke="#5a6d70" stroke-width="6"/>
+  <path d="M32 10h11M59 10h11" stroke="#d7e6e3" stroke-width="2"/>
+  <circle cx="50" cy="43" r="8" fill="#687e7e" stroke="#aebbb5" stroke-width="2"/>
+  <path d="M50 38v10m-5-5h10" stroke="#d9e5da" stroke-opacity=".5"/>
+  <text x="50" y="142" text-anchor="middle" fill="#4b6062" font-family="Arial,sans-serif" font-size="13" letter-spacing="2">ADA</text>
+  <text x="50" y="155" text-anchor="middle" fill="#677c7d" font-family="Arial,sans-serif" font-size="5.5" letter-spacing="1.5">SUPER JET ES-600</text>
+  <ellipse cx="50" cy="225" rx="35" ry="5" fill="#71827d" opacity=".75"/>
+</svg>

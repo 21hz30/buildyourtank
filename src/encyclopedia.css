@@ -192,3 +192,34 @@
 .product-body .plant-photo-source { display: block; }
 .library-art-plants.library-art-photo { background: #fff; }
 .library-art-plants.library-art-photo img { object-fit: contain; }
+.learning-guides { margin-bottom: 34px; }
+.library-guide-card { display: grid; grid-template-columns: 130px 1fr; }
+.library-guide-card .library-art { height: 100%; min-height: 160px; }
+.library-guide-card .library-card-copy p { margin: 8px 0 15px; }
+.plant-nutrition-link { display: flex; align-items: center; gap: 16px; padding: 22px 26px; margin: 30px 0; border: 1px solid #dbe7dd; border-radius: 10px; background: #eef4eb; color: #3f6e5b; }
+.plant-nutrition-link span { flex: 1; }
+.plant-nutrition-link strong { display: block; font-size: 15px; }
+.plant-nutrition-link small { display: block; margin-top: 7px; font-size: 12px; line-height: 1.6; }
+.plant-nutrition-table { margin-top: 42px; }
+.plant-nutrition-table h2,.entry-reading-sources h2 { font: 400 29px/1.25 var(--serif); }
+.plant-nutrition-table > p,.entry-reading-sources > p { margin-top: 14px; max-width: 760px; font-size: 13px; line-height: 1.85; color: #6e8796; }
+.nutrient-table-scroll { overflow-x: auto; margin-top: 22px; border: 1px solid #dce7ec; border-radius: 10px; }
+.nutrient-table-scroll:focus-visible { outline: 2px solid #557e93; outline-offset: 4px; }
+.nutrient-table-scroll table { width: 100%; min-width: 660px; border-collapse: collapse; text-align: left; font-size: 13px; line-height: 1.8; }
+.nutrient-table-scroll caption { padding: 15px 20px; text-align: left; font-size: 12px; color: #6e8796; background: #f5f8f5; }
+.nutrient-table-scroll th,.nutrient-table-scroll td { padding: 18px 20px; border-top: 1px solid #dce7ec; vertical-align: top; }
+.nutrient-table-scroll thead { background: #e9f1e9; color: #385c4a; }
+.nutrient-table-scroll tbody th { width: 21%; color: #385d74; font-weight: 600; }
+.nutrient-table-scroll tbody th span { display: block; margin-top: 4px; font-size: 11px; color: #6e8796; font-weight: 400; }
+.nutrient-table-scroll td { width: 39.5%; color: #6e8796; }
+.nutrient-table-scroll tbody tr:nth-child(even) { background: #f7faf7; }
+.entry-reading-sources { margin-top: 40px; padding-top: 30px; border-top: 1px solid #dce7ec; }
+.entry-reading-sources ul { margin: 18px 0 0; padding-left: 20px; }
+.entry-reading-sources li { margin-top: 10px; font-size: 12px; line-height: 1.7; color: #557e93; }
+.entry-reading-sources a { text-decoration: underline; text-underline-offset: 3px; }
+@media (max-width: 650px) {
+  .library-guide-card { grid-template-columns: 72px 1fr; }
+  .library-guide-card .library-art svg { width: 40px; }
+  .plant-nutrition-link { padding: 18px; gap: 12px; }
+  .plant-nutrition-link > svg { flex-shrink: 0; }
+}

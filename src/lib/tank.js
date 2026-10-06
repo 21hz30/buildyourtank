@@ -2,6 +2,7 @@ import { tetraDetails, tetraListings } from './tetraCatalog.js'
 import { additionalFish, additionalFishDetails } from './fishCatalog.js'
 import { aquariumPlantListings } from './plantCatalog.js'
 import { SCAPES } from './scapes.js'
+import { fishModel, fishModelAspectRatio } from './fishModels.js'
 
 export const STORAGE_KEY = 'buildyourtank:v1'
 // Tank illustrations show full-grown fish at the upper end of each listed adult length.
@@ -45,7 +46,7 @@ export const CATALOG = {
       photoCredit: 'Neale Monks', photoSource: 'https://commons.wikimedia.org/wiki/File:Pelvicachromis_taeniatus.JPG', photoLicense: 'CC BY-SA 3.0', photoLicenseUrl: 'https://creativecommons.org/licenses/by-sa/3.0/',
     },
     ...additionalFish,
-  ],
+  ].map(fish => fish.art.startsWith('data:') ? fish : ({ ...fish, art: fishModel(fish), artLengthRatio: 1, artAspectRatio: fishModelAspectRatio(fish) })),
   plants: aquariumPlantListings,
 }
 export const SIZES = [
@@ -73,7 +74,13 @@ export const FILTERS = [
   { id: 'sponge', name: 'Sponge filter', price: 8, capacity: 13 },
   { id: 'hang', name: 'Hang-on filter', price: 13, capacity: 25 },
   { id: 'canister', name: 'Canister filter', price: 20, capacity: 40 },
+  { id: 'ada-es-600', name: 'ADA Super Jet ES-600 CE', price: 28, capacity: 22, flowLph: 330, widthCm: 18, heightCm: 42, hoseMm: '12/16', modelArt: '/art/filters/ada-es-600.svg', sourceUrl: 'https://greenaqua.hu/en/ada-super-jet-filter-es-600-36h.html', note: 'Polished stainless canister · compact Iwaki pump' },
+  { id: 'ada-es-900', name: 'ADA Super Jet ES-900 CE', price: 38, capacity: 31, flowLph: 660, widthCm: 18, heightCm: 52.5, hoseMm: '12/16', modelArt: '/art/filters/ada-es-900.svg', sourceUrl: 'https://greenaqua.hu/en/ada-super-jet-filter-es-900-ce-external-filter.html', note: 'Taller stainless canister · top-mounted pump' },
+  { id: 'eheim-4-600t', name: 'EHEIM Professionel 4 600T', price: 48, capacity: 40, flowLph: 1500, widthCm: 26.4, heightCm: 53.4, hoseMm: '16/22', modelArt: '/art/filters/eheim-4-600t.svg', sourceUrl: 'https://greenaqua.hu/en/eheim-professionel-4-600t.html', note: 'Square dark canister · integrated heater' },
+  { id: 'eheim-5e-450', name: 'EHEIM Professionel 5e 450', price: 42, capacity: 34, flowLph: 1700, widthCm: 26.4, heightCm: 47.4, hoseMm: '16/22', modelArt: '/art/filters/eheim-5e-450.svg', sourceUrl: 'https://greenaqua.hu/en/eheim-2076-professionel-5e-450.html', note: 'Square canister · electronic flow controls' },
+  { id: 'oase-biomaster-2-850', name: 'OASE BioMaster 2 850', price: 45, capacity: 36, flowLph: 1500, widthCm: 24, heightCm: 63.5, hoseMm: '16/22', modelArt: '/art/filters/oase-biomaster-2-850.svg', sourceUrl: 'https://greenaqua.hu/en/oase-biomaster-2-850.html', note: 'Tall gray body · removable EasyClean pre-filter' },
 ]
+export const STORE_FILTERS = FILTERS.filter(item => item.modelArt)
 export const IDEAS = [
   { id: 'green', name: 'The little jungle', note: 'Lots of leaves A bright little school', fish: { tetra: 4 }, plants: { anubias: 2, fern: 1, grass: 1 }, sand: 'soil', scape: 'woodland-pillars' },
   { id: 'quiet', name: 'The quiet corner', note: 'One betta A soft place to slow down', fish: { betta: 1 }, plants: { anubias: 1, fern: 2 }, sand: 'sand', scape: 'branching-banks' },
@@ -82,30 +89,30 @@ export const IDEAS = [
 export function createTank() {
   return { version: 1, name: 'My little world', size: '60p', fish: { tetra: 3, angelfish: 1 }, plants: { anubias: 1, fern: 1 }, sand: 'sand', scape: 'classic', filter: 'sponge', glass: 'regular', water: { temperature: 25, hardness: 7, nutrients: 3, co2: 0 }, isPublic: false, earned: 0, care: {}, savedAt: null }
 }
-function quantities(input, options, max) {
+function quantities(input, options) {
   const result = {}
   if (!input || typeof input !== 'object' || Array.isArray(input)) return result
   for (const item of options) {
-    if (Number.isInteger(input[item.id]) && input[item.id] > 0 && input[item.id] <= max) result[item.id] = input[item.id]
+    if (Number.isSafeInteger(input[item.id]) && input[item.id] > 0) result[item.id] = input[item.id]
   }
   return result
 }
-export function normalizeTank(value) {
+export function normalizeTank(value, { validateBudget = true } = {}) {
   if (!value || value.version !== 1 || typeof value.name !== 'string' || !SIZES.some(x => x.id === value.size)) return null
   const tank = {
     version: 1, name: value.name.slice(0, 40) || 'My little world', size: value.size,
-    fish: quantities(value.fish, CATALOG.fish, 12), plants: quantities(value.plants, CATALOG.plants, 6),
+    fish: quantities(value.fish, CATALOG.fish), plants: quantities(value.plants, CATALOG.plants),
     sand: SANDS.some(x => x.id === value.sand) ? value.sand : 'sand',
     scape: SCAPES.some(x => x.id === value.scape) ? value.scape : 'classic',
     filter: FILTERS.some(x => x.id === value.filter) ? value.filter : 'sponge',
     glass: GLASS.some(x => x.id === value.glass) ? value.glass : 'regular',
     water: { ...(typeof value.water?.ph === 'number' && value.water.ph >= 4 && value.water.ph <= 9 ? { ph: value.water.ph } : {}), temperature: typeof value.water?.temperature === 'number' && value.water.temperature >= 18 && value.water.temperature <= 32 ? value.water.temperature : 25, hardness: typeof value.water?.hardness === 'number' && value.water.hardness >= 1 && value.water.hardness <= 20 ? value.water.hardness : 7, nutrients: typeof value.water?.nutrients === 'number' && value.water.nutrients >= 0 && value.water.nutrients <= 10 ? value.water.nutrients : 3, co2: Number.isInteger(value.water?.co2) && value.water.co2 >= 0 && value.water.co2 <= 10 ? value.water.co2 : 0 },
     isPublic: value.isPublic === true,
-    earned: Number.isInteger(value.earned) && value.earned >= 0 && value.earned <= 10000 ? value.earned : 0,
+    earned: Number.isSafeInteger(value.earned) && value.earned >= 0 ? value.earned : 0,
     care: {}, savedAt: typeof value.savedAt === 'string' ? value.savedAt.slice(0, 40) : null,
   }
   for (const action of ['feed', 'water', 'fertilizer']) if (typeof value.care?.[action] === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(value.care[action])) tank.care[action] = value.care[action]
-  if (tankCost(tank) > 100 + tank.earned) return null
+  if (validateBudget && tankCost(tank) > 100 + tank.earned) return null
   return tank
 }
 export function tankCost(tank) {
@@ -116,7 +123,7 @@ export function changeItem(tank, type, id, delta) {
   const item = CATALOG[type]?.find(x => x.id === id)
   if (!item || ![-1, 1].includes(delta)) return { error: 'Choose a catalog item first' }
   const count = (tank[type][id] || 0) + delta
-  if (count < 0 || count > (type === 'fish' ? 12 : 6)) return { error: `That is enough ${item.name.toLowerCase()} for this demo` }
+  if (count < 0) return { error: 'There is no item to remove' }
   if (delta > 0 && item.price > remainingCoins(tank)) return { error: 'A few more coins needed Try a care task or remove an item' }
   return { tank: { ...tank, [type]: { ...tank[type], [id]: count } } }
 }

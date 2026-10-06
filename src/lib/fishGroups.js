@@ -195,6 +195,6 @@ export function filterLearningEntries(entries, { category = 'all', groupId = '',
     const group = entry.category === 'fish' ? fishGroupFor(entry) : null
     return (category === 'all' || entry.category === category)
       && (!groupId || group?.id === groupId)
-      && (!query || [entry.name, entry.scientific, entry.chinese, entry.headline, group?.name, group?.chinese, ...(entry.facts || []).flat(), ...(entry.sections || []).flat()].join(' ').toLowerCase().includes(query))
+      && (!query || [entry.name, entry.scientific, entry.chinese, entry.headline, group?.name, group?.chinese, ...(entry.facts || []).flat(), ...(entry.sections || []).flat(), ...(entry.nutrients || []).flatMap(nutrient => [nutrient.name, nutrient.symbol, nutrient.role, nutrient.deficiency])].join(' ').toLowerCase().includes(query))
   })
 }

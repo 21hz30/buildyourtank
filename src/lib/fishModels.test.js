@@ -2,7 +2,7 @@ import assert from 'node:assert/strict'
 import { test } from 'node:test'
 import { CATALOG, SIZES } from './tank.js'
 import { uniqueStoreFish } from './fishCatalog.js'
-import { fishLooks, fishMorphology } from './fishModels.js'
+import { fishLooks, fishMorphology, fishModelSvg } from './fishModels.js'
 import { fishPlacement, fishWidthPercent } from './fishScale.js'
 import { greenAquaSpecies } from './greenAquaSpecies.js'
 
@@ -52,4 +52,18 @@ test('species anatomy changes silhouettes, tails, mouths and identifying details
   assert.match(model('kryptopterus-vitreolus'), /fill-opacity="\.51"/)
   assert.match(model('ancistrus-cirrhosus'), /M276 77l8-16/)
   assert.notEqual(morphology('corydoras-pygmaeus').depth, morphology('corydoras-aeneus').depth)
+})
+
+test('every catalog fish supports animation with local paint and anatomy layers', () => {
+  for (const fish of CATALOG.fish) {
+    const first = fishModelSvg(fish, 'swimmer-a')
+    const second = fishModelSvg(fish, 'swimmer-b')
+    const ids = svg => new Set([...svg.matchAll(/\bid="([^"]+)"/g)].map(match => match[1]))
+    const firstIds = ids(first), secondIds = ids(second)
+    for (const id of firstIds) assert.ok(!secondIds.has(id), `Duplicate paint server: ${fish.id}`)
+    for (const [, id] of first.matchAll(/url\(#([^)]+)\)/g)) assert.ok(firstIds.has(id), `Unresolved paint: ${fish.id}`)
+    for (const part of ['tail', 'dorsal', 'anal', 'pectoral', 'gill']) assert.ok(first.includes(`class="fish-${part}"`), `${fish.id}: missing ${part}`)
+    assert.equal(fish.artLengthRatio, 1)
+    assert.ok(fish.artAspectRatio > 0)
+  }
 })

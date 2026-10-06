@@ -109,6 +109,7 @@ const narrow = 'M55 90C112 67 193 65 248 76C274 81 292 86 300 90C282 98 259 107 
 const deep = 'M61 90C92 30 158 25 225 53C264 69 290 81 300 90C283 111 254 143 202 151C138 161 83 129 61 90Z'
 const low = 'M59 95C95 61 191 55 258 72C282 79 295 87 300 95C279 106 249 121 202 126C139 133 88 115 59 95Z'
 const profiles = {
+  angel: ['M70 130C107 76 181 58 235 91Q274 109 300 130Q273 152 235 169C175 199 104 187 70 130Z', 300, 'M102 91Q123 28 149 0Q159 64 210 88Z', 'M101 173Q128 237 150 265Q163 196 214 170Z'],
   slender: [narrow, 180, 'M83 77Q110 48 158 61L148 76Z', 'M85 101Q118 125 157 111L142 105Z'],
   tetra: [rounded, 180, 'M94 59Q124 27 168 39L155 58Z', 'M96 119Q125 143 161 131L153 117Z'],
   deep: [deep, 180, 'M96 55Q116 12 158 24L166 52Z', 'M91 122Q128 164 169 144L161 119Z'],
@@ -155,7 +156,7 @@ function marks(kind, colour) {
     case 'flame': return `<path d="M143 47Q251 44 300 90Q277 127 190 145L157 121Q196 93 143 47Z" fill="${colour}" opacity=".78"/>`
     case 'emperor': return `<path d="M64 86Q160 75 293 86" fill="none" stroke="#344a61" stroke-width="11" opacity=".9"/><path d="M66 77Q167 64 292 80" fill="none" stroke="${colour}" stroke-width="5" opacity=".9"/>`
     case 'redline': return `<path d="M61 79Q166 70 297 83" fill="none" stroke="${colour}" stroke-width="8"/><path d="M63 94Q169 88 293 96" fill="none" stroke="#536668" stroke-width="5" opacity=".75"/>`
-    case 'wedge': return `<path d="M104 82L223 68L214 127Z" fill="${colour}" opacity=".88"/>`
+    case 'wedge': return `<path d="M67 88L210 69L203 125Z" fill="${colour}" opacity=".88"/>`
     case 'penguin': return `<path d="M63 84Q135 75 219 86L299 146Q240 118 219 100Q123 101 63 90Z" fill="${colour}" opacity=".9"/>`
     case 'bars': return vertical([104, 143, 184, 227], 13)
     case 'tiger': return vertical([91, 137, 186, 237], 19)
@@ -230,7 +231,14 @@ const specialMorphology = {
 }
 
 function lookFor(fish) {
-  const look = fishLooks[fish.id] || fish.visual
+  const look = fishLooks[fish.id] || fish.visual || {
+    tetra: ['tetra', '#81b6ad', '#ce975b', 'redline'],
+    angelfish: ['angel', '#c4c9b9', '#3d4545', 'bars'],
+    betta: ['betta', '#53838d', '#bc344a', 'none'],
+    danio: ['danio', '#4b707e', '#d47d4d', 'pearl'],
+    rasbora: ['rasbora', '#dc995c', '#303b3c', 'wedge'],
+    cichlid: ['cichlid', '#ab997b', '#b55c77', 'stripe'],
+  }[fish.id]
   if (!look) throw new Error(`Missing fish model for ${fish.id}`)
   if (!profiles[look[0]]) throw new Error(`Unknown fish silhouette ${look[0]} for ${fish.id}`)
   return look
@@ -260,6 +268,7 @@ function tailPath(morph) {
   if (tail === 'fan') return `M69 90C46 61 24 29 0 12Q17 56 20 90Q12 124 0 168C25 151 48 118 69 90Z`
   if (tail === 'lyre') return 'M69 90C43 58 20 19 0 5Q19 67 22 91Q19 114 0 174C24 153 46 122 69 90Z'
   if (tail === 'pointed') return 'M72 90Q32 83 0 90Q34 99 72 90Z'
+  if (tail === 'rounded') return 'M72 90Q40 55 9 43Q-9 88 9 137Q40 126 72 90Z'
   if (tail === 'short') return 'M74 90Q44 72 0 66Q23 88 0 114Q44 107 74 90Z'
   return `M69 90C45 69 21 ${forkDepth} 0 ${forkDepth - 7}Q18 72 20 90Q17 110 0 ${187 - forkDepth}C27 ${164 - forkDepth / 3} 49 112 69 90Z`
 }
@@ -299,34 +308,48 @@ function familyFeatures(fish, morph, accent, marking) {
   return features
 }
 
-export function fishModel(fish) {
+// Inline models expose anatomical layers; still images use the same geometry.
+// A namespace keeps paint servers local when several fish share the scene.
+export function fishModelSvg(fish, namespace = 'fish') {
   const [shape, body, accent, marking] = lookFor(fish)
   const morph = fishMorphology(fish)
   const [outline, baseHeight, dorsal, anal] = profiles[shape]
   const height = Math.max(baseHeight, morph.detail === 'threadfin' ? 215 : baseHeight)
-  const offset = height / 2 - 90
+  const offset = shape === 'angel' ? 15 : height / 2 - 90
   const bodyTransform = `translate(0 90) scale(1 ${morph.depth.toFixed(3)}) translate(0 -90)`
   const finTransform = `translate(0 90) scale(1 ${morph.finReach.toFixed(3)}) translate(0 -90)`
   const eyeX = shape === 'discus' ? 239 : bottomDwellers.has(shape) ? 268 : 263
-  const eyeY = shape === 'discus' ? 102 : 79
+  const eyeY = shape === 'angel' ? 117 : shape === 'discus' ? 102 : 79
   const eyeRing = marking === 'lampeye' ? '#80d9ea' : marking === 'redEye' ? '#d86c6b' : '#eee0bd'
   const bodyOpacity = morph.detail === 'glass' ? '.51' : '1'
-  const tail = tailPath(morph)
+  const tail = shape === 'angel' ? 'M74 90Q39 65 0 45Q15 86 0 134Q43 112 74 90Z' : tailPath(morph)
+  const scales = ['glasscat', 'loach', 'puffer'].includes(shape) ? '' : Array.from({ length: 12 }, (_, row) =>
+    Array.from({ length: 27 }, (_, col) => `<path d="M${72 + col * 7 + row % 2 * 3.5} ${40 + row * 8}q-5 4 0 8" fill="none" stroke="${(row + col) % 3 ? '#182d29' : '#fff9d2'}" stroke-opacity="${(row + col) % 3 ? '.15' : '.27'}" stroke-width=".65"/>`).join('')).join('')
+  const rays = (x, y, tips) => tips.map(([tx, ty]) => `<path d="M${x} ${y}Q${(x + tx) / 2} ${(y + ty) / 2 - 3} ${tx} ${ty}" fill="none" stroke="${accent}" stroke-opacity=".65" stroke-width=".8"/>`).join('')
+  const tailRays = rays(69, 90, Array.from({ length: 13 }, (_, i) => [7 + Math.sin(i * .7) * 5, 34 + i * 9]))
   const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 ${height}" role="img" aria-label="${xml(fish.name)} model" data-shape="${shape}" data-tail="${morph.tail}" data-depth="${morph.depth.toFixed(3)}">
-    <defs><linearGradient id="body" x1="70" y1="35" x2="226" y2="145" gradientUnits="userSpaceOnUse"><stop stop-color="#faf4e3" stop-opacity=".8"/><stop offset=".42" stop-color="${body}"/><stop offset="1" stop-color="${accent}" stop-opacity=".86"/></linearGradient><clipPath id="body-clip"><path d="${outline}" transform="${bodyTransform}"/></clipPath></defs>
+    <defs>
+      <linearGradient id="body" x1="0" y1="0" x2=".08" y2="1"><stop stop-color="#253b36"/><stop offset=".25" stop-color="${body}"/><stop offset=".46" stop-color="${body}"/><stop offset=".73" stop-color="#e1debc"/><stop offset="1" stop-color="#59675a"/></linearGradient>
+      <linearGradient id="fin" x1="1" y1=".5" x2="0" y2=".5"><stop stop-color="${accent}" stop-opacity=".8"/><stop offset=".5" stop-color="${accent}" stop-opacity=".35"/><stop offset="1" stop-color="${body}" stop-opacity=".12"/></linearGradient>
+      <radialGradient id="shine" cx=".6" cy=".32" r=".65"><stop stop-color="#e9fff3" stop-opacity=".35"/><stop offset=".45" stop-color="#bdedeb" stop-opacity=".08"/><stop offset="1" stop-color="#122526" stop-opacity=".28"/></radialGradient>
+      <clipPath id="body-clip"><path d="${outline}" transform="${bodyTransform}"/></clipPath><clipPath id="dorsal-clip"><path d="${dorsal}"/></clipPath><clipPath id="tail-clip"><path d="${tail}"/></clipPath>
+    </defs>
     <g transform="translate(0 ${offset})">
-      <path d="${tail}" fill="${accent}" fill-opacity=".64" stroke="${accent}" stroke-opacity=".56" stroke-width="2"/>
-      <g transform="${finTransform}"><path d="${dorsal}" fill="${accent}" fill-opacity=".66" stroke="${accent}" stroke-opacity=".62" stroke-width="1.8"/><path d="${anal}" fill="${accent}" fill-opacity=".53" stroke="${accent}" stroke-opacity=".55" stroke-width="1.8"/></g>
-      <path d="${outline}" transform="${bodyTransform}" fill="url(#body)" fill-opacity="${bodyOpacity}" stroke="${accent}" stroke-opacity=".73" stroke-width="2"/>
-      <g clip-path="url(#body-clip)"><g transform="${bodyTransform}">${marks(marking, accent)}<path d="M79 64Q159 40 241 64" fill="none" stroke="#fff" stroke-opacity=".23" stroke-width="3"/>${morph.detail === 'glass' ? '<path d="M71 90Q169 84 272 93" fill="none" stroke="#67848b" stroke-width="3" opacity=".5"/>' : ''}</g></g>
-      <path d="M151 105Q126 116 107 128Q145 127 170 109Z" fill="${accent}" fill-opacity=".36" stroke="${accent}" stroke-opacity=".45"/>
-      <path d="M${eyeX - 32} ${eyeY - 18}q-11 17-3 39" fill="none" stroke="#445456" stroke-opacity=".39" stroke-width="2"/>
+      <g transform="translate(0 ${shape === 'angel' ? 40 : 0})"><g class="fish-tail" style="transform-origin:69px 90px"><path d="${tail}" fill="url(#fin)" stroke="${accent}" stroke-opacity=".48" stroke-width=".9"/><g clip-path="url(#tail-clip)">${tailRays}</g></g></g>
+      <g transform="${finTransform}"><g class="fish-dorsal" style="transform-origin:160px ${shape === 'angel' ? 90 : 65}px"><path d="${dorsal}" fill="url(#fin)" stroke="${accent}" stroke-opacity=".55" stroke-width=".8"/><g clip-path="url(#dorsal-clip)">${shape === 'angel' ? rays(195, 88, [[119, 54], [129, 33], [149, 0], [154, 37], [168, 66]]) : rays(155, 69, [[100, 58], [112, 42], [125, 32], [138, 33], [151, 43]])}</g></g><g class="fish-anal" style="transform-origin:165px 115px"><path d="${anal}" fill="url(#fin)" stroke="${accent}" stroke-opacity=".5" stroke-width=".8"/></g></g>
+      <path d="${outline}" transform="${bodyTransform}" fill="url(#body)" fill-opacity="${bodyOpacity}" stroke="${accent}" stroke-opacity=".5" stroke-width=".8"/>
+      <g clip-path="url(#body-clip)"><g transform="${bodyTransform}">${marks(marking, accent)}${scales}${morph.detail === 'glass' ? '<path d="M71 90Q169 84 272 93" fill="none" stroke="#67848b" stroke-width="3" opacity=".5"/>' : ''}</g><path d="${outline}" transform="${bodyTransform}" fill="url(#shine)" fill-opacity="${bodyOpacity}"/></g>
+      <g class="fish-gill" style="transform-origin:${eyeX - 17}px ${eyeY}px"><path d="M${eyeX - 32} ${eyeY - 15}q-15 21-3 43q15-3 19-15q-8-5-6-22Z" fill="${body}" fill-opacity=".44"/><path d="M${eyeX - 32} ${eyeY - 15}q-15 21-3 43" fill="none" stroke="#233c38" stroke-opacity=".68" stroke-width="1.7"/><path d="M${eyeX - 29} ${eyeY - 13}q-12 18-2 39" fill="none" stroke="#e3ebca" stroke-opacity=".4" stroke-width="1"/></g>
+      <g class="fish-pectoral" style="transform-origin:${eyeX - 40}px ${eyeY + 22}px"><path d="M${eyeX - 40} ${eyeY + 22}q-20 1-43 25q25 3 45-15Z" fill="url(#fin)" stroke="${accent}" stroke-opacity=".48" stroke-width=".75"/>${rays(eyeX - 40, eyeY + 22, [[eyeX - 81, eyeY + 46], [eyeX - 75, eyeY + 44], [eyeX - 63, eyeY + 40]])}</g>
       <circle cx="${eyeX}" cy="${eyeY}" r="${morph.eyeRadius.toFixed(1)}" fill="${eyeRing}"/><circle cx="${eyeX + 1}" cy="${eyeY}" r="${(morph.eyeRadius * .64).toFixed(1)}" fill="#263a3e"/><circle cx="${eyeX + 2}" cy="${eyeY - 2}" r="1.5" fill="#fff"/>
-      ${familyFeatures(fish, morph, accent, marking)}
+      <g class="fish-fin-detail">${familyFeatures(fish, morph, accent, marking)}${shape === 'angel' ? `<path d="M217 166Q192 221 167 275M228 163Q215 230 206 279" fill="none" stroke="${body}" stroke-width="2"/>` : ''}</g>
     </g>
   </svg>`
-  return `data:image/svg+xml,${encodeURIComponent(svg)}`
+  const safeNamespace = namespace.replace(/[^a-zA-Z0-9_-]/g, '') || 'fish'
+  return svg.replace(/id="([^"]+)"/g, (_, id) => `id="${safeNamespace}-${id}"`).replace(/url\(#([^)]+)\)/g, (_, id) => `url(#${safeNamespace}-${id})`)
 }
+
+export const fishModel = fish => `data:image/svg+xml,${encodeURIComponent(fishModelSvg(fish))}`
 
 export function fishModelAspectRatio(fish) {
   const [shape] = lookFor(fish)

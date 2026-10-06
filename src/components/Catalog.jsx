@@ -1,4 +1,4 @@
-import { CATALOG, FILTERS, SANDS, SIZES } from '../lib/tank'
+import { CATALOG, STORE_FILTERS, SANDS, SIZES } from '../lib/tank'
 import Icon from './Icon'
 
 export default function Catalog({ tank, tab, onTab, onItem, onSetup, readOnly }) {
@@ -19,7 +19,7 @@ export default function Catalog({ tank, tab, onTab, onItem, onSetup, readOnly })
         <div className="setup-label">The ground beneath them</div>
         <div className="sand-options">{SANDS.map(sand => <button key={sand.id} disabled={readOnly} aria-pressed={tank.sand === sand.id} onClick={() => onSetup('sand', sand.id)}><i style={{ background: sand.color }} />{sand.name}<small>{sand.price} coins</small></button>)}</div>
         <label htmlFor="tank-filter">Keep the water moving</label>
-        <select id="tank-filter" value={tank.filter} onChange={event => onSetup('filter', event.target.value)} disabled={readOnly}>{FILTERS.map(filter => <option key={filter.id} value={filter.id}>{filter.name} · {filter.price} coins</option>)}</select>
+        <select id="tank-filter" value={STORE_FILTERS.some(filter => filter.id === tank.filter) ? tank.filter : ''} onChange={event => onSetup('filter', event.target.value)} disabled={readOnly}><option value="" disabled>Choose a filter</option>{STORE_FILTERS.map(filter => <option key={filter.id} value={filter.id}>{filter.name} · {filter.price} coins</option>)}</select>
         <p className="setup-dimensions">A stronger filter supports more swimmers</p>
       </div>}
     </div>

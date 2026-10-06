@@ -14,6 +14,9 @@ test('each selectable hardscape has its own plant-free transparent illustration'
     const svg = readFileSync(new URL(`../../public${scape.art}`, import.meta.url), 'utf8')
     assert.match(svg, /<svg\b/)
     assert.doesNotMatch(svg, /<image\b|<rect\b[^>]*fill=/)
+    assert.match(svg, /data-piece="[^"]*(?:rear|far)[^"]*"/)
+    assert.match(svg, /data-piece="[^"]*(?:front|foreground)[^"]*"/)
+    assert.ok((svg.match(/data-piece=/g) || []).length >= 8)
   }
 })
 

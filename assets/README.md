@@ -23,6 +23,15 @@ A first reference-based static cutout is available at `processed/zebra-angelfish
 
 A first aquarium-category icon approximation is available at `processed/zebra-angelfish-icon/aquarium-icon.png`. It uses the screenshot's compact centered composition, navy outline, saturated palette, and reduced detail. Treat it as a visual direction mockup until a generated redraw is available.
 
+## Aquarium hardscapes
+
+The five transparent SVG hardscapes use individually drawn wood and stone
+silhouettes, with clipped grain, knots, growth rings, fractures, strata and pores.
+Their editable source is `tools/build_hardscapes.mjs`; regenerate the artwork with
+`node assets/tools/build_hardscapes.mjs` from the project root. The script writes
+`public/art/driftwood.svg` and the four illustrations in `public/art/scapes/`.
+Moss attachment coordinates in `src/lib/mossAttachments.js` follow these shapes.
+
 ## Naming
 
 Use lowercase kebab-case names. Keep raw generated sheets, processed transparent sheets, extracted frames, and QC metadata in separate subfolders when generation is enabled.

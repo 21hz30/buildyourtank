@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 290" fill="none">
+  <defs><linearGradient id="steel"><stop stop-color="#667875"/><stop offset=".16" stop-color="#eaf0e9"/><stop offset=".42" stop-color="#aab9b5"/><stop offset=".7" stop-color="#f9faf1"/><stop offset="1" stop-color="#758783"/></linearGradient><linearGradient id="pump" x2="0" y2="1"><stop stop-color="#53676c"/><stop offset="1" stop-color="#22373d"/></linearGradient></defs>
+  <ellipse cx="50" cy="281" rx="40" ry="7" fill="#50635e" opacity=".22"/>
+  <rect x="12" y="63" width="76" height="215" rx="17" fill="url(#steel)" stroke="#6f837f" stroke-width="2"/>
+  <ellipse cx="50" cy="64" rx="37" ry="8" fill="#edf2ec" stroke="#71847f" stroke-width="2"/>
+  <path d="M18 75v192m60-192v192" stroke="#fff" stroke-opacity=".52" stroke-width="3"/>
+  <path d="M18 104h64M18 215h64" stroke="#718984" opacity=".42"/>
+  <path d="M10 84h8v21h-8zm72 0h8v21h-8zM10 210h8v21h-8zm72 0h8v21h-8z" fill="#607671"/>
+  <path d="M21 64V49h58v15" fill="#91a39e" stroke="#5a6e6b" stroke-width="2"/>
+  <rect x="20" y="22" width="60" height="32" rx="6" fill="url(#pump)" stroke="#435a60" stroke-width="2"/>
+  <path d="M29 23V8h13v15M61 23V8h12v15" stroke="#53696a" stroke-width="6"/>
+  <path d="M30 9h11m21 0h10" stroke="#d8e9e4" stroke-width="2"/>
+  <circle cx="50" cy="39" r="9" fill="#738b8c" stroke="#c4d3cb" stroke-width="2"/>
+  <circle cx="50" cy="39" r="3" fill="#dbe6de"/>
+  <text x="50" y="165" text-anchor="middle" fill="#425e60" font-family="Arial,sans-serif" font-size="14" letter-spacing="2">ADA</text>
+  <text x="50" y="179" text-anchor="middle" fill="#617c7c" font-family="Arial,sans-serif" font-size="5.5" letter-spacing="1.5">SUPER JET ES-900</text>
+  <ellipse cx="50" cy="275" rx="35" ry="5" fill="#758a84" opacity=".8"/>
+</svg>

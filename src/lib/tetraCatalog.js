@@ -43,6 +43,7 @@ export const tetraListings = data.map(fish => {
     ...catalog,
     description: `${look} Keep ${group} together in an aquarium of at least ${litres} L`,
     adultLengthCm: length, load: 1, tag: 'Schooling', color: body,
+    visual: model.visual,
     art: fishModel(model),
     artLengthRatio: 1,
     artAspectRatio: fishModelAspectRatio(model),

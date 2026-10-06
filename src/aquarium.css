@@ -5,7 +5,7 @@
   isolation:isolate;
   border-radius:5px 5px 10px 10px;
   overflow:hidden;
-  background:radial-gradient(ellipse at 60% 8%,#edf5ea99,transparent 72%),linear-gradient(180deg,#cae3dc,#aecdc3 65%,#89b3a5);
+  background:linear-gradient(180deg,#ffffff,#fbfdfc 70%,#f3f9f8);
   box-shadow:inset 0 0 0 1px #fff6,inset 0 -50px 80px #4568580b
 }
 
@@ -141,20 +141,23 @@
   left:0;
   bottom:8%;
   width:100%;
-  height:78%;
+  height:92%;
   z-index:3;
-  opacity:.94;
+  opacity:1;
   pointer-events:none
 }
 
 .scene-hardscape-classic {
-  position:absolute;
-  left:14%;
-  bottom:8%;
-  width:42%;
-  height:auto;
-  z-index:3;
-  opacity:.9
+  left:0;
+  width:100%;
+  height:92%;
+  filter:drop-shadow(0 3px 2px #172b2540)
+}
+
+.glass-lily-pipes { position:absolute; inset:0; width:100%; height:100%; z-index:8; pointer-events:none; }
+
+.scene-moss {
+  opacity:1
 }
 
 .co2-system { position:absolute;inset:0;z-index:8;pointer-events:none }
@@ -175,23 +178,46 @@
 .scene-plant img {
   display:block;
   width:100%;
-  height:auto
+  height:auto;
+  filter:drop-shadow(1px 2px 1px #163c2526)
+}
+
+.fish-swim-space {
+  position:absolute;
+  inset:0;
+  pointer-events:none
 }
 
 .scene-fish {
   position:absolute;
+  left:0;
+  top:0;
   translate:-50% -50%;
-  animation:swim var(--swim-duration) ease-in-out infinite;
-  animation-delay:var(--swim-delay);
   pointer-events:none
 }
 
-.scene-fish img {
+.scene-fish img, .fish-anatomy {
   display:block;
   width:100%;
   height:auto;
+  transition:transform .24s ease-in-out;
   filter:drop-shadow(2px 5px 5px #3e675e1c)
 }
+
+.fish-anatomy svg { display:block; width:100%; height:auto; overflow:visible; }
+.fish-anatomy .fish-tail { animation:tail-beat var(--fin-period) ease-in-out infinite; }
+.fish-anatomy .fish-dorsal { animation:dorsal-ripple calc(var(--fin-period) * 1.8) ease-in-out infinite; }
+.fish-anatomy .fish-anal { animation:anal-ripple calc(var(--fin-period) * 1.6) ease-in-out infinite; }
+.fish-anatomy .fish-pectoral { animation:pectoral-fan calc(var(--fin-period) * .7) ease-in-out infinite; }
+.fish-anatomy .fish-gill { animation:gill-breathe var(--gill-period) ease-in-out infinite; }
+.fish-anatomy .fish-fin-detail { animation:fin-drift calc(var(--fin-period) * 2.2) ease-in-out infinite; transform-origin:170px 100px; }
+.fish-anatomy svg g[class] { animation-delay:var(--motion-phase); transform-box:view-box; }
+@keyframes tail-beat { 0%,100% { transform:scaleX(.84) skewY(-5deg); } 50% { transform:scaleX(1) skewY(5deg); } }
+@keyframes dorsal-ripple { 0%,100% { transform:skewX(-3deg) scaleY(.95); } 50% { transform:skewX(3deg) scaleY(1); } }
+@keyframes anal-ripple { 0%,100% { transform:skewX(3deg) scaleY(1); } 50% { transform:skewX(-3deg) scaleY(.94); } }
+@keyframes pectoral-fan { 0%,100% { transform:scaleX(.52) rotate(-9deg); opacity:.5; } 50% { transform:scaleX(1) rotate(7deg); opacity:.95; } }
+@keyframes gill-breathe { 0%,100% { transform:scaleX(.96); } 55% { transform:scaleX(1.14); } }
+@keyframes fin-drift { 0%,100% { transform:skewX(-1deg); } 50% { transform:skewX(1deg); } }
 
 .air-bubble {
   position:absolute;
@@ -258,15 +284,6 @@
   margin-top:8px
 }
 
-
-@keyframes swim {
-  0%,100% {
-    transform:translateX(-12px) translateY(0) rotate(-2deg)
-  }
-  50% {
-    transform:translateX(18px) translateY(-5px) rotate(1deg)
-  }
-}
 
 @keyframes sway {
   0%,100% {
@@ -337,3 +354,5 @@
 
 
 @media (prefers-reduced-motion: reduce) { .scene-fish,.scene-plant,.air-bubble,.co2-microbubble,.food-particle,.is-refreshing:after { animation:none!important; } }
+@media (prefers-reduced-motion: reduce) { .scene-fish img { transition:none; } }
+@media (prefers-reduced-motion: reduce) { .fish-anatomy svg g[class] { animation:none!important; } .fish-anatomy { transition:none; } }

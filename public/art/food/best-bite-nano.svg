@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 150" role="img" aria-labelledby="title desc">
+  <title id="title">Green Aqua Best Bite Nano can illustration</title>
+  <desc id="desc">Silver cylindrical tin with a black shaker lid, a green label, red fish and Nano granule size.</desc>
+  <defs>
+    <linearGradient id="tin" x1="0" x2="1"><stop stop-color="#788b88"/><stop offset=".16" stop-color="#eef1e9"/><stop offset=".57" stop-color="#f9fbf5"/><stop offset=".85" stop-color="#abb9b2"/><stop offset="1" stop-color="#677c79"/></linearGradient>
+    <linearGradient id="label" x1="0" x2=".9" y2="1"><stop stop-color="#264e49"/><stop offset=".52" stop-color="#498b5a"/><stop offset="1" stop-color="#152d30"/></linearGradient>
+    <linearGradient id="lid" x1="0" x2="1"><stop stop-color="#152428"/><stop offset=".5" stop-color="#445454"/><stop offset="1" stop-color="#18282b"/></linearGradient>
+  </defs>
+  <ellipse cx="60" cy="138" rx="42" ry="5" fill="#47635c" opacity=".18"/>
+  <path d="M24 28h72v105q-36 12-72 0Z" fill="url(#tin)" stroke="#627e79" stroke-width="1.4"/>
+  <ellipse cx="60" cy="132" rx="36" ry="6" fill="#b7c3ba" stroke="#70837d" stroke-width="1.3"/>
+  <path d="M23 48h74v77H23z" fill="url(#label)"/>
+  <path d="M27 51h66v71H27z" fill="none" stroke="#d6e1cf" opacity=".45"/>
+  <path d="M31 80c10-15 18-16 28-9 7-9 19-9 29-15M30 115c19-11 32-4 59-21" stroke="#a8d8a6" stroke-width="2" opacity=".28" fill="none"/>
+  <text x="60" y="64" text-anchor="middle" fill="#f6fbef" font-family="Arial,sans-serif" font-weight="700" font-size="10">BEST BITE</text>
+  <path d="M41 83q16-14 31-3l11-7-2 12 2 10-12-6Q54 98 41 83Z" fill="#dc6553" stroke="#ad3f3e" stroke-width="1.2"/>
+  <path d="M53 78q7-6 11-4l-2 7M54 91q7 5 13 2l-5-6" fill="#efaa75" opacity=".85"/>
+  <circle cx="48" cy="82" r="1.5" fill="#1c3535"/>
+  <text x="60" y="107" text-anchor="middle" fill="#f4f8e8" font-family="Arial,sans-serif" font-weight="700" font-size="9">NANO</text>
+  <text x="60" y="118" text-anchor="middle" fill="#edf6e6" font-family="Arial,sans-serif" font-size="6.5">FISH FOOD · 0.3–0.5 mm</text>
+  <path d="M23 124h74v9q-36 11-74 0Z" fill="url(#tin)" opacity=".9"/>
+  <text x="60" y="132" text-anchor="middle" fill="#335d53" font-family="Arial,sans-serif" font-weight="700" font-size="6">GREEN AQUA · 90 g</text>
+  <path d="M25 22h70v13H25z" fill="url(#lid)" stroke="#182b2d" stroke-width="1.5"/>
+  <ellipse cx="60" cy="22" rx="35" ry="6" fill="#354548" stroke="#17282b" stroke-width="1.5"/>
+  <ellipse cx="60" cy="21" rx="27" ry="3.4" fill="#5a6868" opacity=".6"/>
+  <path d="M28 29h64" stroke="#a3b7ab" stroke-opacity=".65"/>
+  <path d="M30 37v90" stroke="#fff" stroke-width="2.5" opacity=".4"/>
+</svg>

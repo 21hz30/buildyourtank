@@ -1,5 +1,4 @@
-// Small, deterministic SVG cut-outs: one silhouette and leaf arrangement per cultivar.
-// They intentionally share the aquarium's soft illustrated palette rather than imitating a photograph.
+// Cultivar-specific cut-outs with curved leaves, directional light and fine veins.
 const hash = value => [...value].reduce((number, letter) => (Math.imul(number, 31) + letter.charCodeAt(0)) >>> 0, 7)
 const pick = (seed, step, span = 1) => ((Math.imul(seed ^ (step * 2654435761), 2246822519) >>> 0) % 1000) / 1000 * span
 const escape = value => value.replace(/[&<>"']/g, letter => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&apos;' })[letter])
@@ -14,7 +13,11 @@ function leaf(x, y, width, height, rotation, fill, vein = true, shape = 'pointed
     ribbon: `M0 0 Q${-w * 1.8} ${-h * .55} ${w * .3} ${-h} Q${w * 1.8} ${-h * .5} 0 0Z`,
     pointed: `M0 0 C${-w * .85} ${-h * .32},${-w * .52} ${-h * .85},0 ${-h} C${w * .52} ${-h * .85},${w * .85} ${-h * .32},0 0Z`,
   }
-  return `<g transform="translate(${x.toFixed(1)} ${y.toFixed(1)}) rotate(${rotation.toFixed(1)})"><path d="${paths[shape]}" fill="${fill}" stroke="#477a62" stroke-width="1.5"/>${vein ? `<path d="M0 -2V${(-height * .86).toFixed(1)}" fill="none" stroke="#d6e8b3" stroke-opacity=".58" stroke-width="1"/>` : ''}</g>`
+  const ribs = vein ? Array.from({ length: 5 }, (_, i) => {
+    const y = -h * (.16 + i * .13), span = w * Math.sin((i + 1) / 7 * Math.PI) * .55
+    return `<path d="M0 ${y}q${-span * .6} ${-h * .04} ${-span} ${-h * .1}M0 ${y}q${span * .6} ${-h * .04} ${span} ${-h * .1}" fill="none" stroke="#d5e6a6" stroke-opacity=".23" stroke-width=".45"/>`
+  }).join('') : ''
+  return `<g transform="translate(${x.toFixed(1)} ${y.toFixed(1)}) rotate(${rotation.toFixed(1)})"><path d="${paths[shape]}" fill="url(#leaf-${fill.slice(1)})" stroke="${fill}" stroke-opacity=".65" stroke-width=".45"/>${vein ? `<path d="M0 -2Q${w * .09} ${-h * .44} 0 ${(-height * .91).toFixed(1)}" fill="none" stroke="#d6e8b3" stroke-opacity=".48" stroke-width=".65"/>${ribs}` : ''}</g>`
 }
 
 const leafShape = name => /pinnatifida|proserpinaca|ceratopteris/i.test(name) ? 'lobed'
@@ -25,28 +28,29 @@ const leafShape = name => /pinnatifida|proserpinaca|ceratopteris/i.test(name) ? 
 function palette(name, seed) {
   const red = /red|pink|purple|rubin|rosanervig|lilacina|flamingo|orange|ozelot|rose|aflame|blood|brown|bronze/i.test(name)
   const golden = /gold|white|jade|snow|pinto|marble|coin|stardust/i.test(name)
-  if (red) return ['#946a6d', '#b57779', '#d29383', '#e1aa8f']
-  if (golden) return ['#7a9d70', '#a9b884', '#d3d8a0', '#e7d8ad']
-  return pick(seed, 1) > .5 ? ['#568a69', '#70a77b', '#8dba82', '#b2cc91'] : ['#477b6a', '#649c77', '#83ae81', '#b3ca94']
+  if (red) return ['#623d36', '#934b46', '#b3644f', '#d78a66']
+  if (golden) return ['#486b2b', '#7e943e', '#b3be72', '#d5cf91']
+  return pick(seed, 1) > .5 ? ['#254d20', '#3d762b', '#58943a', '#8ab653'] : ['#214c32', '#35692c', '#518836', '#91af59']
 }
 
 function stems(name, seed, colors) {
   const feathered = /cabomba|myriophyllum|limnophila sessiliflora|hottonia/i.test(name)
   const whorled = /pogostemon|tonina|najas|ludwigia inclinata|limnophila/i.test(name)
   const narrow = /rotala|limnophila|myriophyllum|cabomba|mayaca|pogostemon erectus|hottonia|proserpinaca|najas/i.test(name)
-  const count = 4 + Math.round(pick(seed, 2, 2))
+  const count = 7 + Math.round(pick(seed, 2, 3))
   let result = ''
   for (let i = 0; i < count; i++) {
-    const base = 38 + i * (164 / Math.max(1, count - 1))
-    const bend = (pick(seed, i + 4) - .5) * 31
-    const top = 27 + pick(seed, i + 17, 44)
-    result += `<path d="M${base} 227 Q${base + bend * .8} 125 ${base + bend} ${top}" fill="none" stroke="${colors[0]}" stroke-width="3.3" stroke-linecap="round"/>`
-    const tiers = 5 + Math.round(pick(seed, 93, 3))
+    const base = 38 + i * (164 / Math.max(1, count - 1)) + (pick(seed, i + 113) - .5) * 18
+    const bend = (pick(seed, i + 4) - .5) * 48
+    const top = 18 + pick(seed, i + 17, 65)
+    result += `<path d="M${base} 227 Q${base + bend * .5} 125 ${base + bend} ${top}" fill="none" stroke="${colors[0]}" stroke-width="1.8" stroke-linecap="round"/>`
+    const tiers = (narrow ? 12 : 8) + Math.round(pick(seed, i + 93, 5))
     for (let j = 0; j < tiers; j++) {
-      const y = 200 - j * (150 / (tiers - 1)) + pick(seed, i * 13 + j, 6)
+      const y = 216 - j * ((200 - top) / (tiers - 1)) + (pick(seed, i * 13 + j) - .5) * 5
       const x = base + bend * (227 - y) / (227 - top)
-      const w = narrow ? 6 + pick(seed, i + j + 21, 3) : 12 + pick(seed, i + j + 21, 5)
-      const h = narrow ? 29 + pick(seed, i + j + 31, 7) : 20 + pick(seed, i + j + 31, 6)
+      const taper = .62 + Math.sin((j + 1) / (tiers + 1) * Math.PI) * .38
+      const w = (narrow ? 3 + pick(seed, i * 17 + j + 21, 2.5) : 8 + pick(seed, i * 17 + j + 21, 5)) * taper
+      const h = (narrow ? 16 + pick(seed, i * 17 + j + 31, 9) : 19 + pick(seed, i * 17 + j + 31, 9)) * taper
       if (feathered) {
         for (let side = -1; side <= 1; side += 2) {
           const tip = x + side * (22 + pick(seed, i + j, 7))
@@ -55,7 +59,7 @@ function stems(name, seed, colors) {
         }
       } else {
         const angles = whorled ? [-78, -35, 35, 78] : [-56, 56]
-        for (const angle of angles) result += leaf(x, y, w * (whorled ? .7 : 1), h, angle + pick(seed, i + j + 72, 12), colors[(i + j + (angle > 0 ? 1 : 0)) % 4], true, leafShape(name))
+        for (const angle of angles) result += leaf(x, y + pick(seed, i * 19 + j + (angle > 0 ? 103 : 119), 4), w * (whorled ? .7 : 1), h, angle + (pick(seed, i * 23 + j + (angle > 0 ? 72 : 81)) - .5) * 31, colors[(i + j + (angle > 0 ? 1 : 0)) % 4], true, leafShape(name))
       }
     }
   }
@@ -108,20 +112,20 @@ function rhizome(name, seed, colors) {
 }
 
 function moss(name, seed, colors) {
+  const fan = /riccardia|monosolenium|riccia/i.test(name)
   let result = ''
-  for (let i = 0; i < 14; i++) {
-    const x = 40 + pick(seed, i + 9, 155)
-    const top = 75 + pick(seed, i + 23, 74)
-    result += `<path d="M${x} 222 Q${x + (pick(seed, i + 34) - .5) * 34} 150 ${x + (pick(seed, i + 45) - .5) * 38} ${top}" stroke="${colors[0]}" stroke-width="2" fill="none"/>`
-    for (let j = 0; j < 8; j++) {
-      const y = 205 - j * 14
-      const drift = (pick(seed, i + 45) - .5) * (222 - y) / 4
-      const fan = /riccardia|monosolenium|riccia/i.test(name)
-      const size = /christmas|vesicularia/i.test(name) ? 19 - j * 1.7 : 8 + pick(seed, i + j + 97, 7)
-      const angle = /flame|erect/i.test(name) ? 22 : 58
-      result += leaf(x + drift, y, fan ? 8 : 3, size, -angle, colors[(i + j) % 4], false, fan ? 'lobed' : 'pointed')
-      result += leaf(x + drift, y - 3, fan ? 8 : 3, size, angle, colors[(i + j + 1) % 4], false, fan ? 'lobed' : 'pointed')
-    }
+  // A shallow, irregular mat of tiny leaflets, without upright stalks or roots.
+  for (let i = 0; i < 28; i++) {
+    const x = 24 + i * 7.1
+    const y = 121 + (pick(seed, i + 9) - .5) * 5
+    result += `<ellipse cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" rx="10" ry="${(4 + pick(seed, i + 23, 3)).toFixed(1)}" fill="${colors[0]}"/>`
+  }
+  for (let i = 0; i < 230; i++) {
+    const x = 18 + pick(seed, i + 34, 204)
+    const taper = Math.sin((x - 18) / 204 * Math.PI)
+    const y = 121 + (pick(seed, i + 45) - .5) * 17 * taper
+    const angle = pick(seed, i + 97, 160) - 80
+    result += `<ellipse cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" rx="${fan ? 1.8 : .8}" ry="${(1.5 + pick(seed, i + 73, 2)).toFixed(1)}" transform="rotate(${angle.toFixed(1)} ${x.toFixed(1)} ${y.toFixed(1)})" fill="${colors[i % 4]}"/>`
   }
   return result
 }
@@ -163,7 +167,7 @@ function algaeBall(seed, colors) {
     const radius = Math.sqrt(pick(seed, i + 75)) * 66
     speckles += `<circle cx="${(120 + Math.cos(angle) * radius).toFixed(1)}" cy="${(157 + Math.sin(angle) * radius).toFixed(1)}" r="${(1.5 + pick(seed, i + 105, 3)).toFixed(1)}" fill="${colors[i % 4]}" opacity=".9"/>`
   }
-  return `<circle cx="120" cy="157" r="69" fill="${colors[0]}" stroke="#477a62" stroke-width="3"/>${speckles}`
+  return `<circle cx="120" cy="157" r="69" fill="url(#leaf-${colors[1].slice(1)})" stroke="${colors[0]}" stroke-width=".5"/>${speckles}`
 }
 
 export function plantModelSvg(name, type) {
@@ -177,7 +181,9 @@ export function plantModelSvg(name, type) {
           : type === 'Rhizome & epiphytes' ? rhizome(name, seed, colors)
             : type === 'Rosettes & swords' ? rosette(name, seed, colors)
               : stems(name, seed, colors)
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" role="img" aria-label="Illustrated ${escape(name)}"><defs><filter id="s"><feGaussianBlur stdDeviation="1.2"/></filter></defs><ellipse cx="120" cy="226" rx="67" ry="5" fill="#315f54" opacity=".14" filter="url(#s)"/>${content}</svg>`
+  const shadow = type === 'Mosses & liverworts' ? '' : '<ellipse cx="120" cy="226" rx="67" ry="5" fill="#315f54" opacity=".14" filter="url(#s)"/>'
+  const leafPaint = colors.map(color => `<linearGradient id="leaf-${color.slice(1)}" x1="0" y1=".1" x2="1" y2=".85"><stop stop-color="#152b18"/><stop offset=".3" stop-color="${color}"/><stop offset=".48" stop-color="${color}"/><stop offset=".51" stop-color="#c1d68c" stop-opacity=".88"/><stop offset=".57" stop-color="${color}"/><stop offset="1" stop-color="#20371d"/></linearGradient>`).join('')
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" role="img" aria-label="${escape(name)} model"><defs>${leafPaint}<filter id="s"><feGaussianBlur stdDeviation="1.2"/></filter><filter id="leaf-grain" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".72" numOctaves="2" seed="${seed % 127}"/><feColorMatrix type="saturate" values="0"/><feComposite in2="SourceGraphic" operator="in"/><feBlend in="SourceGraphic" mode="soft-light"/></filter></defs>${shadow}<g filter="url(#leaf-grain)">${content}</g></svg>`
 }
 
 export const plantModelUri = (name, type) => `data:image/svg+xml,${encodeURIComponent(plantModelSvg(name, type))}`

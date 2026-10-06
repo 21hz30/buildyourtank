@@ -593,6 +593,42 @@ main {
   filter: drop-shadow(0 5px 7px #49574e19);
 }
 
+.room-filter-rig {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 4;
+  overflow: visible;
+  pointer-events: none;
+  filter: drop-shadow(1px 2px 2px #3a555238);
+}
+
+.room-food-cans { position:absolute; inset:0; width:100%; height:100%; z-index:5; overflow:visible; pointer-events:none; filter:drop-shadow(1px 2px 2px #2d454040); }
+
+.filter-store-section { margin: 30px 0 18px; }
+.filter-store-heading { display:flex; justify-content:space-between; gap:16px; align-items:flex-start; margin-bottom:15px; }
+.filter-store-heading h2 { margin:0 0 5px; color:#fff8e9; font-family:var(--serif); font-size:27px; font-weight:400; }
+.filter-store-heading p { margin:0; color:#e8f1ef; font-size:11px; line-height:1.5; }
+.filter-store-heading>span { flex:none; padding:5px 9px; border-radius:20px; background:#e5f0eb; color:#688b7b; font-size:10px; }
+.filter-store-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:12px; }
+.filter-product-card { overflow:hidden; border:1px solid #dce6e5; border-radius:12px; background:#fff; box-shadow:0 3px 11px #2b4c4a09; }
+.filter-product-card.selected { border-color:#72a48a; box-shadow:0 0 0 2px #82ba9a40; }
+.filter-product-art { display:flex; align-items:center; justify-content:center; height:165px; background:radial-gradient(ellipse at 50% 75%,#cdded9 0%,#e9f4f0 45%,#f3f8f4 85%); border-bottom:1px solid #e8efed; }
+.filter-product-art img { display:block; height:143px; max-width:88%; width:auto; object-fit:contain; filter:drop-shadow(3px 5px 4px #36565132); }
+.filter-product-copy { padding:15px; }
+.filter-product-copy h3 { margin:0 0 6px; color:#304b4a; font-size:14px; line-height:1.25; }
+.filter-product-copy>p { min-height:33px; margin:0 0 10px; color:#7d9090; font-size:10px; line-height:1.45; }
+.filter-product-copy dl { display:grid; gap:5px; margin:0 0 12px; font-size:10px; }
+.filter-product-copy dl>div { display:flex; justify-content:space-between; gap:8px; }
+.filter-product-copy dt { color:#899a99; }
+.filter-product-copy dd { margin:0; color:#4c6866; font-weight:600; text-align:right; }
+.filter-product-copy>a { display:inline-block; margin-bottom:13px; color:#5b8575; font-size:10px; text-decoration:underline; text-underline-offset:2px; }
+.filter-product-action { display:flex; justify-content:space-between; align-items:center; gap:8px; border-top:1px solid #edf1ef; padding-top:12px; }
+.filter-product-action>span { color:#436b5d; font-size:12px; font-weight:600; }
+.filter-product-action .secondary-button { padding:7px 10px; font-size:10px; }
+.filter-store-note { margin:11px 0 0; color:#e8f1ef; font-size:10px; line-height:1.5; }
+
 .room-co2-cylinder {
   position: absolute;
   bottom: 8.3%;
@@ -616,7 +652,7 @@ main {
   aspect-ratio: var(--tank-ratio);
   border-radius: 2px;
   box-shadow: inset 0 0 0 1px #ffffffa0;
-  background: linear-gradient(180deg,#c0dde4db,#abcaceec 68%,#7faaa7e8);
+  background: linear-gradient(180deg,#ffffff,#fbfdfc 70%,#f3f9f8);
 }
 
 .room-tank .tank-edge {
@@ -836,10 +872,6 @@ main {
   font-size: 12px;
   text-decoration: underline;
   text-underline-offset: 2px;
-}
-
-.room-tank .scene-fish {
-  animation-name: room-swim;
 }
 
 .room-tank .air-bubble {
@@ -1239,7 +1271,7 @@ main {
 .scape-option-art {
   position: relative;
   display: block;
-  height: 48px;
+  aspect-ratio: 2;
   overflow: hidden;
   border-radius: 5px;
   background: linear-gradient(#e8f4f2, #d3e9e9 77%, #c7d7cc 78%, #b0afa0);
@@ -1886,6 +1918,13 @@ main {
   background: #f4eddf;
   color: #bfa071;
 }
+
+.supply-foodNano,.supply-foodSmall { background-color:#e8f1ed; background-position:center; background-repeat:no-repeat; background-size:auto 145px; }
+.supply-foodNano { background-image:url('/art/food/best-bite-nano.svg'); }
+.supply-foodSmall { background-image:url('/art/food/best-bite-small.svg'); }
+.supply-foodNano svg,.supply-foodSmall svg { display:none; }
+.food-guide-links { display:flex; flex-wrap:wrap; align-items:center; gap:10px 18px; margin:20px 0 0; color:#ecf3ef; font-size:12px; }
+.food-guide-links a { color:#fff8e9; text-decoration:underline; text-underline-offset:3px; display:inline-flex; align-items:center; gap:4px; }
 
 .supply-water {
   background: #e7f2f6;
@@ -3019,15 +3058,6 @@ dd {
   line-height: 1.9;
   color: #8aa1ae;
   margin: 17px 0;
-}
-
-@keyframes room-swim {
-  0%,100% {
-    transform: translateX(-3px) translateY(0) rotate(-2deg);
-  }
-  50% {
-    transform: translateX(5px) translateY(-2px) rotate(1deg);
-  }
 }
 
 @media(min-width:1550px) {

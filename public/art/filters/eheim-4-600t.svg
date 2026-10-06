@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130 265" fill="none">
+  <defs><linearGradient id="body" x2="1" y2=".2"><stop stop-color="#343e3b"/><stop offset=".5" stop-color="#64726c"/><stop offset="1" stop-color="#303a38"/></linearGradient><linearGradient id="head" x2="0" y2="1"><stop stop-color="#566660"/><stop offset="1" stop-color="#202d2c"/></linearGradient></defs>
+  <ellipse cx="65" cy="254" rx="56" ry="7" fill="#52645d" opacity=".22"/>
+  <path d="M14 83h102v157q0 10-10 10H24q-10 0-10-10Z" fill="url(#body)" stroke="#283733" stroke-width="3"/>
+  <path d="M23 95h84v137H23Z" fill="#53625c" opacity=".38"/>
+  <path d="M18 109h94m-94 94h94" stroke="#87968d" opacity=".35" stroke-width="2"/>
+  <path d="M17 81V47q0-10 10-10h76q10 0 10 10v34Z" fill="url(#head)" stroke="#273532" stroke-width="3"/>
+  <rect x="31" y="30" width="68" height="15" rx="5" fill="#273734" stroke="#82948a" stroke-width="2"/>
+  <path d="M42 31V14h15v17M76 31V14h15v17" stroke="#394c49" stroke-width="9"/>
+  <path d="M44 15h11m23 0h11" stroke="#c6d8ce" opacity=".6" stroke-width="2"/>
+  <rect x="9" y="65" width="11" height="38" rx="4" fill="#b34837" stroke="#66392f" stroke-width="2"/>
+  <rect x="110" y="65" width="11" height="38" rx="4" fill="#b34837" stroke="#66392f" stroke-width="2"/>
+  <path d="M18 78h94" stroke="#899a8e" stroke-width="4"/>
+  <rect x="40" y="52" width="50" height="17" rx="3" fill="#7b8a77"/>
+  <text x="65" y="64" text-anchor="middle" fill="#e5e9da" font-family="Arial,sans-serif" font-size="11" font-weight="700">EHEIM</text>
+  <circle cx="65" cy="168" r="20" fill="#283734" stroke="#94a59a" stroke-width="2"/>
+  <circle cx="65" cy="168" r="14" fill="#82998c" stroke="#d6dfd3" stroke-width="2"/>
+  <path d="m65 168 8-7" stroke="#e5eee2" stroke-width="2" stroke-linecap="round"/>
+  <text x="65" y="213" text-anchor="middle" fill="#c6d5c7" font-family="Arial,sans-serif" font-size="7" letter-spacing="1">professionel 4 600T</text>
+  <path d="M22 247v5h15v-5m56 0v5h15v-5" fill="#23312e"/>
+</svg>

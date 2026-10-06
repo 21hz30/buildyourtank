@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 265" fill="none">
+  <defs><linearGradient id="body"><stop stop-color="#434d50"/><stop offset=".27" stop-color="#7f9090"/><stop offset=".55" stop-color="#626f73"/><stop offset="1" stop-color="#394649"/></linearGradient><linearGradient id="head" x2="0" y2="1"><stop stop-color="#67777b"/><stop offset="1" stop-color="#29383d"/></linearGradient></defs>
+  <ellipse cx="50" cy="257" rx="41" ry="6" fill="#4d5f5d" opacity=".24"/>
+  <rect x="9" y="75" width="82" height="178" rx="13" fill="url(#body)" stroke="#33464a" stroke-width="3"/>
+  <path d="M16 87h68v148H16Z" fill="#9aabad" opacity=".11"/>
+  <path d="M13 112h74M13 213h74" stroke="#b7c6c1" opacity=".22" stroke-width="2"/>
+  <rect x="6" y="33" width="88" height="48" rx="10" fill="url(#head)" stroke="#324449" stroke-width="3"/>
+  <rect x="24" y="22" width="52" height="17" rx="5" fill="#34484d" stroke="#9db4b0" stroke-width="2"/>
+  <path d="M29 23V7h13v16M59 23V7h13v16" stroke="#40555a" stroke-width="7"/>
+  <path d="M29 8h12m19 0h11" stroke="#e1ece5" stroke-width="2" opacity=".7"/>
+  <circle cx="72" cy="52" r="13" fill="#222f37" stroke="#a9bdba" stroke-width="2"/>
+  <circle cx="72" cy="52" r="7" fill="#6c8183"/>
+  <rect x="15" y="45" width="30" height="23" rx="4" fill="#9bb1b0" stroke="#33494c" stroke-width="2"/>
+  <path d="M19 49h22m-22 5h22m-22 5h22m-22 5h22" stroke="#526d6d" stroke-width="2"/>
+  <path d="M5 73h90" stroke="#99ada8" stroke-width="4"/>
+  <rect x="5" y="75" width="9" height="29" rx="3" fill="#2d4147"/><rect x="86" y="75" width="9" height="29" rx="3" fill="#2d4147"/>
+  <rect x="25" y="135" width="50" height="54" rx="4" fill="#42595c" stroke="#8da4a5"/>
+  <text x="50" y="157" text-anchor="middle" fill="#e7f1e8" font-family="Arial,sans-serif" font-size="12" font-weight="700" letter-spacing="1">OASE</text>
+  <text x="50" y="170" text-anchor="middle" fill="#d4e0dd" font-family="Arial,sans-serif" font-size="6">BioMaster 2 850</text>
+  <path d="M18 251v6h14v-6m36 0v6h14v-6" fill="#293a3d"/>
+</svg>

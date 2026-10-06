@@ -1,0 +1,86 @@
+export const PLANT_NUTRITION_GUIDE = {
+  id: 'guide-plant-nutrition',
+  kind: 'guide',
+  category: 'plants',
+  name: 'Aquatic plant nutrition & deficiencies',
+  chinese: '水草营养与缺素症状',
+  icon: 'leaf',
+  color: '#a9c6a5',
+  headline: 'Understand the nutrients plants need, what a shortage can look like, and how to help new growth recover.',
+  facts: [
+    ['Main mineral nutrients', 'Nitrogen, phosphorus, potassium, calcium, magnesium and sulfur'],
+    ['Trace nutrients', 'Iron, manganese, boron, zinc, copper, molybdenum and others'],
+    ['Carbon supply', 'Dissolved CO₂ supports photosynthesis'],
+    ['Where plants feed', 'The water column and the root zone'],
+  ],
+  nutrientIntro: 'A shortage in the water or root zone can slow growth even when the other nutrients are plentiful. These are possible signs, not a diagnosis: species, growing conditions and several different problems can produce similar symptoms.',
+  nutrients: [
+    {
+      name: 'Carbon', symbol: 'C · CO₂',
+      role: 'Provides the carbon used to build plant tissue through photosynthesis.',
+      deficiency: 'Limited carbon can slow growth and make demanding plants struggle, especially under strong light.',
+    },
+    {
+      name: 'Nitrogen', symbol: 'N',
+      role: 'Helps build proteins, chlorophyll and new tissue. Aquarium tests commonly measure nitrate.',
+      deficiency: 'Older leaves may turn pale or yellow first; growth becomes smaller and slower.',
+    },
+    {
+      name: 'Phosphorus', symbol: 'P',
+      role: 'Supports energy transfer and cell growth. Aquarium tests commonly measure phosphate.',
+      deficiency: 'Growth may stall; older leaves can darken or develop discolored, dying patches. Appearance varies by species.',
+    },
+    {
+      name: 'Potassium', symbol: 'K',
+      role: 'Supports enzyme activity and the regulation of processes inside cells.',
+      deficiency: 'Older leaves can develop yellowing, tiny pinholes, brown dead spots or damaged edges. Stems and roots may weaken.',
+    },
+    {
+      name: 'Magnesium', symbol: 'Mg',
+      role: 'Forms part of chlorophyll, which captures light for photosynthesis.',
+      deficiency: 'Older leaves may yellow between their veins while the veins remain greener; severe shortages can cause dead areas.',
+    },
+    {
+      name: 'Calcium', symbol: 'Ca',
+      role: 'Supports cell walls, membranes and developing tissue.',
+      deficiency: 'New leaves may grow distorted or fail to unfold properly; growing tips may deteriorate.',
+    },
+    {
+      name: 'Sulfur', symbol: 'S',
+      role: 'Helps build certain amino acids and proteins.',
+      deficiency: 'Younger leaves may become generally pale or yellow, with thin, slow growth.',
+    },
+    {
+      name: 'Iron', symbol: 'Fe',
+      role: 'Helps plants produce chlorophyll and carry out energy-related reactions.',
+      deficiency: 'Young leaves may turn yellow between the veins; a severe shortage can leave new growth very pale or nearly white.',
+    },
+    {
+      name: 'Manganese', symbol: 'Mn',
+      role: 'Supports enzymes involved in plant metabolism.',
+      deficiency: 'Younger leaves may yellow between the veins. This can resemble iron deficiency.',
+    },
+    {
+      name: 'Other trace nutrients', symbol: 'B · Zn · Cu · Mo · Cl (chloride)',
+      role: 'Needed in very small amounts for enzymes, growth and nutrient use.',
+      deficiency: 'Depending on the element, new growth may be small, pale or misshapen. Appearance alone rarely identifies which trace nutrient is missing.',
+    },
+  ],
+  sections: [
+    ['Why too little nutrition matters', 'Plants need a balanced supply. When one essential nutrient runs short, growth can be limited even if the others are abundant. Adding more iron will not solve a potassium shortage. A prolonged shortage can lead to weak growth, loss of damaged leaves and, in severe cases, plant decline. Light supplies energy; hydrogen and oxygen are also essential and come from water and gases.'],
+    ['Potassium: look beyond a single hole', 'Small holes, yellowing or brown dead tissue on older leaves can suggest too little potassium. Check several leaves and the fertilizer ingredients before treating this as proof: grazing, physical damage and older leaves deteriorating can also leave holes. A potassium supplement supplies K, but it does not replace nitrogen, phosphorus or trace nutrients.'],
+    ['Older leaves or new growth?', 'Where symptoms begin is a useful clue. Nitrogen, potassium and magnesium shortages often affect older leaves first because plants can move those nutrients into new growth. Iron and calcium problems often appear in young tissue. Compare the oldest leaves with the newest shoots and track the pattern over time.'],
+    ['Feed the water and the roots', 'Liquid aquarium fertilizer supplies nutrients to the water column, helping floating plants, mosses and plants attached to wood or stone. Nutrient-rich substrate or root tabs can support rooted plants such as swords and Cryptocoryne. A low reading in the water does not by itself prove that a plant with a supplied root zone is starving. Read the ingredients: some fertilizers omit nitrogen and phosphorus, and fish food and waste do not reliably supply every nutrient.'],
+    ['Balance carbon, light and nutrients', 'Many easy plants can grow using the CO₂ already present in the aquarium. More demanding plants may benefit from a stable added CO₂ supply. Increasing light can increase the demand for carbon and nutrients; extra fertilizer cannot compensate for insufficient carbon or shaded leaves. Start with plants and lighting suited to the setup, and review circulation and stability as well as nutrition.'],
+    ['Check the cause before changing the dose', 'Review recent planting, water changes, source-water minerals and fertilizer use. Leaves grown above water may be shed as a plant adapts underwater; buried rhizomes, damaged roots, shade and grazing can also mimic shortages. Test relevant parameters such as nitrate, phosphate and general hardness (GH) where useful. GH reflects calcium and magnesium together, not the individual amount of each. Algae alone does not identify a particular deficiency.'],
+    ['Help the plant recover', 'Use an aquarium fertilizer whose ingredients match the identified gap and follow its label for the actual water volume. Account for nutrients already supplied by other products and make measured adjustments instead of adding several supplements at once. Compare photos over the following weeks, allowing longer for slow growers. Dead spots and holes will not fill back in; healthier new leaves and steady growth are better signs of recovery.'],
+  ],
+  sources: [
+    { name: 'JBL · nutrient roles and balanced fertilization', url: 'https://www.jbl.de/en/blog/detail/93/theres-more-to-fertilization-than-youd-think-part-2' },
+    { name: 'Seachem · potassium depletion and leaf symptoms', url: 'https://www.seachem.com/flourish-potassium.php' },
+    { name: 'Tropica · fertilizer, carbon and nutrient uptake', url: 'https://tropica.com/en/guide/make-your-aquarium-a-success/fertiliser-and-co2/' },
+    { name: 'Tropica · nutrition at the roots', url: 'https://tropica.com/en/plant-care/nutrition-capsules/' },
+    { name: 'Aquaforest · freshwater nutrient shortages', url: 'https://aquaforest.eu/en/knowledge-base/fertilizers-for-freshwater-aquariums-what-your-aquarium-plants-need/' },
+    { name: 'University of Maryland · general plant deficiency patterns', url: 'https://www.enst.umd.edu/research/research-centers-labs/soil-quality-lab/plant-deficiencies' },
+  ],
+}

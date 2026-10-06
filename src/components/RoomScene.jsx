@@ -2,10 +2,12 @@ import { useState } from 'react'
 import Icon from './Icon'
 import TankObserver from './TankObserver'
 import TankScene from './TankScene'
+import FilterRig from './FilterRig'
+import FoodCans from './FoodCans'
 import { SIZES } from '../lib/tank'
 import { co2CylinderGeometry, co2Level } from '../lib/co2'
 
-export default function RoomScene({ tank, feeding = false, changedWater = false, compact = false, showDimensions = true, observe = !compact }) {
+export default function RoomScene({ tank, resources, feeding = false, changedWater = false, compact = false, showDimensions = true, observe = !compact }) {
   const [observing, setObserving] = useState(false)
   const size = SIZES.find(item => item.id === tank.size)
   const widths = { '60p': 24, '120p': 48, '150p': 60 }
@@ -18,6 +20,8 @@ export default function RoomScene({ tank, feeding = false, changedWater = false,
         <span className="co2-cylinder-neck" /><span className="co2-cylinder-valve" /><span className="co2-cylinder-gauge" /><span className="co2-cylinder-label">CO₂</span><span className="co2-cylinder-foot" />
       </div>}
       <div className={`room-tank glass-${tank.glass || 'regular'}`} style={{ width: `${widths[tank.size]}%` }}><TankScene tank={tank} feeding={feeding} changedWater={changedWater} mini={compact} /><div className="tank-shadow" />{showDimensions && <div className="dimension-line"><span>{size.lengthCm} cm</span></div>}</div>
+      <FilterRig tank={tank} />
+      <FoodCans resources={resources} />
     </div>
     {observe && <button className="observe-button" onClick={() => setObserving(true)}><Icon name="search" size={15} />Observe tank</button>}
     {!compact && <div className="room-caption"><span className="small-dot" />Same room A different little world</div>}
