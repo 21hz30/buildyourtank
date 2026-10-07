@@ -1,5 +1,5 @@
 import products from './greenAquaPlantProducts.json' with { type: 'json' }
-import { plantModelUri } from './plantModels.js'
+import { plantModelUri, plantPalette } from './plantModels.js'
 import plantPhotos from './plantPhotos.json' with { type: 'json' }
 
 export const PLANT_TYPES = [
@@ -140,7 +140,7 @@ export const aquariumPlantListings = [...bySpecies.values()].map(({ name, produc
     photoCredit: photograph?.credit, photoSource: photograph?.source || product.url,
     photoFit: 'contain',
     supplierSource: product.url,
-    tag: type, color: '#a9c6a5',
+    tag: type, color: plantPalette(name)[2],
   }
 }).sort((a, b) => PLANT_TYPES.indexOf(a.plantType) - PLANT_TYPES.indexOf(b.plantType) || a.name.localeCompare(b.name))
 

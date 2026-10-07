@@ -1271,8 +1271,7 @@ main {
   background: linear-gradient(#e8f4f2, #d3e9e9 77%, #c7d7cc 78%, #b0afa0);
 }
 
-.scape-option-art img { position: absolute; left: 0; bottom: 8%; width: 100%; height: 78%; }
-.scape-option-art-classic img { left: 14%; width: 42%; height: auto; }
+.scape-option-art img { position: absolute; left: 0; bottom: 8%; width: 100%; height: 92%; }
 .scape-option-copy { display: block; padding: 7px 2px 3px; }
 .scape-option-copy strong { display: block; font-size: 10px; line-height: 1.2; color: #425c58; }
 .scape-option-copy small { display: block; min-height: 26px; margin-top: 3px; font-size: 9px; line-height: 1.3; color: #899b97; }
@@ -1907,6 +1906,10 @@ main {
   align-items: center;
   justify-content: center;
 }
+
+.supply-art:has(.supply-photo) { background:#f7f9f6; }
+.supply-photo { display:block; height:150px; max-width:100%; object-fit:contain; }
+.water-setting .nutrient-stock { display:block; margin-top:5px; color:#71907e; font-size:10px; }
 
 .supply-food {
   background: #f4eddf;

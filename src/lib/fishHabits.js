@@ -1,5 +1,7 @@
 // Depth bands are visual preferences within the usable water column, not
 // barriers. Species exceptions precede genus defaults, including trade aliases.
+import { expandedHardscapeSurfaces } from './generatedHardscapeSurfaces.js'
+
 const profiles = {
   middle: { zone: 'Middle water', band: [.25, .72], speed: 1, mode: 'cruise' },
   upper: { zone: 'Upper and middle water', band: [.08, .48], speed: 1.1, mode: 'cruise' },
@@ -61,14 +63,14 @@ const sites = {
 
 export function fishHabitatSites(scape, size, materials = []) {
   const id = sites[scape?.id] ? scape.id : 'classic'
-  // Hardscapes fill the 92% scene above the substrate. The classic external
-  // SVG uses its intrinsic aspect ratio; the others explicitly stretch.
-  const classicWidth = Math.min(100, 92 * (450 / 250) / (size.lengthCm / size.heightCm))
-  const classicHeight = Math.min(92, 100 * (size.lengthCm / size.heightCm) / (450 / 250))
-  const result = sites[id].filter(site => materials.includes(site[3])).map(([x, y, angle, material]) => ({
-    x: id === 'classic' ? (100 - classicWidth) / 2 + x / 450 * classicWidth : x / 10,
-    y: id === 'classic' ? (92 - classicHeight) / 2 + y / 250 * classicHeight : y / 500 * 92,
-    angle: id === 'classic' ? angle : Math.atan2(Math.sin(angle * Math.PI / 180) * size.heightCm * .92 / 500, Math.cos(angle * Math.PI / 180) * size.lengthCm / 1000) * 180 / Math.PI,
+  // Every preset fills the 92% scene above the substrate, including the
+  // classic wood, so wide tanks retain full-width surface-height scenery.
+  const [width, height] = id === 'classic' ? [450, 250] : [1000, 500]
+  const expanded = expandedHardscapeSurfaces[id].map(site => [site.x, site.y, site.angle, site.material])
+  const result = [...sites[id], ...expanded].filter(site => materials.includes(site[3])).map(([x, y, angle, material]) => ({
+    x: x / width * 100,
+    y: y / height * 92,
+    angle: Math.atan2(Math.sin(angle * Math.PI / 180) * size.heightCm * .92 / height, Math.cos(angle * Math.PI / 180) * size.lengthCm / width) * 180 / Math.PI,
     material, attached: true,
   }))
   // Front glass is available even in wood-only presets, rather than inventing

@@ -1,5 +1,7 @@
 // Coordinates follow the hardscape SVGs, so moss stays on their surfaces at
 // every tank size. Each slot is [center x, center y, spread, surface angle].
+import { expandedHardscapeSurfaces } from './generatedHardscapeSurfaces.js'
+
 const surfaces = {
   classic: [[189, 158, 45, -45], [271, 206, 52, 2], [132, 195, 48, -20], [228, 100, 29, -69], [311, 160, 29, -80], [150, 181, 37, 12], [335, 216, 45, 8], [117, 155, 29, 74]],
   'stone-ridge': [[265, 307, 79, -57], [674, 200, 82, -69], [419, 385, 66, -48], [904, 331, 69, -65], [83, 366, 57, -49], [614, 326, 80, -59], [290, 393, 60, -76], [756, 290, 62, -84]],
@@ -12,7 +14,8 @@ export const isAttachedMoss = plant => plant.plantType === 'Mosses & liverworts'
 export const MOSS_PATCHES_PER_PORTION = 3
 
 export function mossAttachment(scape, index) {
-  const slots = surfaces[scape.id] || surfaces.classic
+  const id = surfaces[scape.id] ? scape.id : 'classic'
+  const slots = [...surfaces[id], ...expandedHardscapeSurfaces[id].map(site => [site.x, site.y, site.width, site.angle])]
   const [x, y, width, angle] = slots[index % slots.length]
   // Spread across the existing surfaces first, then extend coverage along and
   // beside them. Never place later portions directly over the first eight.

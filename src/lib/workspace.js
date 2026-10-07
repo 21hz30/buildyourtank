@@ -1,5 +1,6 @@
 import { CATALOG, FILTERS, GLASS, SANDS, SIZES, STORAGE_KEY, createTank, getHealth, normalizeTank, remainingCoins, tankCost, today } from './tank.js'
 import { SCAPES } from './scapes.js'
+import { FERTILIZERS, fertilizerFor } from './fertilizers.js'
 
 export const WORKSPACE_KEY = 'buildyourtank:workspace:v2'
 export const STARTING_COINS = 300
@@ -9,14 +10,14 @@ export const SUPPLIES = [
   { id: 'foodNano', name: 'Green Aqua Best Bite Nano', description: '90 g can · slowly sinking 0.3–0.5 mm granules for fish under 4 cm', amount: 5, price: 8, icon: 'food', unit: 'demo portions', art: '/art/food/best-bite-nano.svg', sourceUrl: 'https://greenaqua.hu/en/green-aqua-bestbite-nano-fishfood-90-g.html', sizeMm: '0.3–0.5', fishSize: 'Under 4 cm' },
   { id: 'foodSmall', name: 'Green Aqua Best Bite Small', description: '90 g can · slowly sinking 0.5–0.8 mm granules for fish around 3–5 cm', amount: 5, price: 8, icon: 'food', unit: 'demo portions', art: '/art/food/best-bite-small.svg', sourceUrl: 'https://greenaqua.hu/en/green-aqua-bestbite-small-fishfood-90-g.html', sizeMm: '0.5–0.8', fishSize: '3–5 cm' },
   { id: 'water', name: 'Water care kit', description: 'Three refills for a little fresh-water routine', amount: 3, price: 10, icon: 'droplet', unit: 'refills' },
-  { id: 'fertilizer', name: 'Seachem Flourish Potassium', description: 'Three plant-care doses for a greener little world', amount: 3, price: 6, icon: 'leaf', unit: 'doses' },
+  ...FERTILIZERS,
 ]
 export const STORE_SUPPLIES = SUPPLIES.filter(item => item.id !== 'food')
 export const foodPortions = resources => (resources.food || 0) + (resources.foodNano || 0) + (resources.foodSmall || 0)
 export function newId() { return globalThis.crypto?.randomUUID?.() || `tank-${Date.now()}-${Math.random().toString(36).slice(2, 8)}` }
 export function createWorkspace(tank = createTank(), coins = STARTING_COINS) {
   const first = { ...tank, id: newId() }
-  return { version: 2, tanks: [first], activeId: first.id, coins, resources: { food: 5, foodNano: 0, foodSmall: 0, water: 3, fertilizer: 2 }, checkIn: { date: null, streak: 0 }, completedLessons: [] }
+  return { version: 2, tanks: [first], activeId: first.id, coins, resources: { food: 5, foodNano: 0, foodSmall: 0, water: 3, ...Object.fromEntries(FERTILIZERS.map(item => [item.id, 0])) }, checkIn: { date: null, streak: 0 }, completedLessons: [] }
 }
 export function normalizeWorkspace(value) {
   if (value?.version !== 2 || !Array.isArray(value.tanks) || !value.tanks.length || value.tanks.length > 8) return null
@@ -38,7 +39,11 @@ export function normalizeWorkspace(value) {
     if (amount != null && (!Number.isInteger(amount) || amount < 0 || amount > 100000)) return null
     resources[key] = amount ?? 0
   }
-  resources.fertilizer = Number.isInteger(value.resources?.fertilizer) && value.resources.fertilizer >= 0 && value.resources.fertilizer <= 100000 ? value.resources.fertilizer : 0
+  for (const item of FERTILIZERS) {
+    const amount = value.resources?.[item.id]
+    if (amount != null && (!Number.isInteger(amount) || amount < 0 || amount > 100000)) return null
+    resources[item.id] = amount ?? 0
+  }
   const date = /^\d{4}-\d{2}-\d{2}$/.test(value.checkIn?.date) ? value.checkIn.date : null
   return { version: 2, tanks, activeId: tanks.some(t => t.id === value.activeId) ? value.activeId : tanks[0].id, coins: value.coins, resources, checkIn: { date, streak: Number.isInteger(value.checkIn?.streak) ? Math.max(0, Math.min(100000, value.checkIn.streak)) : 0 }, completedLessons: Array.isArray(value.completedLessons) ? [...new Set(value.completedLessons.filter(id => typeof id === 'string' && id.length < 60))].slice(0, 100) : [] }
 }
@@ -120,6 +125,19 @@ export function fertilize(workspace, day = today()) {
   if (getHealth(tank).plantCount === 0) return { error: 'Add a plant before using fertilizer' }
   if (tank.care.fertilizer === day) return { error: 'Your plants have already had a dose today' }
   if (!workspace.resources.fertilizer) return { error: 'Visit Fish store for a fertilizer refill' }
-  const next = replaceTank(workspace, { ...tank, water: { ...tank.water, nutrients: Math.min(10, tank.water.nutrients + 1) }, care: { ...tank.care, fertilizer: day } })
+  if (tank.water.potassium >= 10) return { error: 'Potassium is already at the top of the demo scale' }
+  const next = replaceTank(workspace, { ...tank, water: { ...tank.water, potassium: Math.min(10, tank.water.potassium + 1) }, care: { ...tank.care, fertilizer: day } })
   return { workspace: { ...next, resources: { ...workspace.resources, fertilizer: workspace.resources.fertilizer - 1 } } }
+}
+
+export function setNutrient(workspace, nutrient, value) {
+  const item = fertilizerFor(nutrient)
+  if (!item || !Number.isInteger(value) || value < 0 || value > 10) return { error: 'Choose a valid nutrient level' }
+  const tank = activeTank(workspace)
+  const previous = tank.water[nutrient]
+  if (value === previous) return { workspace }
+  const doses = Math.max(0, value - previous)
+  if (doses > (workspace.resources[item.id] || 0)) return { error: `Buy ${item.name} in Fish store to raise ${nutrient} (${doses} demo ${doses === 1 ? 'dose' : 'doses'} needed)` }
+  const next = replaceTank(workspace, { ...tank, water: { ...tank.water, [nutrient]: value } })
+  return { workspace: { ...next, resources: { ...next.resources, [item.id]: next.resources[item.id] - doses } } }
 }

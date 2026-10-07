@@ -3,6 +3,7 @@ import { additionalFish, additionalFishDetails } from './fishCatalog.js'
 import { aquariumPlantListings } from './plantCatalog.js'
 import { SCAPES } from './scapes.js'
 import { fishModel, fishModelAspectRatio } from './fishModels.js'
+import { NUTRIENTS, NUTRIENT_DEFAULT } from './fertilizers.js'
 
 export const STORAGE_KEY = 'buildyourtank:v1'
 // Tank illustrations show full-grown fish at the upper end of each listed adult length.
@@ -87,7 +88,7 @@ export const IDEAS = [
   { id: 'sunny', name: 'The sunny school', note: 'Easygoing swimmers and open space', fish: { danio: 3, rasbora: 2 }, plants: { grass: 2, fern: 1 }, sand: 'gravel', scape: 'stone-ridge' },
 ]
 export function createTank() {
-  return { version: 1, name: 'My little world', size: '60p', fish: { tetra: 3, angelfish: 1 }, plants: { anubias: 1, fern: 1 }, sand: 'sand', scape: 'classic', filter: 'sponge', glass: 'regular', water: { temperature: 25, hardness: 7, nutrients: 3, co2: 0 }, isPublic: false, earned: 0, care: {}, savedAt: null }
+  return { version: 1, name: 'My little world', size: '60p', fish: { tetra: 3, angelfish: 1 }, plants: { anubias: 1, fern: 1 }, sand: 'sand', scape: 'classic', filter: 'sponge', glass: 'regular', water: { temperature: 25, hardness: 7, potassium: NUTRIENT_DEFAULT, nitrogen: NUTRIENT_DEFAULT, iron: NUTRIENT_DEFAULT, phosphorus: NUTRIENT_DEFAULT, co2: 0 }, isPublic: false, earned: 0, care: {}, savedAt: null }
 }
 function quantities(input, options) {
   const result = {}
@@ -106,7 +107,16 @@ export function normalizeTank(value, { validateBudget = true } = {}) {
     scape: SCAPES.some(x => x.id === value.scape) ? value.scape : 'classic',
     filter: FILTERS.some(x => x.id === value.filter) ? value.filter : 'sponge',
     glass: GLASS.some(x => x.id === value.glass) ? value.glass : 'regular',
-    water: { ...(typeof value.water?.ph === 'number' && value.water.ph >= 4 && value.water.ph <= 9 ? { ph: value.water.ph } : {}), temperature: typeof value.water?.temperature === 'number' && value.water.temperature >= 18 && value.water.temperature <= 32 ? value.water.temperature : 25, hardness: typeof value.water?.hardness === 'number' && value.water.hardness >= 1 && value.water.hardness <= 20 ? value.water.hardness : 7, nutrients: typeof value.water?.nutrients === 'number' && value.water.nutrients >= 0 && value.water.nutrients <= 10 ? value.water.nutrients : 3, co2: Number.isInteger(value.water?.co2) && value.water.co2 >= 0 && value.water.co2 <= 10 ? value.water.co2 : 0 },
+    water: {
+      ...(typeof value.water?.ph === 'number' && value.water.ph >= 4 && value.water.ph <= 9 ? { ph: value.water.ph } : {}),
+      temperature: typeof value.water?.temperature === 'number' && value.water.temperature >= 18 && value.water.temperature <= 32 ? value.water.temperature : 25,
+      hardness: typeof value.water?.hardness === 'number' && value.water.hardness >= 1 && value.water.hardness <= 20 ? value.water.hardness : 7,
+      ...Object.fromEntries(NUTRIENTS.map(key => {
+        const valueForKey = value.water?.[key] ?? value.water?.nutrients
+        return [key, Number.isInteger(valueForKey) && valueForKey >= 0 && valueForKey <= 10 ? valueForKey : NUTRIENT_DEFAULT]
+      })),
+      co2: Number.isInteger(value.water?.co2) && value.water.co2 >= 0 && value.water.co2 <= 10 ? value.water.co2 : 0,
+    },
     isPublic: value.isPublic === true,
     earned: Number.isSafeInteger(value.earned) && value.earned >= 0 ? value.earned : 0,
     care: {}, savedAt: typeof value.savedAt === 'string' ? value.savedAt.slice(0, 40) : null,
@@ -161,7 +171,7 @@ export function getHealth(tank) {
   const parameterWarnings = []
   if (ph < 6 || ph > 8) parameterWarnings.push('The pH setting is outside this demo’s usual freshwater band (6–8)')
   if (tank.water?.temperature < 22 || tank.water?.temperature > 28) parameterWarnings.push('The temperature setting is outside this demo’s usual tropical band (22–28 °C)')
-  if (tank.water?.nutrients > 7) parameterWarnings.push('The nutrient setting is high in this demo Try a smaller dose and review your care routine')
+  for (const key of NUTRIENTS) if (tank.water?.[key] > 7) parameterWarnings.push(`The ${key} setting is high in this demo Review your care routine and check real water values before dosing`)
   if (tank.water?.co2 >= 8) parameterWarnings.push('The CO₂ setting is high in this demo In a real tank, verify dissolved CO₂ and watch your fish for distress')
   warnings.push(...parameterWarnings)
   const quality = Math.max(30, Math.min(96, 98 - load * 1.3 + plantCount * 1.5 - Math.max(0, load - capacity) * 3 - parameterWarnings.length * 8))

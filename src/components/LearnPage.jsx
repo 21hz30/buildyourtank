@@ -106,7 +106,7 @@ export default function LearnPage() {
         <div className="entry-sections">{entry.sections.map(([title, content], i) => <section key={title}><span className="entry-section-number">0{i + 1}</span><div><h2>{title}</h2><p>{content}</p></div></section>)}</div>
         {entry.sources?.length > 0 && <section className="entry-reading-sources" aria-label="Guide sources"><h2>Sources & further reading</h2><p>Deficiency patterns vary by species. The general plant reference explains leaf symptoms; the aquarium references cover nutrient supply and care.</p><ul>{entry.sources.map(source => <li key={source.url}><a href={source.url} target="_blank" rel="noreferrer">{source.name} <Icon name="arrow" size={13} /></a></li>)}</ul></section>}
       </article>
-      {((entry.category === 'plants' && entry.kind !== 'guide') || entry.id === 'supply-fertilizer') && <PlantNutritionLink />}
+      {((entry.category === 'plants' && entry.kind !== 'guide') || entry.nutrient) && <PlantNutritionLink />}
       <div className="entry-store-link"><Icon name={entry.icon} size={23} /><div><h2>Bring what you learn into your tank</h2><p>Explore the fish, plants and supplies in Fish store</p></div><a className="secondary-button" href="#/store">Visit Fish store <Icon name="arrow" size={15} /></a></div>
       {related.length > 0 && <section className="related-library"><h2>Keep exploring</h2><div className="library-grid">{related.map(item => <EntryCard key={item.id} entry={item} />)}</div></section>}
       <p className="page-footnote">Care ranges are general starting points Needs vary by population, life stage and setup; confirm species identity and current product instructions for a real aquarium</p>

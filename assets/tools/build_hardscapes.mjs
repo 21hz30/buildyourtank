@@ -20,8 +20,77 @@ const rockColors = [
   ['#bcb5aa', '#858782', '#535e61'],
   ['#b6a58b', '#83745f', '#49493f'],
 ]
+const expandedSurfaces = {}
 
-function illustration(viewBox, title, stretch = true) {
+// Each added piece gets a different silhouette, palette, grain, fractures and
+// wear. Background forms are tall; foreground fragments stay low and small.
+function populate(a, width, height, key, baseline) {
+  const seed = [...key].reduce((value, letter) => value * 31 + letter.charCodeAt(0) >>> 0, 29)
+  const rng = random(seed), count = baseline * 2
+  const rearCount = Math.ceil(count * .45), middleCount = Math.floor(count * .25)
+  const stoneBias = key === 'stone-ridge' ? .78 : key === 'branching-banks' ? .5 : .34
+  const layers = { background: [], middle: [], foreground: [] }
+  const surfaces = []
+  for (let index = 0; index < count; index++) {
+    const layer = index < rearCount ? 'background' : index < rearCount + middleCount ? 'middle' : 'foreground'
+    const localIndex = layer === 'background' ? index : layer === 'middle' ? index - rearCount : index - rearCount - middleCount
+    const layerCount = layer === 'background' ? rearCount : layer === 'middle' ? middleCount : count - rearCount - middleCount
+    const stone = index === 0 || (index !== 1 && rng() < stoneBias)
+    const x = width * (.05 + .9 * (localIndex + .2 + rng() * .6) / layerCount)
+    const bottom = height * (layer === 'foreground' ? .965 + rng() * .03 : .88 + rng() * .08)
+    const top = index < 2 ? 0 : height * (layer === 'background' ? .015 + rng() * .3 : layer === 'middle' ? .35 + rng() * .31 : .81 + rng() * .08)
+    const span = width * (layer === 'foreground' ? .055 + rng() * .085 : stone ? .09 + rng() * .09 : .065 + rng() * .08)
+    const left = Math.max(1, x - span / 2), right = Math.min(width - 1, x + span / 2)
+    const tall = bottom - top, broad = right - left
+    const id = `${layer === 'background' ? 'rear' : layer === 'foreground' ? 'foreground' : 'middle'}-${stone ? 'rock' : 'wood'}-${index}`
+    const start = a.pieces.length
+    if (stone) {
+      // Unequal shoulders, split peaks, chipped corners and sloping faces.
+      const summit = left + broad * (.25 + rng() * .5)
+      const shoulderY = top + tall * (.12 + rng() * .24)
+      const ridge = left + broad * (.36 + rng() * .25)
+      const profiles = [
+        `M${n(left)} ${n(bottom)}L${n(left + broad * .04)} ${n(top + tall * .64)} ${n(left + broad * .18)} ${n(shoulderY)} ${n(summit)} ${n(top)} ${n(summit + broad * .08)} ${n(top + tall * .035)} ${n(right - broad * .12)} ${n(top + tall * (.22 + rng() * .2))} ${n(right - broad * .07)} ${n(top + tall * .59)} ${n(right)} ${n(bottom - tall * .08)} ${n(right - broad * .16)} ${n(bottom)}Z`,
+        `M${n(left)} ${n(bottom)}L${n(left + broad * .02)} ${n(top + tall * .5)} ${n(left + broad * .15)} ${n(top + tall * .48)} ${n(left + broad * .16)} ${n(top + tall * .13)} ${n(left + broad * .43)} ${n(top)} ${n(right - broad * .21)} ${n(top + tall * .03)} ${n(right - broad * .19)} ${n(top + tall * .33)} ${n(right - broad * .04)} ${n(top + tall * .4)} ${n(right)} ${n(bottom - tall * .05)}Z`,
+        `M${n(left + broad * .08)} ${n(bottom)}Q${n(left - broad * .06)} ${n(top + tall * .7)} ${n(left + broad * .09)} ${n(top + tall * .3)}Q${n(left + broad * .24)} ${n(top)} ${n(left + broad * .51)} ${n(top)}L${n(right - broad * .15)} ${n(top + tall * .08)}Q${n(right + broad * .02)} ${n(top + tall * .32)} ${n(right - broad * .03)} ${n(top + tall * .66)}L${n(right)} ${n(bottom - tall * .06)} ${n(right - broad * .18)} ${n(bottom)}Z`,
+        `M${n(left)} ${n(bottom)}L${n(left + broad * .1)} ${n(top + tall * .26)} ${n(left + broad * .28)} ${n(top + tall * .03)} ${n(left + broad * .41)} ${n(top)} ${n(left + broad * .49)} ${n(top + tall * .32)} ${n(left + broad * .62)} ${n(top + tall * .12)} ${n(right - broad * .18)} ${n(top + tall * .08)} ${n(right - broad * .04)} ${n(top + tall * .49)} ${n(right)} ${n(bottom - tall * .1)} ${n(right - broad * .14)} ${n(bottom)}Z`,
+      ]
+      const d = profiles[index < 2 ? 0 : index % profiles.length]
+      const seam = `M${n(summit)} ${n(top + tall * .07)}L${n(ridge)} ${n(top + tall * .37)} ${n(ridge - broad * .14)} ${n(top + tall * .48)} ${n(ridge + broad * .06)} ${n(top + tall * .65)} ${n(ridge - broad * .1)} ${n(bottom - tall * .05)}`
+      a.rock(id, d, [left, top, broad, tall], [
+        `M${n(left)} ${n(bottom)}L${n(left + broad * .18)} ${n(shoulderY)} ${n(summit)} ${n(top)} ${n(ridge)} ${n(top + tall * .6)}Z`,
+        `M${n(ridge)} ${n(top + tall * .6)}L${n(right - broad * .12)} ${n(top + tall * .3)} ${n(right)} ${n(bottom - tall * .08)} ${n(right - broad * .16)} ${n(bottom)}Z`,
+      ], [seam, `M${n(ridge)} ${n(top + tall * .37)}l${n(broad * .22)} ${n(tall * .04)} ${n(broad * .09)} ${n(-tall * .08)}`], (index + Math.floor(rng() * 4)) % rockColors.length, seed + index * 101, index % 3 ? n(rng() * 22 - 11) : 0, [
+        [n(left + broad * .32), n(top + tall * .74), n(broad * .035), n(tall * .025), n(rng() * 60 - 30)],
+        [n(left + broad * .69), n(top + tall * .84), n(broad * .055), n(tall * .018), n(rng() * 60 - 30)],
+      ])
+      surfaces.push({ x: n(left + broad * .52), y: n(top + tall * .7), width: n(Math.min(broad * .6, tall * .35)), angle: n(-45 + rng() * 30), material: 'stone', layer, piece: id })
+    } else if (layer === 'foreground') {
+      const y = bottom - height * (.025 + rng() * .016)
+      const thickness = height * (.018 + rng() * .013)
+      const d = `M${n(left)} ${n(y + thickness)}Q${n(left + broad * .2)} ${n(y - thickness * .7)} ${n(left + broad * .46)} ${n(y)}L${n(left + broad * .58)} ${n(y - thickness * .65)} ${n(left + broad * .64)} ${n(y - thickness * .6)} ${n(left + broad * .62)} ${n(y + thickness * .08)}Q${n(right - broad * .18)} ${n(y - thickness * .16)} ${n(right)} ${n(y + thickness * .44)}L${n(right - broad * .015)} ${n(y + thickness * 1.2)}Q${n(left + broad * .67)} ${n(y + thickness * .48)} ${n(left + broad * .39)} ${n(y + thickness * .85)}L${n(left + broad * .12)} ${n(y + thickness * 1.35)}Z`
+      a.wood(id, d, [left, y - thickness, broad, thickness * 2.5], [`M${n(left + broad * .04)} ${n(y + thickness * .6)}Q${n(left + broad * .27)} ${n(y - thickness * .1)} ${n(left + broad * .48)} ${n(y + thickness * .4)}T${n(right)} ${n(y + thickness * .75)}`], [[n(x), n(y + thickness * .4), n(broad * .055), n(thickness * .18), n(rng() * 20 - 10)]], index % woodColors.length, seed + index * 131, [[n(right - broad * .02), n(y + thickness * .8), n(thickness * .2), n(thickness * .35), n(rng() * 30 - 15)]])
+      surfaces.push({ x: n(x), y: n(y + thickness * .4), width: n(broad * .5), angle: n(rng() * 12 - 6), material: 'wood', layer, piece: id })
+    } else {
+      const trunk = broad * (layer === 'foreground' ? .34 : .25)
+      const lean = (rng() - .5) * broad * .7
+      const tipX = x + lean, elbowY = top + tall * .55, elbowX = x - lean * .35
+      const forkX = lean > 0 ? left : right
+      const forkY = top + tall * (.16 + rng() * .28)
+      const d = `M${n(x - trunk)} ${n(bottom)}Q${n(elbowX - trunk)} ${n(elbowY)} ${n(tipX - trunk * .3)} ${n(top + tall * .06)}L${n(tipX)} ${n(top)} ${n(tipX + trunk * .25)} ${n(top + tall * .07)}Q${n(tipX + trunk * .25)} ${n(top + tall * .31)} ${n(elbowX + trunk * .16)} ${n(elbowY)}L${n(forkX - trunk * .15)} ${n(forkY + tall * .035)} ${n(forkX)} ${n(forkY)} ${n(forkX + trunk * .17)} ${n(forkY + tall * .09)} ${n(elbowX + trunk)} ${n(elbowY + tall * .1)}Q${n(x + trunk * .45)} ${n(bottom - tall * .2)} ${n(x + trunk)} ${n(bottom)}Z`
+      const grain = [`M${n(x - trunk * .45)} ${n(bottom)}Q${n(elbowX - trunk * .5)} ${n(elbowY)} ${n(tipX)} ${n(top + tall * .025)}`, `M${n(x + trunk * .3)} ${n(bottom)}Q${n(elbowX + trunk * .65)} ${n(elbowY + tall * .07)} ${n(forkX)} ${n(forkY + tall * .025)}`]
+      a.wood(id, d, [left, top, broad, tall], grain, [[n(elbowX), n(elbowY + tall * .19), n(trunk * .22), n(Math.min(tall * .05, trunk * .65)), n(lean / broad * 40)]], (index + Math.floor(rng() * 3)) % woodColors.length, seed + index * 131, layer === 'foreground' || index % 3 === 0 ? [[n(tipX), n(top + tall * .06), n(trunk * .3), n(trunk * .12), n(lean / broad * 20)]] : [])
+      surfaces.push({ x: n(x), y: n(bottom - tall * .08), width: n(trunk * 1.1), angle: n(-78 + lean / broad * 25), material: 'wood', layer, piece: id })
+    }
+    const generated = a.pieces.splice(start)
+    // Slight water haze separates distant forms; front pieces retain contrast.
+    layers[layer].push(`<g data-depth="${layer}"${layer === 'background' ? ' opacity=".78"' : ''}>${generated.join('')}</g>`)
+  }
+  expandedSurfaces[key] = surfaces
+  return layers
+}
+
+function illustration(viewBox, title) {
   const defs = ['<filter id="wood-surface" x="-2%" y="-2%" width="104%" height="104%"><feTurbulence type="fractalNoise" baseFrequency=".18 .025" numOctaves="3" seed="17"/><feColorMatrix type="saturate" values="0"/><feComposite in2="SourceGraphic" operator="in"/><feBlend in="SourceGraphic" mode="soft-light"/></filter><filter id="stone-surface" x="-2%" y="-2%" width="104%" height="104%"><feTurbulence type="fractalNoise" baseFrequency=".085" numOctaves="4" seed="32"/><feDiffuseLighting surfaceScale="2.8" diffuseConstant=".8" lighting-color="#e4e5dc"><feDistantLight azimuth="235" elevation="48"/></feDiffuseLighting><feComposite in2="SourceGraphic" operator="in"/><feBlend in="SourceGraphic" mode="multiply"/></filter>'], pieces = []
   function material(id, d, colors, surface = 'wood') {
     defs.push(`<clipPath id="${id}-clip"><path d="${d}"/></clipPath><linearGradient id="${id}-color" x1=".1" y1="0" x2=".9" y2="1"><stop stop-color="${colors[0]}"/><stop offset=".38" stop-color="${colors[1]}"/><stop offset="1" stop-color="${colors[2]}"/></linearGradient>`)
@@ -67,14 +136,18 @@ function illustration(viewBox, title, stretch = true) {
     pieces.push(`<g data-piece="${id}">${material(id, d, colors, 'stone')}<g clip-path="url(#${id}-clip)" stroke-linecap="round">${detail}</g></g>`)
   }
   const path = (d, fill, stroke = 'none', width = 1) => pieces.push(`<path d="${d}" fill="${fill}" stroke="${stroke}" stroke-width="${width}" stroke-linecap="round" stroke-linejoin="round"/>`)
-  return { wood, rock, path, save(file) {
-    writeFileSync(new URL(`../..${file}`, import.meta.url), `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${viewBox}"${stretch ? ' preserveAspectRatio="none"' : ''}><title>${title}</title><defs>${defs.join('')}</defs>${pieces.join('\n')}</svg>\n`)
+  return { wood, rock, path, pieces, save(file) {
+    const [, , width, height] = viewBox.split(' ').map(Number)
+    const key = file.endsWith('driftwood.svg') ? 'classic' : file.split('/').at(-1).replace('.svg', '')
+    const baseline = pieces.filter(piece => piece.includes('data-piece=')).length
+    const layers = populate({ wood, rock, pieces }, width, height, key, baseline)
+    writeFileSync(new URL(`../..${file}`, import.meta.url), `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${viewBox}" preserveAspectRatio="none" data-baseline-pieces="${baseline}" data-piece-count="${baseline * 3}"><title>${title}</title><defs>${defs.join('')}</defs>${layers.background.join('\n')}${layers.middle.join('\n')}${pieces.join('\n')}${layers.foreground.join('\n')}</svg>\n`)
   } }
 }
 
-// A compact, twisted bogwood crown: hollow elbow, forked antlers, fine roots.
+// A twisted bogwood crown: hollow elbow, forked antlers and exposed roots.
 {
-  const a = illustration('0 0 450 250', 'Twisted bogwood with a hollow elbow and exposed roots', false)
+  const a = illustration('0 0 450 250', 'Twisted bogwood with a hollow elbow and exposed roots')
   a.wood('rear-left-antler', 'M12 210Q33 174 43 128L39 82 29 40 34 26 48 62 55 94 64 70 69 46 76 58 69 112Q73 155 58 198L49 228Z', [10,25,72,205], ['M28 211Q60 151 49 96L35 32','M50 159Q68 113 71 54'], [[51,129,3,8,9]], 3, 121)
   a.wood('rear-right-antler', 'M366 226Q375 186 383 147 391 110 381 75L375 36 382 24 392 66 401 86 406 54 413 43 417 61 410 105Q418 149 409 189L425 231Z', [365,20,65,215], ['M382 218Q405 166 396 111L383 32','M399 164Q421 116 412 51'], [[401,129,4,9,-8]], 1, 129)
   a.wood('rear-fork', 'M146 190C162 163 187 152 204 125L219 82 223 58 229 64 230 87 243 42 248 47 238 91 226 127C214 151 198 174 180 196Z', [140,40,110,160], ['M155 188C182 155 211 146 226 98L241 49', 'M173 186Q214 150 223 92'], [[215,128,4,8,30]], 2, 17)
@@ -184,4 +257,5 @@ function illustration(viewBox, title, stretch = true) {
   a.save('/public/art/scapes/branching-banks.svg')
 }
 
-console.log('Rebuilt five detailed hardscapes with unique silhouettes and surface textures.')
+writeFileSync(new URL('../../src/lib/generatedHardscapeSurfaces.js', import.meta.url), `// Generated by assets/tools/build_hardscapes.mjs; coordinates use each SVG viewBox.\nexport const expandedHardscapeSurfaces = ${JSON.stringify(expandedSurfaces, null, 2)}\n`)
+console.log('Rebuilt five detailed hardscapes with three times the pieces, foreground fragments and surface-height backdrops.')

@@ -182,6 +182,13 @@
   filter:drop-shadow(1px 2px 1px #163c2526)
 }
 
+.plant-foliage { transform-origin:bottom center; }
+.scene-photo-plant .plant-foliage { width:100%; height:100%; }
+.scene-photo-plant .photo-model, .scene-photo-plant img { width:100%; height:100%; }
+.scene-plant-foreground { animation:none; }
+.scene-plant-hardscape { animation:none; }
+.scene-plant-foreground .photo-model { filter:drop-shadow(0 1px 1px #183f2530); }
+
 .fish-swim-space {
   position:absolute;
   inset:0;
@@ -205,6 +212,10 @@
 }
 
 .fish-anatomy svg { display:block; width:100%; height:auto; overflow:visible; }
+.photo-model { display:block; width:100%; height:auto; }
+.fish-photo { filter:drop-shadow(0 2px 2px #29483f30); }
+.scene-photo-plant .photo-model { filter:drop-shadow(1px 2px 2px #17372430); }
+.scene-moss-photo .photo-model { width:100%; height:100%; object-fit:cover; }
 .fish-anatomy .fish-tail { animation:tail-beat var(--fin-period) ease-in-out infinite; }
 .fish-anatomy .fish-dorsal { animation:dorsal-ripple calc(var(--fin-period) * 1.8) ease-in-out infinite; }
 .fish-anatomy .fish-anal { animation:anal-ripple calc(var(--fin-period) * 1.6) ease-in-out infinite; }

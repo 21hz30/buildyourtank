@@ -67,3 +67,17 @@ test('every catalog fish supports animation with local paint and anatomy layers'
     assert.ok(fish.artAspectRatio > 0)
   }
 })
+
+test('rummy-nose markings stay bright and localized to the head and striped tail', () => {
+  const fish = CATALOG.fish.find(item => item.id === 'rummy-nose-tetra')
+  const svg = fishModelSvg(fish, 'rummy')
+  const [red, green, blue] = fish.visual[2].slice(1).match(/../g).map(value => Number.parseInt(value, 16))
+  assert.ok(red > 230 && red > green * 4 && red > blue * 3)
+  assert.match(svg, /class="fish-nose"[^>]*fill="#f22b38"/)
+  assert.match(svg, /clip-path="url\(#rummy-tail-clip\)"><g class="fish-tail-pattern">/)
+  const fins = /<linearGradient id="rummy-fin"[^>]*>(.*?)<\/linearGradient>/s.exec(svg)[1]
+  assert.ok(!fins.includes(fish.visual[2]), 'The red nose must not turn every fin red')
+  const dorsal = /class="fish-dorsal"[^>]*>(.*?)<\/g><g class="fish-anal"/s.exec(svg)[1]
+  assert.ok(!dorsal.includes(fish.visual[2]), 'Fin outlines and rays should also remain neutral')
+  assert.ok(!svg.includes('stop-color="#e1debc"'), 'Silver bodies must not receive a yellow belly tint')
+})

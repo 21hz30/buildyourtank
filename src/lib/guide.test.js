@@ -108,6 +108,7 @@ test('the recorded Quiet Garden scenario fits the real demo budget and supports 
   accept(purchaseItem(workspace, 'plants', 'fern'))
   accept(checkIn(workspace, '2026-10-06'))
   accept(buySupply(workspace, 'food'))
+  accept(buySupply(workspace, 'fertilizer'))
   accept(careForWorkspace(workspace, 'feed', '2026-10-06'))
   accept(careForWorkspace(workspace, 'water', '2026-10-06'))
   accept(fertilize(workspace, '2026-10-06'))

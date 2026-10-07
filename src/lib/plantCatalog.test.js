@@ -62,3 +62,19 @@ test('plant scale is measured against each physical tank size', () => {
   const floater = aquariumPlantListings.find(item => item.plantType === 'Floating plants')
   assert.ok('top' in plantPlacement(floater, SIZES[0], [50, 0]))
 })
+
+test('plant illustrations keep cultivar colors distinct instead of sharing an olive cast', () => {
+  const monte = CATALOG.plants.find(plant => plant.id === 'grass')
+  const anubias = CATALOG.plants.find(plant => plant.id === 'anubias')
+  const red = CATALOG.plants.find(plant => /Alternanthera reineckii/.test(plant.name))
+  const channels = plant => plant.color.slice(1).match(/../g).map(value => Number.parseInt(value, 16))
+  const [r, g, b] = channels(monte)
+  assert.ok(g > r * 1.7 && g > b * 2 && g > 190, 'Monte Carlo should be a vivid green')
+  assert.ok(channels(anubias)[1] < g, 'Anubias should retain its deeper green')
+  assert.ok(channels(red)[0] > channels(red)[1] * 2, 'Red cultivars should retain their red pigment')
+  for (const plant of [monte, anubias, red]) {
+    const svg = decodeURIComponent(plant.art)
+    assert.ok(svg.includes(`stop-color="${plant.color}"`), plant.name)
+    assert.ok(!svg.includes('stop-color="#c1d68c"'), 'Leaf highlights should not impose a yellow-green cast')
+  }
+})

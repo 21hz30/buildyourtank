@@ -1,5 +1,5 @@
 import { greenAquaSpecies } from './greenAquaSpecies.js'
-import { fishModel, fishModelAspectRatio } from './fishModels.js'
+import { fishLooks, fishModel, fishModelAspectRatio } from './fishModels.js'
 
 export const FISH_TYPES = [
   'Tetras', 'Rasboras', 'Betta fish', 'Danios & minnows', 'Barbs',
@@ -60,7 +60,7 @@ export const additionalFish = greenAquaSpecies.map(fish => {
     artLengthRatio: 1,
     artAspectRatio: fishModelAspectRatio(fish),
     tag: typeGroup,
-    color: '#9bc4bf',
+    color: fishLooks[fish.id][1],
     photoCredit: fish.photoCredit || 'Green Aqua',
     photoSource: fish.photoSource || fish.sourceUrl,
     photoLicense: fish.photoLicense,

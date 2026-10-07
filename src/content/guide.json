@@ -106,7 +106,7 @@
       "summary": "Explore how a habitat is more than what you can see.",
       "instructions": [
         "Read the inhabitants, pH and space status, then find Water & nutrients beside the tank.",
-        "Explore pH, temperature, hardness and nutrients. Watch the educational warnings and return to your original values after experimenting."
+        "Explore pH, temperature, hardness, four separate plant nutrients and CO₂. Raising a nutrient uses a matching purchased demo dose; these sliders are not water tests or real dosing instructions."
       ],
       "narration": "Water settings make less visible conditions readable. Changing temperature can trigger an educational warning. These are simplified demo settings, not live measurements; hardness is saved as a reference rather than modeled chemically.",
       "recording": "展示 Water & nutrients，将温度从 25 改为 32，展示警告，再恢复 25。不要说成传感器监测、真实水质检测或物种精确预测。",
@@ -118,11 +118,11 @@
       "title": "Prepare for daily care",
       "summary": "Know where your coins and supplies go.",
       "instructions": [
-        "Open My bag to see shared food portions, water refills and fertilizer doses.",
+        "Open My bag to see shared food portions, water refills and separate potassium, nitrogen, iron and phosphorus fertilizer doses.",
         "Daily check-in grants 20 coins once per local date. In Fish store, Care supplies buys packs into your shared bag, not into one tank."
       ],
       "narration": "My bag keeps supplies together across tanks. Daily check-in earns demo coins, and care supplies can be restocked in the store for future routines.",
-      "recording": "展示 My bag 后关闭，领取 Daily check-in 的 20 coins（已领取则展示状态）。进入 Fish store → Care supplies 购买一包食物，展示库存增加。",
+      "recording": "展示 My bag 后关闭，领取 Daily check-in 的 20 coins（已领取则展示状态）。进入 Fish store → Care supplies 购买一包食物和一瓶钾肥，展示库存增加。",
       "seconds": 12
     },
     {
@@ -132,9 +132,9 @@
       "summary": "Feed, refresh the water and care for your plants.",
       "instructions": [
         "Feed fish uses one food portion and earns 5 coins. Change water uses one refill and earns 8 coins.",
-        "Care for plants uses one fertilizer dose and increases the nutrient index. Each care action is available once per tank per local day."
+        "Care for plants uses one purchased potassium demo dose and raises its slider. The other nutrients use their own purchased doses through the four sliders. Each care action is available once per tank per local day."
       ],
-      "narration": "Feeding and water care consume supplies and reward attention with demo coins. Fertilizer changes the nutrient index. Each task records completion for this tank and day, encouraging a small, repeatable routine.",
+      "narration": "Feeding and water care consume supplies and reward attention with demo coins. Plant care uses a purchased potassium demo dose; the other nutrients have their own store items and sliders. Each task records completion for this tank and day.",
       "recording": "确保选中 Quiet Garden，依次 Feed fish、Change water、Care for plants。每个动画停留约 2 秒，展示完成状态和库存扣减。重录请使用新的演示鱼缸，勿删除已有作品。",
       "seconds": 20
     },
