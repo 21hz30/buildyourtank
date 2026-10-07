@@ -40,6 +40,31 @@ test('foreground portions spread evenly across soil and new quantities add plant
   }
 })
 
+test('stems and tall rooted plants stay behind carpets and shorter planting banks', () => {
+  const ground = CATALOG.plants.filter(p => !['Mosses & liverworts', 'Floating plants', 'Rhizome & epiphytes'].includes(p.plantType))
+  assert.ok(ground.some(p => p.plantType === 'Stem plants' && p.position === 'foreground'), 'exercise foreground-labelled stems')
+  assert.ok(ground.some(p => p.heightCm >= 25 && p.position !== 'background'), 'exercise tall plants with other catalog positions')
+  for (const plant of ground) {
+    if (plant.plantType === 'Stem plants' || plant.heightCm >= 25) assert.equal(plantLayer(plant), 'background')
+  }
+  for (const size of SIZES) for (const scape of SCAPES) {
+    // Reverse inventory order to ensure height, rather than catalogue order,
+    // controls overlapping plants in the same CSS stacking layer.
+    const layout = plantingLayout([...ground].reverse().map(p => ({ ...p, key: `${p.id}-0` })), size, scape)
+    const rear = layout.filter(p => p.layer === 'background')
+    const middle = layout.filter(p => p.layer === 'midground')
+    const front = layout.filter(p => p.layer === 'foreground')
+    assert.ok(Math.max(...rear.map(p => p.y)) < Math.min(...middle.map(p => p.y)))
+    assert.ok(Math.max(...middle.map(p => p.y)) < Math.min(...front.map(p => p.y)))
+    for (const bank of [rear, middle, front]) for (let i = 1; i < bank.length; i++) {
+      assert.ok(bank[i - 1].plant.heightCm >= bank[i].plant.heightCm, 'shorter plants paint over taller members of their bank')
+      if (bank !== front && bank[i - 1].plant.heightCm > bank[i].plant.heightCm) assert.ok(bank[i - 1].y < bank[i].y, 'taller bank roots lie farther back')
+    }
+    assert.ok(rear.every(p => parseFloat(plantingStyle(p.plant, size, p).zIndex) < middle[0].depth))
+    assert.ok(middle.every(p => p.depth < front[0].depth))
+  }
+})
+
 test('planting follows catalogue positions, while moss, rhizomes and floaters use their habitats', () => {
   for (const size of SIZES) for (const scape of SCAPES) {
     const plants = CATALOG.plants.map(plant => ({ ...plant, key: `${plant.id}-0` }))

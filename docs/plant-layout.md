@@ -11,9 +11,14 @@ hardscape and substrate stay with the tank.
 - Carpeting plugs form low, overlapping mats with small variations in height,
   width and orientation. The planting base meets the soil; the glass-facing
   substrate edge remains visible beneath it.
-- Background plants sit behind the hardscape; midground groups form side banks
-  with an open central swimming corridor. Stem/grass pots can divide into two
-  bunches. Rosettes and algae balls remain whole.
+- Stem plants and rooted plants at least 25 cm tall form the rear banks, behind
+  the hardscape. Other rooted plants over 12 cm sit in the middle, with smaller
+  plants and carpets in front. These visual height rules override catalog
+  position labels. The banks retain an open central swimming corridor.
+- Rear, middle and foreground roots occupy separate depth bands. Taller plants
+  root farther back within each bank and paint before shorter foliage, so adding
+  a species cannot make its tall leaves cover the shorter plants in front.
+  Stem/grass pots can divide into two bunches. Rosettes and algae balls stay whole.
 - Rhizomes attach to wood or stone without being buried. Moss retains its thin,
   masked hardscape attachment. Floaters stay at the surface.
 - Attached foliage fans away from the local surface slope, with stable variations

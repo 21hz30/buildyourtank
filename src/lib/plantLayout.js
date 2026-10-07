@@ -19,8 +19,11 @@ export function plantLayer(plant) {
   if (plant.plantType === 'Mosses & liverworts') return 'moss'
   if (plant.plantType === 'Floating plants') return 'surface'
   if (plant.plantType === 'Rhizome & epiphytes') return 'hardscape'
-  if (plant.position === 'foreground' || plant.plantType === 'Carpeting plants' || plant.plantType === 'Algae balls') return 'foreground'
-  return plant.position === 'background' ? 'background' : 'midground'
+  if (plant.plantType === 'Carpeting plants' || plant.plantType === 'Algae balls') return 'foreground'
+  // Visual height takes precedence over catalogue position: tall swords and
+  // grasses must not cover the carpet, and stems always form the rear bank.
+  if (plant.plantType === 'Stem plants' || plant.heightCm >= 25) return 'background'
+  return plant.heightCm > 12 ? 'midground' : 'foreground'
 }
 
 // Start with four evenly spaced planting sites, then fill the widest gaps.
@@ -89,7 +92,7 @@ export function plantingLayout(plants, size, scape) {
       if (layer === 'foreground') {
         const pass = Math.floor(index / (columns * 4))
         x = clamp(2 + order[index % columns] / (columns - 1) * 96 + (pass ? (fraction(pass) - .5) * 48 / columns : 0), 2, 98)
-        y = [94.5, 90.5, 87.5, 96.3][Math.floor(index / columns) % 4] + (noise - .5) * .5 + (fraction(pass) - .5) * .25
+        y = [94.5, 90.5, 89.5, 96.3][Math.floor(index / columns) % 4] + (noise - .5) * .5 + (fraction(pass) - .5) * .25
         depth = 8
         heightScale = (low ? .68 + noise * .12 : .94) * .9
       } else if (layer === 'hardscape') {
@@ -106,7 +109,12 @@ export function plantingLayout(plants, size, scape) {
         // reference. Tall species sit behind the scape, shorter groups in front.
         const bank = index % 2, along = fraction(Math.floor(index / 2))
         x = bank ? 64 + along * 31 : 5 + along * 31
-        y = (layer === 'background' ? 85.5 : 88.5) + noise * 2
+        // Disjoint root bands keep every rear/middle plant behind the carpet.
+        // Taller members of a bank root farther back, independent of inventory
+        // order; tiny variation cannot reverse the catalogue height ordering.
+        y = layer === 'background'
+          ? 85.3 + (1 - clamp(plant.heightCm / 60, 0, 1)) * 1.8 + noise * .01
+          : 88.1 + (1 - clamp(plant.heightCm / 25, 0, 1)) * .65 + noise * .01
         depth = layer === 'background' ? 2 : 5
         heightScale = .9 + noise * .1
       }
@@ -115,7 +123,9 @@ export function plantingLayout(plants, size, scape) {
     }
   }
   // Farther rows paint first; closer leaves cover roots and gaps naturally.
-  return result.sort((a, b) => a.depth - b.depth || a.y - b.y || a.index - b.index)
+  return result.sort((a, b) => a.depth - b.depth
+    || (['background', 'midground', 'foreground'].includes(a.layer) && a.layer === b.layer ? b.plant.heightCm - a.plant.heightCm : 0)
+    || a.y - b.y || a.index - b.index)
 }
 
 export function plantingStyle(plant, size, placement) {
