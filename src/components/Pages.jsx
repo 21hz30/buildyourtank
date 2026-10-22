@@ -10,12 +10,36 @@ import { CHECK_IN_REWARD, STARTING_COINS, STORE_SUPPLIES as SUPPLIES, activeTank
 import { FISH_TYPES, fishTypeFor, uniqueStoreFish } from '../lib/fishCatalog'
 import { PLANT_TYPES, plantTypeFor } from '../lib/plantCatalog'
 
+const HOME_DEMO_VIDEO = {
+  embedUrl: 'https://www.youtube.com/embed/cs5HLQ7HSl4?rel=0',
+  title: 'Build Your Tank demo video',
+}
+
 export function HomePage() {
   const sample = { ...createTank(), size: '120p', fish: { tetra: 5, angelfish: 1 }, plants: { anubias: 2, fern: 2, grass: 2 } }
   return <main className="landing">
     <section className="landing-hero">
       <div className="hero-copy"><h1>A little world<br /><em>A lot of possibility</em></h1><p>Make an aquarium that feels like you Find your fish, grow something green, and enjoy a small daily moment of calm</p><div className="hero-actions"><a className="primary-button" href="#/login">Build your first tank <Icon name="arrow" size={17} /></a><a className="text-link" href="#/ideas">Find a little inspiration <Icon name="arrow" size={16} /></a></div></div>
-      <div className="hero-room"><RoomScene tank={sample} compact showDimensions={false} /><div className="hero-room-label"><span className="small-dot" /> Your own little corner of calm <span>120cm · freshwater</span></div></div>
+      <div className="hero-room">
+        <RoomScene tank={sample} compact showDimensions={false} />
+        <div className="hero-room-label"><span className="small-dot" /> Your own little corner of calm <span>120cm · freshwater</span></div>
+        <div className="home-demo-video">
+          <div className="home-demo-video-heading">
+            <div><span className="home-demo-video-eyebrow">A quick look inside</span><h2>See the demo in action</h2></div>
+            <span className="home-demo-video-platform">YouTube</span>
+          </div>
+          <div className="home-demo-video-frame">
+            <iframe
+              src={HOME_DEMO_VIDEO.embedUrl}
+              title={HOME_DEMO_VIDEO.title}
+              loading="lazy"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+            />
+          </div>
+        </div>
+      </div>
     </section>
     <section className="intro-steps" aria-label="How the project works"><div className="steps-heading"><h2>From a little idea<br />to a living canvas</h2><p>A little creativity A little science<br />Start wherever your curiosity takes you</p></div><div className="step"><span>01</span><h3>Make room for your world</h3><p>Choose a tank size and see how it fits in a room Add plants, substrate and a filter</p></div><div className="step"><span>02</span><h3>Meet your little swimmers</h3><p>Find your fish in the store and learn what makes a comfortable home for each one</p></div><div className="step"><span>03</span><h3>Come back for a little care</h3><p>Check in, collect coins, feed your fish and see what your habitat might look like in a month</p></div></section>
     <section className="home-inspiration"><div><h2>Every tank starts<br />with a little inspiration</h2><p>Explore different setups Borrow an idea<br />Then make it your own</p><a className="text-link" href="#/ideas">Explore Tank idea <Icon name="arrow" size={16} /></a></div><div className="inspiration-previews">{IDEAS.slice(0, 2).map(idea => <a key={idea.id} href="#/ideas"><TankScene tank={{ ...createTank(), ...idea }} mini /><h3>{idea.name}</h3><p>{idea.note}</p></a>)}</div></section>
