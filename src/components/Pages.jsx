@@ -21,8 +21,6 @@ export function HomePage() {
     <section className="landing-hero">
       <div className="hero-copy"><h1>A little world<br /><em>A lot of possibility</em></h1><p>Make an aquarium that feels like you Find your fish, grow something green, and enjoy a small daily moment of calm</p><div className="hero-actions"><a className="primary-button" href="#/login">Build your first tank <Icon name="arrow" size={17} /></a><a className="text-link" href="#/ideas">Find a little inspiration <Icon name="arrow" size={16} /></a></div></div>
       <div className="hero-room">
-        <RoomScene tank={sample} compact showDimensions={false} />
-        <div className="hero-room-label"><span className="small-dot" /> Your own little corner of calm <span>120cm · freshwater</span></div>
         <div className="home-demo-video">
           <div className="home-demo-video-heading">
             <div><span className="home-demo-video-eyebrow">A quick look inside</span><h2>See the demo in action</h2></div>
@@ -39,6 +37,8 @@ export function HomePage() {
             />
           </div>
         </div>
+        <RoomScene tank={sample} compact showDimensions={false} />
+        <div className="hero-room-label"><span className="small-dot" /> Your own little corner of calm <span>120cm · freshwater</span></div>
       </div>
     </section>
     <section className="intro-steps" aria-label="How the project works"><div className="steps-heading"><h2>From a little idea<br />to a living canvas</h2><p>A little creativity A little science<br />Start wherever your curiosity takes you</p></div><div className="step"><span>01</span><h3>Make room for your world</h3><p>Choose a tank size and see how it fits in a room Add plants, substrate and a filter</p></div><div className="step"><span>02</span><h3>Meet your little swimmers</h3><p>Find your fish in the store and learn what makes a comfortable home for each one</p></div><div className="step"><span>03</span><h3>Come back for a little care</h3><p>Check in, collect coins, feed your fish and see what your habitat might look like in a month</p></div></section>
