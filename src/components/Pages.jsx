@@ -19,7 +19,30 @@ export function HomePage() {
   const sample = { ...createTank(), size: '120p', fish: { tetra: 5, angelfish: 1 }, plants: { anubias: 2, fern: 2, grass: 2 } }
   return <main className="landing">
     <section className="landing-hero">
-      <div className="hero-copy"><h1>A little world<br /><em>A lot of possibility</em></h1><p>Make an aquarium that feels like you Find your fish, grow something green, and enjoy a small daily moment of calm</p><div className="hero-actions"><a className="primary-button" href="#/login">Build your first tank <Icon name="arrow" size={17} /></a><a className="text-link" href="#/ideas">Find a little inspiration <Icon name="arrow" size={16} /></a></div></div>
+      <div className="hero-copy">
+        <h1>A little world<br /><em>A lot of possibility</em></h1>
+        <aside className="developer-bio" aria-labelledby="developer-bio-title">
+          <div className="developer-bio-header">
+            <div className="developer-bio-portrait"><img className="developer-bio-photo" src="/images/kai.jpg" alt="Kai smiling beside the sea" width="1080" height="1440" /></div>
+            <div className="developer-bio-copy">
+              <span className="developer-bio-eyebrow">Meet the developer</span>
+              <h2 id="developer-bio-title">Hi, I’m Kai<span>.</span></h2>
+              <p>I’m the creator of Build Your Tank, bringing together my curiosity about aquatic life and my love of design and technology.</p>
+            </div>
+          </div>
+          <div className="developer-bio-story">
+            <p>A real aquarium takes space, equipment, and daily care. I wanted to make the joy of building one easier to explore: a place to choose your fish, grow something green, and discover how a small ecosystem works.</p>
+            <p>For me, this project is about making learning feel creative and calming. I hope it inspires you to try new ideas, get curious about the life underwater, and build a little world that feels like your own.</p>
+          </div>
+        </aside>
+        <p>Make an aquarium that feels like you Find your fish, grow something green, and enjoy a small daily moment of calm</p>
+        <div className="hero-actions"><a className="primary-button" href="#/login">Build your first tank <Icon name="arrow" size={17} /></a><a className="text-link" href="#/ideas">Find a little inspiration <Icon name="arrow" size={16} /></a></div>
+        <ul className="hero-highlights" aria-label="A little world to create, discover, and enjoy">
+          <li><span className="hero-highlight-icon"><Icon name="leaf" size={22} /></span><h2>Create</h2><p>Shape a world<br />of your own.</p></li>
+          <li><span className="hero-highlight-icon"><Icon name="book" size={22} /></span><h2>Discover</h2><p>Get to know<br />life underwater.</p></li>
+          <li><span className="hero-highlight-icon"><Icon name="sun" size={22} /></span><h2>Unwind</h2><p>Make time for<br />a little calm.</p></li>
+        </ul>
+      </div>
       <div className="hero-room">
         <div className="home-demo-video">
           <div className="home-demo-video-heading">
