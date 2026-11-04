@@ -35,6 +35,19 @@ test('switching hardscapes is free and keeps inhabitants, water, and size', () =
   assert.ok(purchaseSetup(result, 'scape', 'missing').error)
 })
 
+test('expanded scenery triples each preset with distinct pieces across three depth layers', () => {
+  const minimums = { classic: 30, 'stone-ridge': 39, 'fallen-timber': 33, 'woodland-pillars': 48, 'branching-banks': 60 }
+  for (const scape of SCAPES) {
+    const svg = readFileSync(new URL(`../../public${scape.art}`, import.meta.url), 'utf8')
+    const pieces = [...svg.matchAll(/data-piece="([^"]+)"[^>]*><path d="([^"]+)"/g)]
+    assert.ok(pieces.length >= minimums[scape.id], `${scape.id}: at least three times the former scenery`)
+    assert.equal(new Set(pieces.map(piece => piece[1])).size, pieces.length, 'unique pieces')
+    assert.equal(new Set(pieces.map(piece => piece[2])).size, pieces.length, 'distinct silhouettes')
+    for (const depth of ['background', 'middle', 'foreground']) assert.match(svg, new RegExp(`data-depth="${depth}"`))
+    assert.match(svg, /preserveAspectRatio="none"/, 'fill the tank at every aspect ratio')
+  }
+})
+
 test('old tanks retain the classic wood; snapshots retain new selections', () => {
   const old = { ...createTank() }
   delete old.scape

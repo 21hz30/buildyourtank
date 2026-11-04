@@ -1,7 +1,8 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
 import { STORAGE_KEY, createTank, remainingCoins, today } from './tank.js'
-import { STARTING_COINS, WORKSPACE_KEY, activeTank, addTank, buySupply, careForWorkspace, checkIn, createWorkspace, fertilize, loadWorkspace, normalizeWorkspace, purchaseItem, purchaseSetup, replaceTank } from './workspace.js'
+import { STARTING_COINS, WORKSPACE_KEY, activeTank, addTank, buySupply, careForWorkspace, checkIn, createWorkspace, fertilize, loadWorkspace, normalizeWorkspace, purchaseItem, purchaseSetup, replaceTank, setNutrient } from './workspace.js'
+import { FERTILIZERS } from './fertilizers.js'
 
 test('new workspaces start with 300 spendable coins without changing saved balances', () => {
   const fresh = createWorkspace()
@@ -84,7 +85,7 @@ test('supplies add pack quantities, fertilizer is used once, and inventory survi
   assert.equal(purchased.resources.fertilizer, initial.resources.fertilizer + 3)
   const cared = fertilize(purchased, today()).workspace
   assert.equal(cared.resources.fertilizer, purchased.resources.fertilizer - 1)
-  assert.equal(activeTank(cared).water.nutrients, 4)
+  assert.equal(activeTank(cared).water.potassium, 4)
   assert.ok(fertilize(cared, today()).error)
   const restored = loadWorkspace({ getItem(key) { return key === WORKSPACE_KEY ? JSON.stringify(cared) : null } })
   assert.deepEqual(restored.resources, cared.resources)
@@ -109,5 +110,35 @@ test('manual water settings survive snapshots and trigger educational status war
   assert.ok(getHealth(tank).warnings.some(warning => warning.includes('pH')))
   assert.ok(simulate(tank).quality < initialQuality)
   const link = snapshotLink(tank, 'https://example.com/')
-  assert.deepEqual(readSnapshot(link.slice(link.indexOf('#'))).tank.water, { ...tank.water, co2: 0 })
+  assert.deepEqual(readSnapshot(link.slice(link.indexOf('#'))).tank.water, { temperature: 31, hardness: 12, ph: 4.5, potassium: 9, nitrogen: 9, iron: 9, phosphorus: 9, co2: 0 })
+})
+
+test('each liquid fertilizer has a real photo, separate stock and matching slider', () => {
+  assert.equal(FERTILIZERS.length, 4)
+  let workspace = createWorkspace()
+  const original = activeTank(workspace)
+  for (const item of FERTILIZERS) {
+    assert.match(item.photo, /\/art\/fertilizers\/.*\.jpg$/)
+    assert.match(item.sourceUrl, /^https:\/\/greenaqua\.hu\/en\//)
+    assert.equal(workspace.resources[item.id], 0)
+    assert.ok(setNutrient(workspace, item.nutrient, 4).error)
+    workspace = buySupply(workspace, item.id).workspace
+    assert.equal(workspace.resources[item.id], 3)
+    workspace = setNutrient(workspace, item.nutrient, 5).workspace
+    assert.equal(workspace.resources[item.id], 1)
+    assert.equal(activeTank(workspace).water[item.nutrient], 5)
+    assert.ok(setNutrient(workspace, item.nutrient, 7).error)
+  }
+  assert.equal(original.water.potassium, 3)
+  assert.equal(setNutrient(workspace, 'iron', 2).workspace.resources.fertilizerIron, 1)
+  assert.equal(normalizeWorkspace(workspace).resources.fertilizerPhosphorus, 1)
+})
+
+test('older saved nutrient and fertilizer values migrate without adding unowned stock', () => {
+  const fresh = createWorkspace()
+  const older = { ...fresh, resources: { food: 5, water: 3, fertilizer: 2 }, tanks: [{ ...fresh.tanks[0], water: { temperature: 25, hardness: 7, nutrients: 6 } }] }
+  const restored = normalizeWorkspace(older)
+  for (const item of FERTILIZERS) assert.equal(activeTank(restored).water[item.nutrient], 6)
+  assert.equal(restored.resources.fertilizer, 2)
+  for (const item of FERTILIZERS.slice(1)) assert.equal(restored.resources[item.id], 0)
 })

@@ -2,6 +2,8 @@ import { useState } from 'react'
 import Dialog from './Dialog'
 import Icon from './Icon'
 import PlantPhoto from './PlantPhoto'
+import FishPhoto from './FishPhoto'
+import { storeFishPhoto } from '../lib/storeFishPhotos'
 import RoomScene from './RoomScene'
 import ScapePicker from './ScapePicker'
 import { HealthStats, SpeciesPanel, TankWarnings } from './Pages'
@@ -39,7 +41,19 @@ function getDemoQuality(tank) { return simulate(tank).quality }
 
 export function SpeciesDialog({ item, onAdd, onClose }) {
   const details = FISH_DETAILS[item.id]
-  return <Dialog title={item.name} onClose={onClose}><div className={`species-hero ${item.photo ? 'species-hero-photo' : ''} ${item.photoFit === 'contain' ? 'species-hero-contain' : ''}`} style={{ '--item-color': item.color }}>{item.type === 'plants' ? <PlantPhoto src={item.photo} name={item.name} loading="eager" /> : <img src={item.photo || item.art} alt={item.name} onError={event => { event.currentTarget.onerror = null; event.currentTarget.src = item.art }} />}{item.photoCredit && <span className="species-photo-credit">Photo: <a href={item.photoSource} target="_blank" rel="noreferrer">{item.photoCredit}</a>{item.photoLicense && <> · <a href={item.photoLicenseUrl} target="_blank" rel="noreferrer">{item.photoLicense}</a></>}</span>}</div>{item.scientific && <p className="scientific-name">{item.scientific}</p>}<p className="dialog-intro">{item.description}</p>{details && <dl className="species-facts">{[['Temperament', details.temperament], ['Food needs', details.diet], ['Space', details.space], ['Waste load', details.waste]].map(([label, value]) => <div key={label}><dt>{label}</dt><dd>{value}</dd></div>)}</dl>}<button className="primary-button dialog-cta" onClick={() => onAdd(item.type, item.id)}>Add to my tank · {item.price} coins <Icon name="plus" size={16} /></button><a className="encyclopedia-dialog-link text-link" href={`#/learn?entry=${item.type === 'fish' ? 'fish' : 'plant'}-${item.id}`} onClick={onClose}>Read the full encyclopedia entry <Icon name="arrow" size={15} /></a></Dialog>
+  const photo = item.type === 'fish' ? storeFishPhoto(item) : null
+  return <Dialog title={item.name} onClose={onClose}>
+    <div className={`species-hero ${item.photo || photo ? 'species-hero-photo' : ''} ${item.photoFit === 'contain' ? 'species-hero-contain' : ''}`} style={{ '--item-color': item.color }}>
+      {item.type === 'plants' ? <PlantPhoto src={item.photo} name={item.name} loading="eager" /> : <FishPhoto fish={item} />}
+      {photo ? <span className="species-photo-credit">Photo: <a href={photo.source} target="_blank" rel="noreferrer">Green Aqua</a></span>
+        : item.photoCredit && <span className="species-photo-credit">Photo: <a href={item.photoSource} target="_blank" rel="noreferrer">{item.photoCredit}</a>{item.photoLicense && <> · <a href={item.photoLicenseUrl} target="_blank" rel="noreferrer">{item.photoLicense}</a></>}</span>}
+    </div>
+    {item.scientific && <p className="scientific-name">{item.scientific}</p>}
+    <p className="dialog-intro">{item.description}</p>
+    {details && <dl className="species-facts">{[['Temperament', details.temperament], ['Food needs', details.diet], ['Space', details.space], ['Waste load', details.waste]].map(([label, value]) => <div key={label}><dt>{label}</dt><dd>{value}</dd></div>)}</dl>}
+    <button className="primary-button dialog-cta" onClick={() => onAdd(item.type, item.id)}>Add to my tank · {item.price} coins <Icon name="plus" size={16} /></button>
+    <a className="encyclopedia-dialog-link text-link" href={`#/learn?entry=${item.type === 'fish' ? 'fish' : 'plant'}-${item.id}`} onClick={onClose}>Read the full encyclopedia entry <Icon name="arrow" size={15} /></a>
+  </Dialog>
 }
 
 export function PreviewDialog({ tank, onClose }) {

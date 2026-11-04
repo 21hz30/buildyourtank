@@ -1,5 +1,5 @@
-// Green Aqua aquarium-fish catalog, collected 2026-10-05. One representative listing per species.
-// Product URLs and images remain Green Aqua assets; local prices are demo coins.
+//  aquarium-fish catalog, collected 2026-10-05. One representative listing per species.
+// Product URLs and images remain  assets; local prices are demo coins.
 export const greenAquaSpecies = [
   {"id":"macrotocinclus-affinis","name":"Dwarf Sucking Catfish","scientific":"Macrotocinclus affinis","adultLengthCm":4,"minTankLitres":30,"temperature":"22-25","ph":"6-7.2","hardness":"5-18","groupSize":"4-5","origin":"South America","sourceUrl":"https://greenaqua.hu/en/ottocinclus-affinis.html","photo":"https://greenaqua.hu/media/catalog/product/cache/9bb9d677791f8666003e194c8a94aeff/m/a/macrotocinclus-affinis-otocinclus.jpg?___store=en","price":4},
   {"id":"poecilia-reticulata","name":"Rainbow Guppy","scientific":"Poecilia reticulata","adultLengthCm":6,"minTankLitres":40,"temperature":"22-28","ph":"6-8","hardness":"8-20","groupSize":"6","origin":"Middle America, South America","sourceUrl":"https://greenaqua.hu/en/poecilia-reticulata-guppi.html","photo":"https://greenaqua.hu/media/catalog/product/cache/9bb9d677791f8666003e194c8a94aeff/p/o/poecilia-reticulata-guppi-fish.jpg?___store=en","price":4},

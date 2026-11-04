@@ -1,5 +1,5 @@
 import products from './greenAquaPlantProducts.json' with { type: 'json' }
-import { plantModelUri } from './plantModels.js'
+import { plantModelUri, plantPalette } from './plantModels.js'
 import plantPhotos from './plantPhotos.json' with { type: 'json' }
 
 export const PLANT_TYPES = [
@@ -10,7 +10,7 @@ export const PLANT_TYPES = [
 const excluded = /Terrarium Plant|Art Cards|\bAcorus pusillus\b|\bOphiopogon kyoto\b|Hygrophila pinnatifida and Moss|Microsorum and Anubias/i
 
 function cleanName(productName) {
-  let name = productName.replace(/^(?:Tropica|Dennerle|Green Aqua|Stoffels|ADA|Aqua Art)\s+(?:Plant|Plants|növény)\s*-\s*/i, '')
+  let name = productName.replace(/^(?:Tropica|Dennerle|Stoffels|ADA|Aqua Art)\s+(?:Plant|Plants|növény)\s*-\s*/i, '')
     .replace(/\s*[-–]?\s*(?:In[- ]Vitro|Pot in Single Package|Mini Pot|Bunch|PAD\s*[-–]?\s*9x9cm)\b/gi, '')
     .replace(/\s+PAD\s*$/i, '')
     .replace(/Narrowgrown\s+on\s+Mangrove\s+Wood.*$/i, 'Narrow')
@@ -140,7 +140,7 @@ export const aquariumPlantListings = [...bySpecies.values()].map(({ name, produc
     photoCredit: photograph?.credit, photoSource: photograph?.source || product.url,
     photoFit: 'contain',
     supplierSource: product.url,
-    tag: type, color: '#a9c6a5',
+    tag: type, color: plantPalette(name)[2],
   }
 }).sort((a, b) => PLANT_TYPES.indexOf(a.plantType) - PLANT_TYPES.indexOf(b.plantType) || a.name.localeCompare(b.name))
 
@@ -166,7 +166,7 @@ export const plantProfiles = Object.fromEntries(aquariumPlantListings.map(plant 
     ['Care details', 'Check the linked cultivar listing'],
   ],
   sections: [
-    ['Meet this plant', `${plant.name} is listed by Green Aqua among its aquarium plants. Learn and Fish store show a real reference photograph with its source credit. Its separate tank model follows the ${plant.plantType.toLowerCase()} growth form, with its own leaf shape and arrangement.`],
+    ['Meet this plant', `${plant.name} is part of this aquarium plant collection. Learn and Fish store show a real reference photograph with its source credit. Its separate tank model follows the ${plant.plantType.toLowerCase()} growth form, with its own leaf shape and arrangement.`],
     ['Where it belongs', `This listing is shown in the ${plant.position} of an aquascape. The tank illustration uses an approximate mature height of ${plant.heightCm} cm against the aquarium's stated height, so it is a scale guide rather than a guarantee of final growth.`],
     ['Planting & care', `${plantingAdvice[plant.plantType]} Balance light and nutrients, and confirm cultivar-specific light, CO₂ and final-size guidance on the linked listing.`],
   ],

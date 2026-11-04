@@ -8,7 +8,7 @@ export default function SwimmingFish({ fish, size, scape, depth }) {
   const modelId = useId()
   const model = useMemo(() => fishModelSvg(fish, modelId), [fish.id, fish.name, fish.visual, modelId])
   const phase = [...fish.key].reduce((seed, letter) => seed + letter.charCodeAt(0), 0)
-  const plan = useMemo(() => fishSwimPlan(fish, size, fish.key, scape), [fish.key, fish.scientific, fish.adultLengthCm, fish.artLengthRatio, fish.artAspectRatio, size.lengthCm, size.heightCm, scape?.id])
+  const plan = useMemo(() => fishSwimPlan(fish, size, fish.key, scape), [fish.key, fish.scientific, fish.adultLengthCm, fish.artAspectRatio, size.lengthCm, size.heightCm, scape?.id])
 
   useEffect(() => {
     const space = spaceRef.current, image = imageRef.current
