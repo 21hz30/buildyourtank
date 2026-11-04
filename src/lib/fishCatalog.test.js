@@ -5,7 +5,7 @@ import { ENCYCLOPEDIA } from './learning.js'
 import { FISH_TYPES, fishSpeciesKey, fishTypeFor, uniqueStoreFish } from './fishCatalog.js'
 import { greenAquaSpecies } from './greenAquaSpecies.js'
 
-test('Green Aqua fish are added once per species and sorted into fish types', () => {
+test(' fish are added once per species and sorted into fish types', () => {
   assert.equal(greenAquaSpecies.length, 100)
   assert.equal(new Set(greenAquaSpecies.map(fish => fish.id)).size, 100)
   const storeFish = uniqueStoreFish(CATALOG.fish)

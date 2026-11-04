@@ -5,7 +5,7 @@ import { CATALOG, FISH_DETAILS, SIZES } from './tank.js'
 import { ENCYCLOPEDIA } from './learning.js'
 import { tetraListings, tetraProfiles } from './tetraCatalog.js'
 
-test('every added Green Aqua tetra has a complete store and field-guide entry', () => {
+test('every added  tetra has a complete store and field-guide entry', () => {
   assert.equal(tetraListings.length, 15)
   assert.equal(new Set(tetraListings.map(fish => fish.id)).size, tetraListings.length)
   assert.equal(new Set(tetraListings.map(fish => tetraProfiles[fish.id].sourceUrl)).size, tetraListings.length)

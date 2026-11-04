@@ -51,6 +51,16 @@ Restore missing originals with `python scripts/cache-fish-photos.py`.
 `assets/fish-photo-sources.json` records original URLs, credits and available
 licenses; the catalog retains the existing photo credits and source links.
 The existing 269 plant reference photos are reused from `public/art/plants`.
+
+Fish store cards use original Green Aqua product photographs bundled in
+`public/art/store-fish`. `src/lib/storeFishPhotos.json` records the source product
+page, original image URL, original resolution and measured fish bounds for all
+121 catalog entries (119 distinct store species). Images retain their original
+pixels; `FishPhoto.jsx` centers the subject and fits its complete fins and tail
+inside each responsive card. Store photos do not fall back to illustrations.
+Restore missing files with `node scripts/cache-store-fish-photos.mjs`; the script
+preserves existing resolution and framing metadata. Product source links appear
+on each card. Aquarium inhabitants continue to use their species models.
 The photo compositing utilities are retained for reference work; they are not
 used to render aquarium inhabitants.
 

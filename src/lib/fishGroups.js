@@ -165,7 +165,7 @@ export const FISH_GROUPS = [
     distribution: 'Derived from East Asian freshwater carp and bred domestically for centuries. Aquarium and pond varieties are now kept worldwide.',
     morphology: 'Forms range from streamlined single-tail fish to deep-bodied fancy varieties with double tails. Colors include gold, red, white, black and mixed patterns.',
     habits: 'Social omnivores that graze and sift through the substrate. They scatter eggs and may eat eggs or fry. Provide spacious, well-filtered housing and match companions to body form and swimming ability.',
-    sources: [{ name: 'Green Aqua species profile', url: 'https://greenaqua.hu/en/hal-carassius-auratus-goldfish.html' }],
+    sources: [{ name: ' species profile', url: 'https://greenaqua.hu/en/hal-carassius-auratus-goldfish.html' }],
   },
   {
     id: 'other-fish', name: 'Other fish', chinese: '其他鱼类', type: 'Other fish',

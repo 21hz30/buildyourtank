@@ -7,8 +7,8 @@ export const STARTING_COINS = 300
 export const CHECK_IN_REWARD = 20
 export const SUPPLIES = [
   { id: 'food', name: 'Everyday fish food', description: 'Legacy starter food', amount: 5, price: 8, icon: 'food', unit: 'portions' },
-  { id: 'foodNano', name: 'Green Aqua Best Bite Nano', description: '90 g can · slowly sinking 0.3–0.5 mm granules for fish under 4 cm', amount: 5, price: 8, icon: 'food', unit: 'demo portions', art: '/art/food/best-bite-nano.svg', sourceUrl: 'https://greenaqua.hu/en/green-aqua-bestbite-nano-fishfood-90-g.html', sizeMm: '0.3–0.5', fishSize: 'Under 4 cm' },
-  { id: 'foodSmall', name: 'Green Aqua Best Bite Small', description: '90 g can · slowly sinking 0.5–0.8 mm granules for fish around 3–5 cm', amount: 5, price: 8, icon: 'food', unit: 'demo portions', art: '/art/food/best-bite-small.svg', sourceUrl: 'https://greenaqua.hu/en/green-aqua-bestbite-small-fishfood-90-g.html', sizeMm: '0.5–0.8', fishSize: '3–5 cm' },
+  { id: 'foodNano', name: ' Best Bite Nano', description: '90 g can · slowly sinking 0.3–0.5 mm granules for fish under 4 cm', amount: 5, price: 8, icon: 'food', unit: 'demo portions', art: '/art/food/best-bite-nano.svg', sourceUrl: 'https://greenaqua.hu/en/green-aqua-bestbite-nano-fishfood-90-g.html', sizeMm: '0.3–0.5', fishSize: 'Under 4 cm' },
+  { id: 'foodSmall', name: ' Best Bite Small', description: '90 g can · slowly sinking 0.5–0.8 mm granules for fish around 3–5 cm', amount: 5, price: 8, icon: 'food', unit: 'demo portions', art: '/art/food/best-bite-small.svg', sourceUrl: 'https://greenaqua.hu/en/green-aqua-bestbite-small-fishfood-90-g.html', sizeMm: '0.5–0.8', fishSize: '3–5 cm' },
   { id: 'water', name: 'Water care kit', description: 'Three refills for a little fresh-water routine', amount: 3, price: 10, icon: 'droplet', unit: 'refills' },
   ...FERTILIZERS,
 ]

@@ -6,7 +6,7 @@ import { fishLooks, fishMorphology, fishModelSvg } from './fishModels.js'
 import { fishPlacement, fishWidthPercent } from './fishScale.js'
 import { greenAquaSpecies } from './greenAquaSpecies.js'
 
-test('every Green Aqua species has its own illustrated tank model', () => {
+test('every  species has its own illustrated tank model', () => {
   assert.equal(Object.keys(fishLooks).length, greenAquaSpecies.length)
   for (const species of greenAquaSpecies) {
     const fish = CATALOG.fish.find(item => item.id === species.id)

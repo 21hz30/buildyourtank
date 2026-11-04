@@ -9,7 +9,7 @@ export default function FilterStoreSection({ tank, onSetup }) {
         <div className="filter-product-copy">
           <h3>{filter.name}</h3><p>{filter.note}</p>
           <dl><div><dt>Flow</dt><dd>{filter.flowLph.toLocaleString()} L/h</dd></div><div><dt>Body</dt><dd>{filter.widthCm} × {filter.heightCm} cm</dd></div><div><dt>Hose</dt><dd>{filter.hoseMm} mm</dd></div></dl>
-          <a href={filter.sourceUrl} target="_blank" rel="noopener noreferrer">Product details at Green Aqua ↗</a>
+          <a href={filter.sourceUrl} target="_blank" rel="noopener noreferrer">View product details ↗</a>
           <div className="filter-product-action"><span>{filter.price} coins</span><button type="button" className="secondary-button" disabled={tank.filter === filter.id} onClick={() => onSetup('filter', filter.id)}>{tank.filter === filter.id ? 'In your room' : 'Choose filter'}</button></div>
         </div>
       </article>)}

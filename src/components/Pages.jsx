@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import Icon from './Icon'
 import PlantPhoto from './PlantPhoto'
+import FishPhoto from './FishPhoto'
+import { storeFishPhoto } from '../lib/storeFishPhotos'
 import RoomScene from './RoomScene'
 import TankScene from './TankScene'
 import ScapePicker from './ScapePicker'
@@ -88,11 +90,12 @@ function Price({ value }) { return <span className="price"><span className="tiny
 
 function ProductCard({ item, category, tank, onDetails, onItem }) {
   return <article className="product-card">
-      <button className={`product-art ${item.photo ? 'product-art-photo' : ''} ${category === 'plants' ? 'product-art-plants' : ''}`} style={{ '--item-color': item.color }} onClick={() => onDetails({ ...item, type: category })} aria-label={`Learn about ${item.name}`}>
-        {category === 'plants' ? <PlantPhoto src={item.photo} name={item.name} /> : <img src={item.photo || item.art} alt={item.name} loading="lazy" onError={event => { event.currentTarget.onerror = null; event.currentTarget.src = item.art }} />}
+      <button className={`product-art ${item.photo || category === 'fish' ? 'product-art-photo' : ''} ${category === 'plants' ? 'product-art-plants' : 'product-art-fish'}`} style={{ '--item-color': item.color }} onClick={() => onDetails({ ...item, type: category })} aria-label={`Learn about ${item.name}`}>
+        {category === 'plants' ? <PlantPhoto src={item.photo} name={item.name} /> : <FishPhoto fish={item} />}
       <span>{item.tag}</span>
     </button>
       <div className="product-body"><h2>{item.name}</h2><p>{item.description}</p>{category === 'plants' && item.photoSource && <a className="plant-photo-source" href={item.photoSource} target="_blank" rel="noreferrer">View source photograph ↗</a>}
+      {category === 'fish' && storeFishPhoto(item) && <a className="plant-photo-source" href={storeFishPhoto(item).source} target="_blank" rel="noreferrer">Photo: Green Aqua ↗</a>}
       <button className="text-link species-details" onClick={() => onDetails({ ...item, type: category })}>Meet this {category === 'fish' ? 'swimmer' : 'plant'} <Icon name="arrow" size={13} /></button>
       <div className="product-footer"><Price value={item.price} /><div className="product-quantity">
         {tank[category][item.id] > 0 && <><button className="icon-button" aria-label={`Remove ${item.name}`} onClick={() => onItem(category, item.id, -1)}><Icon name="minus" size={14} /></button><span>{tank[category][item.id]}</span></>}

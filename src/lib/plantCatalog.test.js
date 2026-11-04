@@ -8,7 +8,7 @@ import { ENCYCLOPEDIA } from './learning.js'
 import { plantModelSvg } from './plantModels.js'
 import { plantWidthPercent, plantPlacement } from './plantScale.js'
 
-test('Green Aqua aquarium catalog is complete and deduplicated by plant or cultivar', () => {
+test(' aquarium catalog is complete and deduplicated by plant or cultivar', () => {
   assert.equal(plantCatalogStats.sourceProducts, 518)
   assert.equal(plantCatalogStats.aquariumListings, 493)
   assert.ok(aquariumPlantListings.length >= 260)

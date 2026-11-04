@@ -1,0 +1,1817 @@
+{
+  "ambastaia-sidthimunki": {
+    "path": "/art/store-fish/ambastaia-sidthimunki.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/t/o/torpe-diszcsik-ambastaia-sidthimunki.jpg",
+    "source": "https://greenaqua.hu/en/hal-csikhal-torpe-diszcsik-ambastaia-sidthimunki.html",
+    "credit": "Green Aqua",
+    "bytes": 193431,
+    "width": 1200,
+    "height": 1200,
+    "bounds": [
+      0.034999999999999996,
+      0.355,
+      0.965,
+      0.7050000000000001
+    ]
+  },
+  "ancistrus-cirrhosus": {
+    "path": "/art/store-fish/ancistrus-cirrhosus.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/a/n/ancistrus-cirrhosus.jpg",
+    "source": "https://greenaqua.hu/en/fish-ancistrus-cirrhosus-bristlenose-catfish.html",
+    "credit": "Green Aqua",
+    "bytes": 225490,
+    "width": 1200,
+    "height": 1200,
+    "bounds": [
+      0.0049999999999999975,
+      0.185,
+      1,
+      0.775
+    ]
+  },
+  "angelfish": {
+    "path": "/art/store-fish/angelfish.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/p/t/pterophyllum-scalare-02.jpg",
+    "source": "https://greenaqua.hu/en/fish-pterophyllum-scalare-angelfish.html",
+    "credit": "Green Aqua",
+    "bytes": 151235,
+    "width": 1200,
+    "height": 1200,
+    "bounds": [
+      0.20500000000000002,
+      0.015,
+      0.8250000000000001,
+      0.975
+    ]
+  },
+  "apistogramma-agassizii": {
+    "path": "/art/store-fish/apistogramma-agassizii.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/a/p/apistogramma-agassizii-2.jpg",
+    "source": "https://greenaqua.hu/en/hal-suger-gyongyhazfenyu-torpesuger-apistogramma-agassizii.html",
+    "credit": "Green Aqua",
+    "bytes": 136554,
+    "width": 1200,
+    "height": 1200,
+    "bounds": [
+      0,
+      0.24500000000000002,
+      0.975,
+      0.685
+    ]
+  },
+  "apistogramma-cacatuoides": {
+    "path": "/art/store-fish/apistogramma-cacatuoides.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/a/p/apistogramma-cacatuoides-1.jpg",
+    "source": "https://greenaqua.hu/en/apistogramma-cacatuoides.html",
+    "credit": "Green Aqua",
+    "bytes": 164870,
+    "width": 1200,
+    "height": 1200,
+    "bounds": [
+      0.135,
+      0.095,
+      0.9550000000000001,
+      0.785
+    ]
+  },
+  "arnoldichthys-spilopterus": {
+    "path": "/art/store-fish/arnoldichthys-spilopterus.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/a/r/arnoldichthys-spilopterus.jpg",
+    "source": "https://greenaqua.hu/en/fish-arnoldichthys-spilopterus.html",
+    "credit": "Green Aqua",
+    "bytes": 159406,
+    "width": 1200,
+    "height": 1200,
+    "bounds": [
+      0.10500000000000001,
+      0.185,
+      0.965,
+      0.635
+    ]
+  },
+  "axelrodia-riesei": {
+    "path": "/art/store-fish/axelrodia-riesei.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/a/x/axelrodia-riesei-ruby-tetra-3.jpg",
+    "source": "https://greenaqua.hu/en/hal-lazac-axelrodia-riesei-ruby-tetra.html",
+    "credit": "Green Aqua",
+    "bytes": 109129,
+    "width": 1200,
+    "height": 1200,
+    "bounds": [
+      0.10500000000000001,
+      0.345,
+      0.845,
+      0.655
+    ]
+  },
+  "badis-badis": {
+    "path": "/art/store-fish/badis-badis.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/b/a/badis-badis.jpg",
+    "source": "https://greenaqua.hu/en/fish-badis-badis.html",
+    "credit": "Green Aqua",
+    "bytes": 211507,
+    "width": 1200,
+    "height": 1200,
+    "bounds": [
+      0.015,
+      0.195,
+      0.985,
+      0.675
+    ]
+  },
+  "beaufortia-kweichowensis": {
+    "path": "/art/store-fish/beaufortia-kweichowensis.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/s/e/sewellia_lineolata_2.jpg",
+    "source": "https://greenaqua.hu/en/hal-csikhal-hegyipataki-palacsinta-algazo-beaufortia-kweichowensis.html",
+    "credit": "Green Aqua",
+    "bytes": 103473,
+    "width": 1200,
+    "height": 1200,
+    "bounds": [
+      0.11500000000000002,
+      0.17500000000000002,
+      0.985,
+      0.885
+    ]
+  },
+  "betta": {
+    "path": "/art/store-fish/betta.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/8/8/888321.jpg",
+    "source": "https://greenaqua.hu/en/hal-sziami-harcoshal-betta-splendens-szuperdelta.html",
+    "credit": "Green Aqua",
+    "bytes": 156589,
+    "width": 1000,
+    "height": 1000,
+    "bounds": [
+      0.0049999999999999975,
+      0.055,
+      0.985,
+      0.895
+    ]
+  },
+  "betta-imbellis": {
+    "path": "/art/store-fish/betta-imbellis.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/b/e/betta-imbellis-1.jpg",
+    "source": "https://greenaqua.hu/en/fish-betta-imbellis-peacefull-betta.html",
+    "credit": "Green Aqua",
+    "bytes": 125682,
+    "width": 1200,
+    "height": 1200,
+    "bounds": [
+      0.034999999999999996,
+      0.11500000000000002,
+      0.885,
+      0.9450000000000001
+    ]
+  },
+  "black-neon-tetra": {
+    "path": "/art/store-fish/black-neon-tetra.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/f/e/fekete-neonhal-hyphessobrycon-herbertaxelrodi.jpg",
+    "source": "https://greenaqua.hu/en/hal-neon-fekete-neonhal.html",
+    "credit": "Green Aqua",
+    "bytes": 109708,
+    "width": 1200,
+    "height": 1200,
+    "bounds": [
+      0.015,
+      0.295,
+      0.9550000000000001,
+      0.725
+    ]
+  },
+  "blue-emperor-tetra": {
+    "path": "/art/store-fish/blue-emperor-tetra.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/h/a/hal-lazac-kek-kiralylazac-inpaichthys-kerri-01.jpg",
+    "source": "https://greenaqua.hu/en/hal-lazac-kek-kiralylazac-inpaichthys-kerri.html",
+    "credit": "Green Aqua",
+    "bytes": 114369,
+    "width": 1200,
+    "height": 1200,
+    "bounds": [
+      0.025,
+      0.26499999999999996,
+      0.995,
+      0.775
+    ]
+  },
+  "boraras-brigittae": {
+    "path": "/art/store-fish/boraras-brigittae.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/b/o/boraras_brigittae.jpg",
+    "source": "https://greenaqua.hu/en/boraras-brigittae.html",
+    "credit": "Green Aqua",
+    "bytes": 348502,
+    "width": 1199,
+    "height": 1200,
+    "bounds": [
+      0.11500000000000002,
+      0.20500000000000002,
+      0.905,
+      0.675
+    ]
+  },
+  "boraras-maculatus": {
+    "path": "/art/store-fish/boraras-maculatus.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/b/o/boraras-maculatus-3.jpg",
+    "source": "https://greenaqua.hu/en/hal-razbora-torperazbora-boraras-maculatus.html",
+    "credit": "Green Aqua",
+    "bytes": 85974,
+    "width": 1200,
+    "height": 1200,
+    "bounds": [
+      0.155,
+      0.24500000000000002,
+      0.8250000000000001,
+      0.6950000000000001
+    ]
+  },
+  "boraras-merah": {
+    "path": "/art/store-fish/boraras-merah.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/b/o/boraras_merah_6.jpg",
+    "source": "https://greenaqua.hu/en/boraras-merah.html",
+    "credit": "Green Aqua",
+    "bytes": 107312,
+    "width": 1200,
+    "height": 1200,
+    "bounds": [
+      0.034999999999999996,
+      0.23500000000000001,
+      0.8250000000000001,
+      0.5650000000000001
+    ]
+  },
+  "boraras-naevus": {
+    "path": "/art/store-fish/boraras-naevus.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/b/o/boraras-naevus.jpg",
+    "source": "https://greenaqua.hu/en/fish-boraras-naevus.html",
+    "credit": "Green Aqua",
+    "bytes": 163912,
+    "width": 1200,
+    "height": 1200,
+    "bounds": [
+      0.17500000000000002,
+      0.26499999999999996,
+      0.925,
+      0.645
+    ]
+  },
+  "boraras-urophthalmoides": {
+    "path": "/art/store-fish/boraras-urophthalmoides.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/8/8/888866_1.jpg",
+    "source": "https://greenaqua.hu/en/hal-razbora-turkizcsiku-torperazbora-boraras-urophthalmoides.html",
+    "credit": "Green Aqua",
+    "bytes": 545644,
+    "width": 1000,
+    "height": 1000,
+    "bounds": [
+      0.11500000000000002,
+      0.345,
+      0.885,
+      0.635
+    ]
+  },
+  "botia-lohachata": {
+    "path": "/art/store-fish/botia-lohachata.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/b/o/botia_lohachata.jpg",
+    "source": "https://greenaqua.hu/en/fish-botia-lohachata.html",
+    "credit": "Green Aqua",
+    "bytes": 226975,
+    "width": 1200,
+    "height": 1200,
+    "bounds": [
+      0.034999999999999996,
+      0.305,
+      0.985,
+      0.665
+    ]
+  },
+  "brachydanio-tinwini": {
+    "path": "/art/store-fish/brachydanio-tinwini.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/b/r/brachydanio-tinwini-sp-burma-leopard.jpg",
+    "source": "https://greenaqua.hu/en/fish-brachydanio-tinwini-sp-burma-leopard.html",
+    "credit": "Green Aqua",
+    "bytes": 209743,
+    "width": 1200,
+    "height": 1200,
+    "bounds": [
+      0.025,
+      0.285,
+      0.995,
+      0.725
+    ]
+  },
+  "brachygobius-doriae": {
+    "path": "/art/store-fish/brachygobius-doriae.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/b/r/brachygobius-doriae-2.jpg",
+    "source": "https://greenaqua.hu/en/fish-brachygobius-doriae.html",
+    "credit": "Green Aqua",
+    "bytes": 128221,
+    "width": 1200,
+    "height": 1200,
+    "bounds": [
+      0.10500000000000001,
+      0.255,
+      0.985,
+      0.7050000000000001
+    ]
+  },
+  "brycinus-longipinnis": {
+    "path": "/art/store-fish/brycinus-longipinnis.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/b/r/brycinus-longipinnis.jpg",
+    "source": "https://greenaqua.hu/en/fish-brycinus-longipinnis.html",
+    "credit": "Green Aqua",
+    "bytes": 299635,
+    "width": 1200,
+    "height": 1200,
+    "bounds": [
+      0.08499999999999999,
+      0.17500000000000002,
+      0.975,
+      0.805
+    ]
+  },
+  "carassius-auratus": {
+    "path": "/art/store-fish/carassius-auratus.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/a/r/aranyhal_goldfish.jpg",
+    "source": "https://greenaqua.hu/en/hal-carassius-auratus-goldfish.html",
+    "credit": "Green Aqua",
+    "bytes": 101146,
+    "width": 1200,
+    "height": 1200,
+    "bounds": [
+      0.025,
+      0.185,
+      0.995,
+      0.8150000000000001
+    ]
+  },
+  "cardinal-tetra": {
+    "path": "/art/store-fish/cardinal-tetra.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/p/a/paracheirodon_axelrodi_1.jpg",
+    "source": "https://greenaqua.hu/en/paracheirodon-axelrodi.html",
+    "credit": "Green Aqua",
+    "bytes": 531378,
+    "width": 1000,
+    "height": 1000,
+    "bounds": [
+      0.195,
+      0.32499999999999996,
+      0.725,
+      0.645
+    ]
+  },
+  "carinotetraodon-travancoricus": {
+    "path": "/art/store-fish/carinotetraodon-travancoricus.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/t/e/tetraodon_final.jpg",
+    "source": "https://greenaqua.hu/en/hal-gombhal-torpe-gombhal-carinotetraodon-travancoricus.html",
+    "credit": "Green Aqua",
+    "bytes": 96522,
+    "width": 1200,
+    "height": 1200,
+    "bounds": [
+      0.10500000000000001,
+      0.195,
+      0.965,
+      0.745
+    ]
+  },
+  "celestichthys-erythromicron": {
+    "path": "/art/store-fish/celestichthys-erythromicron.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/d/a/danio-erythromicron-01.jpg",
+    "source": "https://greenaqua.hu/en/danio-erythromicron.html",
+    "credit": "Green Aqua",
+    "bytes": 177629,
+    "width": 1200,
+    "height": 1200,
+    "bounds": [
+      0.045000000000000005,
+      0.33499999999999996,
+      0.9550000000000001,
+      0.675
+    ]
+  },
+  "chromobotia-macracanthus": {
+    "path": "/art/store-fish/chromobotia-macracanthus.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/c/h/chromobotia-macracanthus.jpg",
+    "source": "https://greenaqua.hu/en/hal-oves-diszcsik-chromobotia-macracanthus.html",
+    "credit": "Green Aqua",
+    "bytes": 229470,
+    "width": 1200,
+    "height": 1200,
+    "bounds": [
+      0.045000000000000005,
+      0.27499999999999997,
+      1,
+      0.725
+    ]
+  },
+  "cichlid": {
+    "path": "/art/store-fish/cichlid.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/p/e/pelvicachromis-taeniatus-sp-nigerian-red.jpg",
+    "source": "https://greenaqua.hu/en/fish-pelvicachromis-taeniatus-sp-nigerian-red.html",
+    "credit": "Green Aqua",
+    "bytes": 207454,
+    "width": 1200,
+    "height": 1200,
+    "bounds": [
+      0.0049999999999999975,
+      0.185,
+      0.975,
+      0.795
+    ]
+  },
+  "corydoras-aeneus": {
+    "path": "/art/store-fish/corydoras-aeneus.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/c/o/corydoras-aeneus.jpg",
+    "source": "https://greenaqua.hu/en/fish-corydoras-aeneus.html",
+    "credit": "Green Aqua",
+    "bytes": 268448,
+    "width": 1200,
+    "height": 1200,
+    "bounds": [
+      0.034999999999999996,
+      0.17500000000000002,
+      0.995,
+      0.865
+    ]
+  },
+  "corydoras-duplicareus": {
+    "path": "/art/store-fish/corydoras-duplicareus.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/c/o/corydoras-duplicareus.jpg",
+    "source": "https://greenaqua.hu/en/fish-corydoras-duplicareus.html",
+    "credit": "Green Aqua",
+    "bytes": 136022,
+    "width": 1200,
+    "height": 1200,
+    "bounds": [
+      0.015,
+      0.155,
+      0.975,
+      0.745
+    ]
+  },
+  "corydoras-hastatus": {
+    "path": "/art/store-fish/corydoras-hastatus.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/c/o/corydoras-hastatus-fish.jpg",
+    "source": "https://greenaqua.hu/en/fish-corydoras-hastatus.html",
+    "credit": "Green Aqua",
+    "bytes": 130922,
+    "width": 1200,
+    "height": 1200,
+    "bounds": [
+      0.095,
+      0.38499999999999995,
+      0.8350000000000001,
+      0.8250000000000001
+    ]
+  },
+  "corydoras-julii": {
+    "path": "/art/store-fish/corydoras-julii.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/c/o/corydoras-julii2.jpg",
+    "source": "https://greenaqua.hu/en/hal-harcsa-corydoras-julii.html",
+    "credit": "Green Aqua",
+    "bytes": 179966,
+    "width": 1199,
+    "height": 1200,
+    "bounds": [
+      0.055,
+      0.20500000000000002,
+      0.885,
+      0.855
+    ]
+  },
+  "corydoras-metae": {
+    "path": "/art/store-fish/corydoras-metae.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/c/o/corydoras-metae.jpg",
+    "source": "https://greenaqua.hu/en/fish-corydoras-metae.html",
+    "credit": "Green Aqua",
+    "bytes": 296169,
+    "width": 1200,
+    "height": 1200,
+    "bounds": [
+      0.11500000000000002,
+      0.17500000000000002,
+      0.9550000000000001,
+      0.795
+    ]
+  },
+  "corydoras-nanus": {
+    "path": "/art/store-fish/corydoras-nanus.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/c/o/corydoras-nanus.jpg",
+    "source": "https://greenaqua.hu/en/fish-corydoras-nanus-little-cory-catfish.html",
+    "credit": "Green Aqua",
+    "bytes": 165393,
+    "width": 1200,
+    "height": 1200,
+    "bounds": [
+      0.14500000000000002,
+      0.315,
+      1,
+      0.6950000000000001
+    ]
+  },
+  "corydoras-panda": {
+    "path": "/art/store-fish/corydoras-panda.png",
+    "original": "https://greenaqua.hu/media/catalog/product/c/o/corydoras-panda.png",
+    "source": "https://greenaqua.hu/en/hal-harcsa-corydoras-panda.html",
+    "credit": "Green Aqua",
+    "bytes": 1396262,
+    "width": 1200,
+    "height": 1200,
+    "bounds": [
+      0.025,
+      0.20500000000000002,
+      0.975,
+      0.785
+    ]
+  },
+  "corydoras-pygmaeus": {
+    "path": "/art/store-fish/corydoras-pygmaeus.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/m/k/mk7a7778.jpg",
+    "source": "https://greenaqua.hu/en/corydoras-pygmaeus-pigmy-cory.html",
+    "credit": "Green Aqua",
+    "bytes": 86492,
+    "width": 1200,
+    "height": 1200,
+    "bounds": [
+      0.07500000000000001,
+      0.415,
+      0.885,
+      0.8250000000000001
+    ]
+  },
+  "corydoras-sterbai": {
+    "path": "/art/store-fish/corydoras-sterbai.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/c/o/corydoras-sterbai_1.jpg",
+    "source": "https://greenaqua.hu/en/hal-harcsa-corydoras-sterbai.html",
+    "credit": "Green Aqua",
+    "bytes": 411722,
+    "width": 1200,
+    "height": 1200,
+    "bounds": [
+      0,
+      0.11500000000000002,
+      0.995,
+      0.795
+    ]
+  },
+  "crossocheilus-oblongus": {
+    "path": "/art/store-fish/crossocheilus-oblongus.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/c/r/crossocheilus-oblongus-01.jpg",
+    "source": "https://greenaqua.hu/en/crossocheilus-siamensis.html",
+    "credit": "Green Aqua",
+    "bytes": 162851,
+    "width": 1199,
+    "height": 1200,
+    "bounds": [
+      0,
+      0.185,
+      0.985,
+      0.7050000000000001
+    ]
+  },
+  "crossocheilus-reticulatus": {
+    "path": "/art/store-fish/crossocheilus-reticulatus.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/f/a/farokfoltos_fonalalg_z_algaev_-_crossocheilus_reticulatus_0_1_1.jpg",
+    "source": "https://greenaqua.hu/en/hal-marna-farokfoltos-fonalalgazo-algaevo-crossocheilus-reticulatus-hamis-sziami.html",
+    "credit": "Green Aqua",
+    "bytes": 1194619,
+    "width": 1500,
+    "height": 1500,
+    "bounds": [
+      0,
+      0.345,
+      0.995,
+      0.715
+    ]
+  },
+  "danio": {
+    "path": "/art/store-fish/danio.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/d/a/danio-margaritatus.jpg",
+    "source": "https://greenaqua.hu/en/galaxy-danio.html",
+    "credit": "Green Aqua",
+    "bytes": 145173,
+    "width": 1200,
+    "height": 1200,
+    "bounds": [
+      0.07500000000000001,
+      0.315,
+      0.875,
+      0.735
+    ]
+  },
+  "danio-choprae": {
+    "path": "/art/store-fish/danio-choprae.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/d/a/danio-choprai-01.jpg",
+    "source": "https://greenaqua.hu/en/danio-choprai.html",
+    "credit": "Green Aqua",
+    "bytes": 138968,
+    "width": 1200,
+    "height": 1200,
+    "bounds": [
+      0.065,
+      0.285,
+      1,
+      0.675
+    ]
+  },
+  "danio-rerio": {
+    "path": "/art/store-fish/danio-rerio.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/d/a/danio-rerio-gold.jpg",
+    "source": "https://greenaqua.hu/en/fish-gold-danio-rerio-zebrafish.html",
+    "credit": "Green Aqua",
+    "bytes": 94738,
+    "width": 1200,
+    "height": 1200,
+    "bounds": [
+      0.135,
+      0.345,
+      0.965,
+      0.645
+    ]
+  },
+  "dario-dario": {
+    "path": "/art/store-fish/dario-dario.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/d/a/dario_dario.jpg",
+    "source": "https://greenaqua.hu/en/hal-suger-torpe-rubinsuger-dario-dario.html",
+    "credit": "Green Aqua",
+    "bytes": 173711,
+    "width": 1200,
+    "height": 1200,
+    "bounds": [
+      0.0049999999999999975,
+      0.095,
+      1,
+      0.805
+    ]
+  },
+  "dermogenys-pusilla": {
+    "path": "/art/store-fish/dermogenys-pusilla.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/d/e/dermogenys-pusilla-felcsoros-csuka-2.jpg",
+    "source": "https://greenaqua.hu/en/wrestling-halfbeak.html",
+    "credit": "Green Aqua",
+    "bytes": 195700,
+    "width": 1200,
+    "height": 1200,
+    "bounds": [
+      0.065,
+      0.26499999999999996,
+      0.885,
+      0.7050000000000001
+    ]
+  },
+  "desmopuntius-pentazona": {
+    "path": "/art/store-fish/desmopuntius-pentazona.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/d/e/desmopuntius_pentazona-01.jpg",
+    "source": "https://greenaqua.hu/en/systomus-pentazona-pentasona.html",
+    "credit": "Green Aqua",
+    "bytes": 160990,
+    "width": 1200,
+    "height": 1200,
+    "bounds": [
+      0,
+      0.215,
+      0.975,
+      0.765
+    ]
+  },
+  "diamond-head-neon-tetra": {
+    "path": "/art/store-fish/diamond-head-neon-tetra.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/p/a/paracheirodon_innesi_var._diamond_head.jpg",
+    "source": "https://greenaqua.hu/en/fisch-paracheirodon-innesi-var-diamond-head.html",
+    "credit": "Green Aqua",
+    "bytes": 102821,
+    "width": 1200,
+    "height": 1200,
+    "bounds": [
+      0.155,
+      0.33499999999999996,
+      0.785,
+      0.615
+    ]
+  },
+  "dichotomyctere-ocellatus": {
+    "path": "/art/store-fish/dichotomyctere-ocellatus.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/d/i/dichotomyctere-ocellatus.jpg",
+    "source": "https://greenaqua.hu/en/fish-dichotomyctere-ocellatus-figure-8-puffer.html",
+    "credit": "Green Aqua",
+    "bytes": 193812,
+    "width": 1200,
+    "height": 1200,
+    "bounds": [
+      0.10500000000000001,
+      0.215,
+      0.995,
+      0.7050000000000001
+    ]
+  },
+  "ember-tetra": {
+    "path": "/art/store-fish/ember-tetra.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/a/m/amanda-lazac-hyphessobrycon-amandae.jpg",
+    "source": "https://greenaqua.hu/en/ember-tetra-hyphessobrycon-amandae.html",
+    "credit": "Green Aqua",
+    "bytes": 100839,
+    "width": 1200,
+    "height": 1200,
+    "bounds": [
+      0.015,
+      0.26499999999999996,
+      0.905,
+      0.725
+    ]
+  },
+  "emperor-tetra": {
+    "path": "/art/store-fish/emperor-tetra.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/n/e/nematobrycon-palmeri-csaszarlazac-01.jpg",
+    "source": "https://greenaqua.hu/en/nematobrycon-palmeri-emperor-tetra.html",
+    "credit": "Green Aqua",
+    "bytes": 157061,
+    "width": 1200,
+    "height": 1200,
+    "bounds": [
+      0.045000000000000005,
+      0.26499999999999996,
+      0.965,
+      0.735
+    ]
+  },
+  "epiplatys-annulatus": {
+    "path": "/art/store-fish/epiplatys-annulatus.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/e/p/epiplatys-annulatus.jpg",
+    "source": "https://greenaqua.hu/en/epiplatys-annulatus.html",
+    "credit": "Green Aqua",
+    "bytes": 176475,
+    "width": 1200,
+    "height": 1200,
+    "bounds": [
+      0.08499999999999999,
+      0.26499999999999996,
+      0.965,
+      0.685
+    ]
+  },
+  "flame-tetra": {
+    "path": "/art/store-fish/flame-tetra.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/l/a/langvoros-pontylazac-hyphessobrycon-flammeus.jpg",
+    "source": "https://greenaqua.hu/en/hal-lazac-langvoros-pontylazac-hyphessobrycon-flammeus.html",
+    "credit": "Green Aqua",
+    "bytes": 270225,
+    "width": 1200,
+    "height": 1200,
+    "bounds": [
+      0.0049999999999999975,
+      0.20500000000000002,
+      0.995,
+      0.845
+    ]
+  },
+  "glossolepis-incisus": {
+    "path": "/art/store-fish/glossolepis-incisus.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/g/l/glossolepis-incisus.jpg",
+    "source": "https://greenaqua.hu/en/fish-glossolepis-incisus-red-rainbowfish.html",
+    "credit": "Green Aqua",
+    "bytes": 302967,
+    "width": 1200,
+    "height": 1200,
+    "bounds": [
+      0.055,
+      0.155,
+      0.995,
+      0.785
+    ]
+  },
+  "gold-neon-tetra": {
+    "path": "/art/store-fish/gold-neon-tetra.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/p/a/paracheirodon-inessi-gold-2.jpg",
+    "source": "https://greenaqua.hu/en/fish-paracheirodon-inessi-gold-tetra.html",
+    "credit": "Green Aqua",
+    "bytes": 150330,
+    "width": 1200,
+    "height": 1200,
+    "bounds": [
+      0.07500000000000001,
+      0.295,
+      0.965,
+      0.745
+    ]
+  },
+  "golden-tetra": {
+    "path": "/art/store-fish/golden-tetra.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/g/y/gyemant-neonhal-hemigrammus-rodwayi.jpg",
+    "source": "https://greenaqua.hu/en/hal-neon-gyemant-neonhal-hemigrammus-rodwayi.html",
+    "credit": "Green Aqua",
+    "bytes": 445215,
+    "width": 1200,
+    "height": 1200,
+    "bounds": [
+      0.125,
+      0.345,
+      0.845,
+      0.675
+    ]
+  },
+  "green-neon-tetra": {
+    "path": "/art/store-fish/green-neon-tetra.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/p/a/paracheirodon-simulans-2.jpg",
+    "source": "https://greenaqua.hu/en/paracheirodon-simulans.html",
+    "credit": "Green Aqua",
+    "bytes": 205061,
+    "width": 1199,
+    "height": 1200,
+    "bounds": [
+      0.17500000000000002,
+      0.32499999999999996,
+      0.925,
+      0.655
+    ]
+  },
+  "hypancistrus-sp-l066": {
+    "path": "/art/store-fish/hypancistrus-sp-l066.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/h/y/hypancistrus-sp-l66-03.jpg",
+    "source": "https://greenaqua.hu/en/fish-hypancistrus-sp-l66.html",
+    "credit": "Green Aqua",
+    "bytes": 403348,
+    "width": 1200,
+    "height": 1200,
+    "bounds": [
+      0,
+      0.095,
+      1,
+      0.9450000000000001
+    ]
+  },
+  "hypancistrus-sp-l134": {
+    "path": "/art/store-fish/hypancistrus-sp-l134.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/h/y/hypancistrus-sp-l134-03.jpg",
+    "source": "https://greenaqua.hu/en/fish-hypancistrus-sp-l134.html",
+    "credit": "Green Aqua",
+    "bytes": 241873,
+    "width": 1200,
+    "height": 1200,
+    "bounds": [
+      0,
+      0.11500000000000002,
+      0.985,
+      0.935
+    ]
+  },
+  "hypancistrus-sp-l236": {
+    "path": "/art/store-fish/hypancistrus-sp-l236.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/h/y/hypancistrus-sp-l236-super-white.jpg",
+    "source": "https://greenaqua.hu/en/fish-l236-super-white-hypancistrus-sp-l236.html",
+    "credit": "Green Aqua",
+    "bytes": 163514,
+    "width": 1200,
+    "height": 1200,
+    "bounds": [
+      0,
+      0.285,
+      1,
+      0.785
+    ]
+  },
+  "iriatherina-werneri": {
+    "path": "/art/store-fish/iriatherina-werneri.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/i/r/iriatherina-werneri-02.jpg",
+    "source": "https://greenaqua.hu/en/hal-kalaszhal-werneri-kalaszhal-iriatherina-werneri.html",
+    "credit": "Green Aqua",
+    "bytes": 141727,
+    "width": 1200,
+    "height": 1200,
+    "bounds": [
+      0.185,
+      0.17500000000000002,
+      0.985,
+      0.715
+    ]
+  },
+  "kryptopterus-vitreolus": {
+    "path": "/art/store-fish/kryptopterus-vitreolus.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/k/r/kryptopterus-vitreolus-fish-2.jpg",
+    "source": "https://greenaqua.hu/en/hal-harcsa-uvegharcsa-kryptopterus-vitreolus.html",
+    "credit": "Green Aqua",
+    "bytes": 229867,
+    "width": 1200,
+    "height": 1200,
+    "bounds": [
+      0,
+      0.33499999999999996,
+      1,
+      0.725
+    ]
+  },
+  "labidochromis-caeruleus": {
+    "path": "/art/store-fish/labidochromis-caeruleus.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/a/r/aranysuger-labidochromis-caeruleus.jpg",
+    "source": "https://greenaqua.hu/en/hal-suger-aranysuger-labidochromis-caeruleus.html",
+    "credit": "Green Aqua",
+    "bytes": 79110,
+    "width": 1199,
+    "height": 1200,
+    "bounds": [
+      0.065,
+      0.135,
+      0.995,
+      0.925
+    ]
+  },
+  "labidochromis-hongi": {
+    "path": "/art/store-fish/labidochromis-hongi.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/l/a/labidochromis-hongi-2.jpg",
+    "source": "https://greenaqua.hu/en/fish-labidochromis-hongi.html",
+    "credit": "Green Aqua",
+    "bytes": 186003,
+    "width": 1200,
+    "height": 1200,
+    "bounds": [
+      0.065,
+      0.295,
+      1,
+      0.675
+    ]
+  },
+  "loricaria-simillima": {
+    "path": "/art/store-fish/loricaria-simillima.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/l/o/loricaria-simillima.jpg",
+    "source": "https://greenaqua.hu/en/fish-loricaria-simillima-marbled-whiptail.html",
+    "credit": "Green Aqua",
+    "bytes": 235955,
+    "width": 1200,
+    "height": 1200,
+    "bounds": [
+      0.015,
+      0.515,
+      0.985,
+      0.785
+    ]
+  },
+  "macropodus-opercularis": {
+    "path": "/art/store-fish/macropodus-opercularis.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/m/a/macropodus-opercularis-sp-red-albino.jpg",
+    "source": "https://greenaqua.hu/en/fish-macropodus-opercularis-sp-red-albino.html",
+    "credit": "Green Aqua",
+    "bytes": 206720,
+    "width": 1200,
+    "height": 1200,
+    "bounds": [
+      0.025,
+      0.17500000000000002,
+      0.995,
+      0.9550000000000001
+    ]
+  },
+  "macrotocinclus-affinis": {
+    "path": "/art/store-fish/macrotocinclus-affinis.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/m/a/macrotocinclus-affinis-otocinclus.jpg",
+    "source": "https://greenaqua.hu/en/ottocinclus-affinis.html",
+    "credit": "Green Aqua",
+    "bytes": 143648,
+    "width": 1200,
+    "height": 1200,
+    "bounds": [
+      0.07500000000000001,
+      0.24500000000000002,
+      1,
+      0.665
+    ]
+  },
+  "maylandia-callainos": {
+    "path": "/art/store-fish/maylandia-callainos.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/m/a/maylandia-callainos-01.jpg",
+    "source": "https://greenaqua.hu/en/fish-maylandia-callainos.html",
+    "credit": "Green Aqua",
+    "bytes": 169858,
+    "width": 1200,
+    "height": 1200,
+    "bounds": [
+      0.015,
+      0.315,
+      1,
+      0.775
+    ]
+  },
+  "maylandia-estherae": {
+    "path": "/art/store-fish/maylandia-estherae.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/m/a/maylandia-estherae-red.jpg",
+    "source": "https://greenaqua.hu/en/hal-suger-voros-zebrasuger-rot-rot-maylandia-estherae.html",
+    "credit": "Green Aqua",
+    "bytes": 144681,
+    "width": 1200,
+    "height": 1200,
+    "bounds": [
+      0.055,
+      0.225,
+      0.965,
+      0.7050000000000001
+    ]
+  },
+  "melanotaenia-boesemani": {
+    "path": "/art/store-fish/melanotaenia-boesemani.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/m/e/melanotaenia_boesemani_2_1.jpg",
+    "source": "https://greenaqua.hu/en/hal-kalaszhal-boesemanni-kalaszhal-melanotaenia-boesemani.html",
+    "credit": "Green Aqua",
+    "bytes": 69867,
+    "width": 1000,
+    "height": 1000,
+    "bounds": [
+      0.025,
+      0.38499999999999995,
+      0.9450000000000001,
+      0.725
+    ]
+  },
+  "melanotaenia-praecox": {
+    "path": "/art/store-fish/melanotaenia-praecox.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/m/e/melanotaenia-praecox.jpg",
+    "source": "https://greenaqua.hu/en/hal-kalaszhal-neon-kalaszhal-melanotaenia-lacustris.html",
+    "credit": "Green Aqua",
+    "bytes": 213942,
+    "width": 1200,
+    "height": 1200,
+    "bounds": [
+      0.095,
+      0.065,
+      0.995,
+      0.805
+    ]
+  },
+  "microdevario-kubotai": {
+    "path": "/art/store-fish/microdevario-kubotai.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/m/i/microdevario-kubotai-01.jpg",
+    "source": "https://greenaqua.hu/en/microrasbora-kubotai.html",
+    "credit": "Green Aqua",
+    "bytes": 139863,
+    "width": 1200,
+    "height": 1200,
+    "bounds": [
+      0.07500000000000001,
+      0.365,
+      0.985,
+      0.735
+    ]
+  },
+  "mikrogeophagus-ramirezi": {
+    "path": "/art/store-fish/mikrogeophagus-ramirezi.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/m/k/mk7a7781.jpg",
+    "source": "https://greenaqua.hu/en/hal-suger-ramirezi-suger-mikrogeophagus-ramirezi-sp.html",
+    "credit": "Green Aqua",
+    "bytes": 139383,
+    "width": 1200,
+    "height": 1200,
+    "bounds": [
+      0.07500000000000001,
+      0.375,
+      1,
+      0.9450000000000001
+    ]
+  },
+  "nannostomus-marginatus": {
+    "path": "/art/store-fish/nannostomus-marginatus.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/n/a/nannostomus_marginatus.jpg",
+    "source": "https://greenaqua.hu/en/nannostomus-marginatus.html",
+    "credit": "Green Aqua",
+    "bytes": 620172,
+    "width": 1000,
+    "height": 1000,
+    "bounds": [
+      0,
+      0.33499999999999996,
+      0.985,
+      0.785
+    ]
+  },
+  "neon-tetra": {
+    "path": "/art/store-fish/neon-tetra.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/p/a/paracheirodon-innesi.jpg",
+    "source": "https://greenaqua.hu/en/fish-paracheirodon-innesii.html",
+    "credit": "Green Aqua",
+    "bytes": 84278,
+    "width": 1200,
+    "height": 1200,
+    "bounds": [
+      0.155,
+      0.305,
+      0.845,
+      0.685
+    ]
+  },
+  "notropis-chrosomus": {
+    "path": "/art/store-fish/notropis-chrosomus.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/n/o/notropis-chrosomus.jpg",
+    "source": "https://greenaqua.hu/en/notropis-chrosomus.html",
+    "credit": "Green Aqua",
+    "bytes": 296075,
+    "width": 1200,
+    "height": 1200,
+    "bounds": [
+      0.065,
+      0.38499999999999995,
+      0.9450000000000001,
+      0.845
+    ]
+  },
+  "oryzias-latipes": {
+    "path": "/art/store-fish/oryzias-latipes.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/o/r/oryzias_latipes.jpg",
+    "source": "https://greenaqua.hu/en/fish-oryzias-latipes-japanse-rice-fish.html",
+    "credit": "Green Aqua",
+    "bytes": 178777,
+    "width": 1200,
+    "height": 1200,
+    "bounds": [
+      0.045000000000000005,
+      0.345,
+      0.985,
+      0.675
+    ]
+  },
+  "pangio-kuhlii": {
+    "path": "/art/store-fish/pangio-kuhlii.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/p/a/pangio-kuhlii-2.jpg",
+    "source": "https://greenaqua.hu/en/fish-pangio-kuhlii-kuhli-loach.html",
+    "credit": "Green Aqua",
+    "bytes": 213794,
+    "width": 1200,
+    "height": 1200,
+    "bounds": [
+      0,
+      0.23500000000000001,
+      1,
+      0.8250000000000001
+    ]
+  },
+  "poecilia-reticulata": {
+    "path": "/art/store-fish/poecilia-reticulata.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/p/o/poecilia-reticulata-guppi-fish.jpg",
+    "source": "https://greenaqua.hu/en/poecilia-reticulata-guppi.html",
+    "credit": "Green Aqua",
+    "bytes": 116384,
+    "width": 1200,
+    "height": 1200,
+    "bounds": [
+      0.065,
+      0.215,
+      0.935,
+      0.745
+    ]
+  },
+  "poecilia-sphenops": {
+    "path": "/art/store-fish/poecilia-sphenops.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/p/o/poecilia-sphenops-black-molly.jpg",
+    "source": "https://greenaqua.hu/en/poecilia-sphenops-black-molly.html",
+    "credit": "Green Aqua",
+    "bytes": 115859,
+    "width": 1200,
+    "height": 1200,
+    "bounds": [
+      0.034999999999999996,
+      0.225,
+      1,
+      0.765
+    ]
+  },
+  "poecilia-wingei": {
+    "path": "/art/store-fish/poecilia-wingei.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/e/n/endler-guppi-poecilia-wingei-02.jpg",
+    "source": "https://greenaqua.hu/en/hal-elevenszulo-endler-guppi.html",
+    "credit": "Green Aqua",
+    "bytes": 134609,
+    "width": 1200,
+    "height": 1200,
+    "bounds": [
+      0.125,
+      0.345,
+      0.965,
+      0.8250000000000001
+    ]
+  },
+  "poropanchax-myersi": {
+    "path": "/art/store-fish/poropanchax-myersi.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/p/o/poropanchax-myersi.jpg",
+    "source": "https://greenaqua.hu/en/fish-poropanchax-myersi.html",
+    "credit": "Green Aqua",
+    "bytes": 141876,
+    "width": 1200,
+    "height": 1200,
+    "bounds": [
+      0.165,
+      0.425,
+      0.915,
+      0.755
+    ]
+  },
+  "poropanchax-normani": {
+    "path": "/art/store-fish/poropanchax-normani.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/p/o/poropanchax-normani-01.jpg",
+    "source": "https://greenaqua.hu/en/hal-fogasponty-norman-fenyloszemu-hala-poropanchax-normani.html",
+    "credit": "Green Aqua",
+    "bytes": 147213,
+    "width": 1200,
+    "height": 1200,
+    "bounds": [
+      0.025,
+      0.38499999999999995,
+      1,
+      0.715
+    ]
+  },
+  "pseudacanthicus-sp-l097": {
+    "path": "/art/store-fish/pseudacanthicus-sp-l097.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/p/s/pseudacanthicus-sp-l97-01.jpg",
+    "source": "https://greenaqua.hu/en/fish-pseudacanthicus-sp-l97.html",
+    "credit": "Green Aqua",
+    "bytes": 236588,
+    "width": 1200,
+    "height": 1200,
+    "bounds": [
+      0,
+      0.195,
+      1,
+      0.8250000000000001
+    ]
+  },
+  "pseudacanthicus-sp-l136": {
+    "path": "/art/store-fish/pseudacanthicus-sp-l136.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/p/s/pseudacanthicus-sp-l136.jpg",
+    "source": "https://greenaqua.hu/en/fish-pseudacanthicus-sp-l136.html",
+    "credit": "Green Aqua",
+    "bytes": 157492,
+    "width": 1200,
+    "height": 1200,
+    "bounds": [
+      0,
+      0.165,
+      1,
+      0.845
+    ]
+  },
+  "pseudomugil-furcatus": {
+    "path": "/art/store-fish/pseudomugil-furcatus.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/p/s/pseudomogil-furcatus-001.jpg",
+    "source": "https://greenaqua.hu/en/pseudomogil-furcatus.html",
+    "credit": "Green Aqua",
+    "bytes": 69983,
+    "width": 1200,
+    "height": 1200,
+    "bounds": [
+      0.055,
+      0.315,
+      0.915,
+      0.775
+    ]
+  },
+  "pseudomugil-gertrudae": {
+    "path": "/art/store-fish/pseudomugil-gertrudae.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/p/s/pseudomugil-gertrudae-03.jpg",
+    "source": "https://greenaqua.hu/en/pseudomugil-gertrudae.html",
+    "credit": "Green Aqua",
+    "bytes": 104415,
+    "width": 1200,
+    "height": 1200,
+    "bounds": [
+      0.10500000000000001,
+      0.14500000000000002,
+      0.9550000000000001,
+      0.905
+    ]
+  },
+  "pseudomugil-paskai": {
+    "path": "/art/store-fish/pseudomugil-paskai.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/p/s/pseudomugil-paskai-fish.jpg",
+    "source": "https://greenaqua.hu/en/hal-kalaszhal-paskai-pseudomugil-paskai.html",
+    "credit": "Green Aqua",
+    "bytes": 136547,
+    "width": 1200,
+    "height": 1200,
+    "bounds": [
+      0.10500000000000001,
+      0.23500000000000001,
+      0.995,
+      0.865
+    ]
+  },
+  "pseudomugil-signifer": {
+    "path": "/art/store-fish/pseudomugil-signifer.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/p/s/pseudomugil-signifer-01.jpg",
+    "source": "https://greenaqua.hu/en/fish-pseudomugil-signifer.html",
+    "credit": "Green Aqua",
+    "bytes": 166750,
+    "width": 1200,
+    "height": 1200,
+    "bounds": [
+      0.025,
+      0.215,
+      1,
+      0.675
+    ]
+  },
+  "pseudotropheus-demasoni": {
+    "path": "/art/store-fish/pseudotropheus-demasoni.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/p/s/pseudotropheus-demasoni-01.jpg",
+    "source": "https://greenaqua.hu/en/hal-suger-malawi-neonsuger-pseudotropheus-demasoni.html",
+    "credit": "Green Aqua",
+    "bytes": 252121,
+    "width": 1200,
+    "height": 1200,
+    "bounds": [
+      0.015,
+      0.17500000000000002,
+      1,
+      0.885
+    ]
+  },
+  "pseudotropheus-elongatus": {
+    "path": "/art/store-fish/pseudotropheus-elongatus.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/p/s/pseudotropheus-elongatus-sp-mpanga-2.jpg",
+    "source": "https://greenaqua.hu/en/fish-pseudotropheus-elongatus-sp-mpanga.html",
+    "credit": "Green Aqua",
+    "bytes": 158239,
+    "width": 1200,
+    "height": 1200,
+    "bounds": [
+      0.0049999999999999975,
+      0.23500000000000001,
+      1,
+      0.8250000000000001
+    ]
+  },
+  "pseudotropheus-socolofi": {
+    "path": "/art/store-fish/pseudotropheus-socolofi.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/p/s/pseudotropheus-socolofi-2.jpg",
+    "source": "https://greenaqua.hu/en/fish-pseudotropheus-socolofi.html",
+    "credit": "Green Aqua",
+    "bytes": 175558,
+    "width": 1200,
+    "height": 1200,
+    "bounds": [
+      0.055,
+      0.345,
+      0.995,
+      0.765
+    ]
+  },
+  "puntigrus-tetrazona": {
+    "path": "/art/store-fish/puntigrus-tetrazona.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/p/u/puntius-tetrazona.jpg",
+    "source": "https://greenaqua.hu/en/fish-puntius-tetrazona-green-tiger-barb.html",
+    "credit": "Green Aqua",
+    "bytes": 221860,
+    "width": 1200,
+    "height": 1200,
+    "bounds": [
+      0.095,
+      0.215,
+      0.9550000000000001,
+      0.8150000000000001
+    ]
+  },
+  "puntius-titteya": {
+    "path": "/art/store-fish/puntius-titteya.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/p/u/puntius-titteya.jpg",
+    "source": "https://greenaqua.hu/en/hal-titteya-karcsu-diszmarna.html",
+    "credit": "Green Aqua",
+    "bytes": 174667,
+    "width": 1200,
+    "height": 1200,
+    "bounds": [
+      0.10500000000000001,
+      0.305,
+      0.965,
+      0.795
+    ]
+  },
+  "rasbora": {
+    "path": "/art/store-fish/rasbora.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/t/r/trigonostigma-heteromorpha-fish.jpg",
+    "source": "https://greenaqua.hu/en/hal-razbora-ekfoltos-razbora-trigonostigma-heteromorpha.html",
+    "credit": "Green Aqua",
+    "bytes": 115079,
+    "width": 1200,
+    "height": 1200,
+    "bounds": [
+      0.045000000000000005,
+      0.305,
+      0.9450000000000001,
+      0.715
+    ]
+  },
+  "red-phantom-tetra": {
+    "path": "/art/store-fish/red-phantom-tetra.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/h/y/hyphessobrycon-sweglesi-red-phantom-tetra-2.jpg",
+    "source": "https://greenaqua.hu/en/fish-hyphessobrycon-sweglesi-red-phantom-tetra.html",
+    "credit": "Green Aqua",
+    "bytes": 122864,
+    "width": 1200,
+    "height": 1200,
+    "bounds": [
+      0.015,
+      0.165,
+      0.9550000000000001,
+      0.8150000000000001
+    ]
+  },
+  "rineloricaria-lanceolata": {
+    "path": "/art/store-fish/rineloricaria-lanceolata.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/v/o/voros-boszorkanyharcsa-rineloricaria-lanceolata.jpg",
+    "source": "https://greenaqua.hu/en/hal-harcsa-voros-boszorkanyharcsa-rineloricaria-lanceolata.html",
+    "credit": "Green Aqua",
+    "bytes": 147781,
+    "width": 1200,
+    "height": 1200,
+    "bounds": [
+      0.055,
+      0.255,
+      0.985,
+      0.8150000000000001
+    ]
+  },
+  "rosy-tetra": {
+    "path": "/art/store-fish/rosy-tetra.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/h/y/hyphessobrycon-rosaceus.jpg",
+    "source": "https://greenaqua.hu/en/fish-hyphessobrycon-rosaceus-rosy-tetra.html",
+    "credit": "Green Aqua",
+    "bytes": 120748,
+    "width": 1200,
+    "height": 1200,
+    "bounds": [
+      0.095,
+      0.26499999999999996,
+      0.975,
+      0.755
+    ]
+  },
+  "rummy-nose-tetra": {
+    "path": "/art/store-fish/rummy-nose-tetra.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/h/e/hemigrammus-bleheri_1.jpg",
+    "source": "https://greenaqua.hu/en/hemigrammus-bleheri.html",
+    "credit": "Green Aqua",
+    "bytes": 103002,
+    "width": 1200,
+    "height": 1200,
+    "bounds": [
+      0.025,
+      0.24500000000000002,
+      0.965,
+      0.675
+    ]
+  },
+  "sahyadria-denisonii": {
+    "path": "/art/store-fish/sahyadria-denisonii.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/p/u/puntius-denisonii.jpg",
+    "source": "https://greenaqua.hu/en/puntius-denisonii.html",
+    "credit": "Green Aqua",
+    "bytes": 329094,
+    "width": 1100,
+    "height": 1100,
+    "bounds": [
+      0.07500000000000001,
+      0.415,
+      0.965,
+      0.735
+    ]
+  },
+  "serpae-tetra": {
+    "path": "/art/store-fish/serpae-tetra.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/h/y/hyphessobrycon_eques.jpg",
+    "source": "https://greenaqua.hu/en/hal-lazac-serpalazac-hyphessobrycon-eques.html",
+    "credit": "Green Aqua",
+    "bytes": 216855,
+    "width": 1200,
+    "height": 1200,
+    "bounds": [
+      0.034999999999999996,
+      0.23500000000000001,
+      0.985,
+      0.795
+    ]
+  },
+  "sphaerichthys-osphromenoides": {
+    "path": "/art/store-fish/sphaerichthys-osphromenoides.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/s/p/sphaerichthys_osphromenoides-2_1.jpg",
+    "source": "https://greenaqua.hu/en/fish-sphaerichthys-osphromenoides-chocolate-gourami.html",
+    "credit": "Green Aqua",
+    "bytes": 238612,
+    "width": 1200,
+    "height": 1200,
+    "bounds": [
+      0.055,
+      0.11500000000000002,
+      0.8250000000000001,
+      0.805
+    ]
+  },
+  "sphaerichthys-vaillanti": {
+    "path": "/art/store-fish/sphaerichthys-vaillanti.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/c/s/csoki_gurami_01.jpg",
+    "source": "https://greenaqua.hu/en/sphaerichthys-osphromenoides.html",
+    "credit": "Green Aqua",
+    "bytes": 650626,
+    "width": 1000,
+    "height": 1000,
+    "bounds": [
+      0.10500000000000001,
+      0.14500000000000002,
+      0.8350000000000001,
+      0.795
+    ]
+  },
+  "stiphodon-annieae": {
+    "path": "/art/store-fish/stiphodon-annieae.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/s/t/stiphodon-annieae-sp-annies-dwarf-goby.jpg",
+    "source": "https://greenaqua.hu/en/fish-stiphodon-annieae-sp-annies-dwarf-goby.html",
+    "credit": "Green Aqua",
+    "bytes": 197948,
+    "width": 1200,
+    "height": 1200,
+    "bounds": [
+      0.08499999999999999,
+      0.155,
+      0.9450000000000001,
+      0.5850000000000001
+    ]
+  },
+  "stiphodon-ornatus": {
+    "path": "/art/store-fish/stiphodon-ornatus.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/s/t/stiphodon_ornatus_01.jpg",
+    "source": "https://greenaqua.hu/en/stiphodon-sp.html",
+    "credit": "Green Aqua",
+    "bytes": 182741,
+    "width": 1200,
+    "height": 1200,
+    "bounds": [
+      0.065,
+      0.27499999999999997,
+      1,
+      0.595
+    ]
+  },
+  "stiphodon-sp": {
+    "path": "/art/store-fish/stiphodon-sp.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/s/t/stiphodon_sp._blue-2.jpg",
+    "source": "https://greenaqua.hu/en/fish-stiphodon-sp-blue-blue-neon-goby.html",
+    "credit": "Green Aqua",
+    "bytes": 178917,
+    "width": 1200,
+    "height": 1200,
+    "bounds": [
+      0.11500000000000002,
+      0.20500000000000002,
+      1,
+      0.715
+    ]
+  },
+  "sundadanio-axelrodi": {
+    "path": "/art/store-fish/sundadanio-axelrodi.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/s/u/sundadanio-axelrodi-3.jpg",
+    "source": "https://greenaqua.hu/en/sundadanio-axelrodi.html",
+    "credit": "Green Aqua",
+    "bytes": 174585,
+    "width": 1200,
+    "height": 1200,
+    "bounds": [
+      0.165,
+      0.375,
+      0.805,
+      0.8150000000000001
+    ]
+  },
+  "sundadanio-rubellus": {
+    "path": "/art/store-fish/sundadanio-rubellus.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/s/u/sundadanio-rubellus-2.jpg",
+    "source": "https://greenaqua.hu/en/fish-sundadanio-rubellus-red-neon-rasbora.html",
+    "credit": "Green Aqua",
+    "bytes": 212265,
+    "width": 1200,
+    "height": 1200,
+    "bounds": [
+      0.034999999999999996,
+      0.355,
+      0.985,
+      0.675
+    ]
+  },
+  "symphysodon-aequifasciatus": {
+    "path": "/art/store-fish/symphysodon-aequifasciatus.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/s/y/symphysodon-aequifasciatus-3.jpg",
+    "source": "https://greenaqua.hu/en/symphysodon-aequifasciatus-discus.html",
+    "credit": "Green Aqua",
+    "bytes": 365587,
+    "width": 1200,
+    "height": 1200,
+    "bounds": [
+      0.24,
+      0.33,
+      0.84,
+      0.95
+    ]
+  },
+  "tanichthys-albonubes": {
+    "path": "/art/store-fish/tanichthys-albonubes.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/t/a/tanichthys-albonubes-3.jpg",
+    "source": "https://greenaqua.hu/en/tanichthys-albonubes.html",
+    "credit": "Green Aqua",
+    "bytes": 188481,
+    "width": 1200,
+    "height": 1200,
+    "bounds": [
+      0.065,
+      0.26499999999999996,
+      1,
+      0.8350000000000001
+    ]
+  },
+  "tanichthys-micagemmae": {
+    "path": "/art/store-fish/tanichthys-micagemmae.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/t/a/tanichthys_micagemmae.jpg",
+    "source": "https://greenaqua.hu/en/fish-tanichthys-micagemmae-vietnamese-cardinal-minnow.html",
+    "credit": "Green Aqua",
+    "bytes": 146423,
+    "width": 1200,
+    "height": 1200,
+    "bounds": [
+      0.10500000000000001,
+      0.305,
+      0.985,
+      0.865
+    ]
+  },
+  "tetra": {
+    "path": "/art/store-fish/tetra.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/p/h/phenacogrammus-interruptus.jpg",
+    "source": "https://greenaqua.hu/en/hal-lazac-kongolazac-phenacogrammus-interruptus.html",
+    "credit": "Green Aqua",
+    "bytes": 183373,
+    "width": 1200,
+    "height": 1200,
+    "bounds": [
+      0.034999999999999996,
+      0.27499999999999997,
+      0.965,
+      0.665
+    ]
+  },
+  "thayeria-boehlkei": {
+    "path": "/art/store-fish/thayeria-boehlkei.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/t/h/thayeria-boehlkei-sp-teles-pires-02.jpg",
+    "source": "https://greenaqua.hu/en/fish-thayeria-boehlkei-sp-teles-pires.html",
+    "credit": "Green Aqua",
+    "bytes": 231074,
+    "width": 1200,
+    "height": 1200,
+    "bounds": [
+      0.165,
+      0.315,
+      0.935,
+      0.805
+    ]
+  },
+  "trichogaster-chuna": {
+    "path": "/art/store-fish/trichogaster-chuna.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/t/r/trichogaster_chuna_2.jpg",
+    "source": "https://greenaqua.hu/en/hal-labirintkopoltyus-mezgurami-trichogaster-chunas.html",
+    "credit": "Green Aqua",
+    "bytes": 146424,
+    "width": 1200,
+    "height": 1200,
+    "bounds": [
+      0,
+      0.195,
+      1,
+      0.895
+    ]
+  },
+  "trichogaster-labiosa": {
+    "path": "/art/store-fish/trichogaster-labiosa.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/t/r/trichogaster-labiosa-2.jpg",
+    "source": "https://greenaqua.hu/en/fish-trichogaster-labiosa-ruby-gourami.html",
+    "credit": "Green Aqua",
+    "bytes": 265506,
+    "width": 1200,
+    "height": 1200,
+    "bounds": [
+      0.065,
+      0.27499999999999997,
+      1,
+      0.8150000000000001
+    ]
+  },
+  "trichogaster-lalius": {
+    "path": "/art/store-fish/trichogaster-lalius.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/t/r/trichogaster-lalius-torpe-gurami.jpg",
+    "source": "https://greenaqua.hu/en/trichogaster-lalius-dwarf-gourami.html",
+    "credit": "Green Aqua",
+    "bytes": 391424,
+    "width": 1200,
+    "height": 1200,
+    "bounds": [
+      0.055,
+      0.27499999999999997,
+      1,
+      0.875
+    ]
+  },
+  "trichopodus-leerii": {
+    "path": "/art/store-fish/trichopodus-leerii.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/g/y/gyongygurami-trichopodus-leerii.jpg",
+    "source": "https://greenaqua.hu/en/hal-labirintkopoltyus-gyongygurami-trichopodus-leerii.html",
+    "credit": "Green Aqua",
+    "bytes": 160361,
+    "width": 1200,
+    "height": 1200,
+    "bounds": [
+      0.034999999999999996,
+      0.125,
+      1,
+      0.8250000000000001
+    ]
+  },
+  "trichopodus-trichopterus": {
+    "path": "/art/store-fish/trichopodus-trichopterus.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/t/r/trichopodus-trichopterus-01.jpg",
+    "source": "https://greenaqua.hu/en/fish-trichopodus-trichopterus.html",
+    "credit": "Green Aqua",
+    "bytes": 271648,
+    "width": 1200,
+    "height": 1200,
+    "bounds": [
+      0.034999999999999996,
+      0.23500000000000001,
+      0.965,
+      0.805
+    ]
+  },
+  "trichopsis-pumila": {
+    "path": "/art/store-fish/trichopsis-pumila.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/t/r/trichopsis-pumila-2_1.jpg",
+    "source": "https://greenaqua.hu/en/fish-trichopsis-pumila.html",
+    "credit": "Green Aqua",
+    "bytes": 164520,
+    "width": 1200,
+    "height": 1200,
+    "bounds": [
+      0.034999999999999996,
+      0.375,
+      0.985,
+      0.715
+    ]
+  },
+  "trigonostigma-espei": {
+    "path": "/art/store-fish/trigonostigma-espei.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/e/s/espei-razbora-trigonostigma-espei.jpg",
+    "source": "https://greenaqua.hu/en/hal-razbora-torpe-espei-razbora-torpe-ekfoltos-rasbora-espei.html",
+    "credit": "Green Aqua",
+    "bytes": 124162,
+    "width": 1200,
+    "height": 1200,
+    "bounds": [
+      0.095,
+      0.24500000000000002,
+      0.995,
+      0.735
+    ]
+  },
+  "xiphophorus-helleri": {
+    "path": "/art/store-fish/xiphophorus-helleri.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/x/i/xiphophorus_hellerii.jpg",
+    "source": "https://greenaqua.hu/en/hal-elevenszulo-xifo.html",
+    "credit": "Green Aqua",
+    "bytes": 598706,
+    "width": 1000,
+    "height": 1000,
+    "bounds": [
+      0.034999999999999996,
+      0.33499999999999996,
+      0.915,
+      0.685
+    ]
+  },
+  "xiphophorus-maculatus": {
+    "path": "/art/store-fish/xiphophorus-maculatus.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/x/i/xiphophorus-maculatus-fish.jpg",
+    "source": "https://greenaqua.hu/en/hal-elevenszulo-platti.html",
+    "credit": "Green Aqua",
+    "bytes": 236791,
+    "width": 1200,
+    "height": 1200,
+    "bounds": [
+      0.055,
+      0.125,
+      0.9450000000000001,
+      0.8150000000000001
+    ]
+  },
+  "yaoshania-pachychilus": {
+    "path": "/art/store-fish/yaoshania-pachychilus.jpg",
+    "original": "https://greenaqua.hu/media/catalog/product/y/a/yaoshania_pachychilus_01.jpg",
+    "source": "https://greenaqua.hu/en/hal-csik-panda-csik-panda-loach.html",
+    "credit": "Green Aqua",
+    "bytes": 140550,
+    "width": 1200,
+    "height": 1200,
+    "bounds": [
+      0.015,
+      0.165,
+      1,
+      0.865
+    ]
+  }
+}
