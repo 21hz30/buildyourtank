@@ -462,6 +462,18 @@ main {
   line-height: 1.7;
 }
 
+@media (min-width: 901px) {
+  .landing-hero { align-items: end; }
+  .landing-hero > .hero-copy {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    padding-top: 0;
+  }
+  .hero-actions { margin-bottom: 32px; }
+  .hero-highlights { margin-top: auto; }
+}
+
 @media (max-width: 650px) {
   .hero-highlights { margin-top: 30px; padding-top: 20px; }
   .hero-highlights li { padding: 0 12px; }
@@ -561,7 +573,7 @@ main {
   border: 1px solid #e0e3df;
   border-radius: 18px;
   overflow: hidden;
-  transform: rotate(-1deg);
+  transform: none;
 }
 
 .hero-room-label {
